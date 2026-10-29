@@ -1,0 +1,13 @@
+@use "../abstracts/variables" as *;
+
+body {
+    font-family: $family-inter;
+    font-weight: $weight-normal;
+    line-height: 160%;
+    letter-spacing: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: $family-std-bold;
+    font-weight: $weight-bold;
+}
