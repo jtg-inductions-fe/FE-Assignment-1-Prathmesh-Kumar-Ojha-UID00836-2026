@@ -1,0 +1,7 @@
+@use '../abstracts/variables' as *;
+
+.container {
+    padding: $size-nm;
+    padding-top: 2.4375rem;
+    min-width: 15rem;
+}
