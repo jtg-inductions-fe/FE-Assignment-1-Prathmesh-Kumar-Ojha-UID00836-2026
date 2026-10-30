@@ -1,1 +1,11 @@
-// TODO: Add styles as per the requirement
+// Abstracts
+@use './abstracts/functions' as *;
+@use './abstracts/colors' as *;
+@use './abstracts/breakpoints' as *;
+@use './abstracts/mixins' as *;
+@use './abstracts/variables' as *;
+@use './abstracts/fonts' as *;
+
+// Base
+@use './base/reset' as *;
+@use './base/typography' as *;

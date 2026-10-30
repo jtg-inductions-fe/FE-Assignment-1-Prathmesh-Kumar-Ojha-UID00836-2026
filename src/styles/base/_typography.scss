@@ -1,11 +1,31 @@
 @use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+@use '../abstracts/colors' as *;
+@use '../abstracts/functions' as *;
+
+html {
+    font-size: 100%;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
 
 body {
     font-family: $family-inter;
-    font-weight: $weight-normal;
-    line-height: 160%;
-    letter-spacing: 0;
+    font-size: $size-md;
+    font-weight: $weight-nm;
+    line-height: $line-loose;
+    color: $color-text-main;
+
+    @include respond-to('tablet') {
+        font-size: $size-bs;
+    }
+
+    @include respond-to('desktop') {
+        font-size: $size-md;
+    }
 }
+
+// Headings Hierarchy
 
 h1,
 h2,
@@ -15,4 +35,178 @@ h5,
 h6 {
     font-family: $family-std-bold;
     font-weight: $weight-bold;
+    line-height: $line-tight;
+}
+
+h1 {
+    font-size: px-to-rem(40);
+
+    @include respond-to('tablet') {
+        font-size: px-to-rem(56);
+    }
+
+    @include respond-to('desktop') {
+        font-size: px-to-rem(69);
+    }
+}
+
+h3 {
+    font-size: px-to-rem(32);
+
+    @include respond-to('tablet') {
+        font-size: px-to-rem(40);
+    }
+
+    @include respond-to('desktop') {
+        font-size: px-to-rem(44);
+    }
+}
+
+h4 {
+    font-size: px-to-rem(35);
+}
+
+h5 {
+    font-size: px-to-rem(28);
+}
+
+h6 {
+    font-size: px-to-rem(23);
+}
+
+// Utility Classes
+
+// --- Eyebrow ---
+
+.eyebrow {
+    font-family: $family-primary;
+    font-size: $size-xs;
+    font-weight: $weight-bold;
+    letter-spacing: px-to-rem(2);
+    text-transform: uppercase;
+    color: $color-accent-pink;
+
+    @include respond-to('desktop') {
+        font-size: $size-sm;
+    }
+}
+
+// --- Heading scale ---
+
+.heading-xl {
+    font-family: $family-std-bold;
+    font-size: px-to-rem(40);
+    font-weight: $weight-bold;
+    line-height: $line-tight;
+    color: $color-text-main;
+
+    @include respond-to('tablet') {
+        font-size: px-to-rem(56);
+    }
+
+    @include respond-to('desktop') {
+        font-size: px-to-rem(69);
+    }
+}
+
+.heading-lg {
+    font-family: $family-std-bold;
+    font-size: px-to-rem(32);
+    font-weight: $weight-bold;
+    line-height: $line-tight;
+    color: $color-text-main;
+
+    @include respond-to('tablet') {
+        font-size: px-to-rem(40);
+    }
+
+    @include respond-to('desktop') {
+        font-size: px-to-rem(44);
+    }
+}
+
+.heading-sm {
+    font-family: $family-std-bold;
+    font-size: $size-xl;
+    font-weight: $weight-bold;
+    line-height: $line-tight;
+    color: $color-text-main;
+}
+
+// --- Body text ---
+
+.body-lg {
+    font-family: $family-inter;
+    font-size: $size-md;
+    font-weight: $weight-nm;
+    line-height: $line-loose;
+    color: $color-text-muted;
+
+    @include respond-to('tablet') {
+        font-size: $size-bs;
+    }
+
+    @include respond-to('desktop') {
+        font-size: $size-md;
+    }
+}
+
+.body-sm {
+    font-family: $family-inter;
+    font-size: $size-sm;
+    font-weight: $weight-nm;
+    line-height: $line-normal;
+    color: $color-text-muted;
+}
+
+// --- Caption ---
+
+.caption {
+    font-family: $family-inter;
+    font-size: $size-sm;
+    font-weight: $weight-nm;
+    line-height: $line-loose;
+    color: $color-text-light;
+
+    @include respond-to('desktop') {
+        font-size: $size-bs;
+    }
+}
+
+// --- Label ---
+
+.label {
+    font-family: $family-std-book;
+    font-size: $size-sm;
+    font-weight: $weight-book;
+    line-height: $line-normal;
+    color: $color-text-muted;
+}
+
+// --- Navigation & inline links ---
+
+.nav-link {
+    font-family: $family-inter;
+    font-size: $size-sm;
+    font-weight: $weight-nm;
+    line-height: 1;
+    color: $color-text-main;
+}
+
+.link-text {
+    font-family: $family-inter;
+    font-size: $size-sm;
+    font-weight: $weight-bold;
+    line-height: 1;
+    color: $color-text-main;
+}
+
+// --- Color highlights ---
+
+.highlight-pink {
+    color: $color-accent-pink;
+}
+
+.highlight-orange {
+    color: $color-accent-orange;
 }

@@ -1,24 +1,33 @@
 @use './functions' as *;
 
-// font families
+// Font families
 $family-inter: 'Inter', 'sans-serif';
 
 $family-std-bold: 'Circular Std Bold', 'sans-serif';
 $family-std-book: 'Circular Std Book', 'sans-serif';
 
-// font weights
+// Primary font alias (used for emphasis / eyebrow text)
+$family-primary: 'Circular Std Bold', 'sans-serif';
+
+// Font weights
 $weight-nm: 400;
 $weight-book: 450;
 $weight-bold: 700;
 $weight-black: 900;
 
-// font sizes
+// Font sizes
+$size-xs: px-to-rem(12);
 $size-sm: px-to-rem(14);
-$size-nm: px-to-rem(16);
+$size-bs: px-to-rem(16);
 $size-md: px-to-rem(18);
 $size-lg: px-to-rem(23);
 $size-xl: px-to-rem(28);
+$size-2xl: px-to-rem(36);
+$size-3xl: px-to-rem(44);
+$size-hero: px-to-rem(69);
 
-// line heights
+// Line heights
 $line-tight: 120%;
+$line-height-tight: $line-tight;
+$line-normal: 140%;
 $line-loose: 160%;
