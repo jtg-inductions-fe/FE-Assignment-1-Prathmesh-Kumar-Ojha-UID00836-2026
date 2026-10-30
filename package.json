@@ -39,5 +39,9 @@
             "eslint --max-warnings=0"
         ],
         "*.{html,scss,json}": "prettier --check"
+    },
+    "allowScripts": {
+        "esbuild@0.21.5": true,
+        "sharp@0.33.5": true
     }
 }
