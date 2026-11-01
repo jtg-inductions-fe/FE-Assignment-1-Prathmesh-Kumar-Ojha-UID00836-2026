@@ -1,4 +1,12 @@
 @font-face {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url('https://gstatic.com') format('woff2');
+}
+
+@font-face {
     font-family: 'Circular Std';
     src:
         local('Circular Std Black'),
@@ -9,7 +17,7 @@
 }
 
 @font-face {
-    font-family: 'Circular Std';
+    font-family: 'Circular Std Bold';
     src:
         local('Circular Std Bold'),
         url('/assets/fonts/CircularStd-Bold.woff2') format('woff2'),
@@ -29,7 +37,7 @@
 }
 
 @font-face {
-    font-family: 'Circular Std';
+    font-family: 'Circular Std Medium';
     src:
         local('Circular Std Medium'),
         url('/assets/fonts/CircularStd-Medium.woff2') format('woff2'),
