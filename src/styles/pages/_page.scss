@@ -1,7 +1,7 @@
 @use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
 
 .container {
-    padding: $size-nm;
-    padding-top: 2.4375rem;
-    min-width: 15rem;
+    padding: $size-bs;
+    min-width: 15rem; // Minimum support for 240px width devices
 }

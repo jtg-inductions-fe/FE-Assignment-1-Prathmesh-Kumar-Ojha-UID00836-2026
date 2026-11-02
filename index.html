@@ -33,20 +33,70 @@
 
     <body>
         <div class="container">
-            <nav class="navbar">
-                <div class="logo-container">
-                    <img src="./assets/logo.svg" alt="logo" class="logo" />
-                </div>
-                <div class="drawer">
-                    <div class="hamburger">
-                        <img
-                            src="./assets/menu.svg"
-                            alt="hamburger-menu"
-                            class="menu-icon"
-                        />
-                    </div>
+            <nav class="navbar" aria-label="Main navigation">
+                <!-- Region 1: Hamburger (visible on mobile + tablet only) -->
+                <button
+                    class="navbar__hamburger"
+                    id="nav-hamburger"
+                    aria-label="Open menu"
+                    aria-expanded="false"
+                    aria-controls="nav-drawer"
+                >
+                    <img
+                        src="/assets/menu.svg"
+                        alt=""
+                        class="navbar__menu-icon"
+                    />
+                </button>
+
+                <!-- Region 2: Logo (always visible) -->
+                <a
+                    href="/"
+                    class="navbar__logo-link"
+                    aria-label="Travelog home"
+                >
+                    <img
+                        src="/assets/logos/logo.svg"
+                        alt="Travelog"
+                        class="navbar__logo"
+                    />
+                </a>
+
+                <!-- Region 3: Nav links — inline on desktop, drawer on mobile/tablet -->
+                <ul class="navbar__links" id="nav-drawer" role="list">
+                    <li class="navbar__link-item">
+                        <a href="#" class="navbar__link navbar__link--active"
+                            >Home</a
+                        >
+                    </li>
+                    <li class="navbar__link-item">
+                        <a href="#" class="navbar__link">Discover</a>
+                    </li>
+                    <li class="navbar__link-item">
+                        <a href="#" class="navbar__link">Special Deals</a>
+                    </li>
+                    <li class="navbar__link-item">
+                        <a href="#" class="navbar__link">Contact</a>
+                    </li>
+                </ul>
+
+                <!-- Region 4: CTA buttons (hidden on mobile, visible tablet+) -->
+                <div class="navbar__actions">
+                    <a href="#" class="navbar__btn navbar__btn--ghost"
+                        >Log In</a
+                    >
+                    <a href="#" class="navbar__btn navbar__btn--primary"
+                        >Sign Up</a
+                    >
                 </div>
             </nav>
+
+            <!-- Overlay for drawer close on outside click -->
+            <div
+                class="navbar__overlay"
+                id="navbar-overlay"
+                aria-hidden="true"
+            ></div>
         </div>
         <script type="module" src="./src/script/index.js"></script>
     </body>

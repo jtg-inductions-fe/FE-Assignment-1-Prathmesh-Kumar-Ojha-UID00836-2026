@@ -1,0 +1,11 @@
+@use '../abstracts/colors' as *;
+@use '../abstracts/functions' as *;
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+.btn-base {
+    display: inline-flex;
+    align-items: center;
+    padding: px-to-rem(12) px-to-rem(33);
+    border-radius: px-to-rem(32);
+}
