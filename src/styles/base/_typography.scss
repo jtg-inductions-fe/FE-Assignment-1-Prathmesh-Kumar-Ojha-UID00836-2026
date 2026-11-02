@@ -11,17 +11,17 @@ html {
 
 body {
     font-family: $family-inter;
-    font-size: $size-md;
+    font-size: $size-bs;
     font-weight: $weight-nm;
     line-height: $line-loose;
 
-    @include respond-to('tablet') {
-        font-size: $size-bs;
-    }
+    // @include respond-to('tablet') {
+    //     font-size: $size-bs;
+    // }
 
-    @include respond-to('desktop') {
-        font-size: $size-md;
-    }
+    // @include respond-to('desktop') {
+    //     font-size: $size-md;
+    // }
 }
 
 // Headings Hierarchy
@@ -78,7 +78,7 @@ h6 {
 // --- Eyebrow ---
 
 .eyebrow {
-    font-family: $family-primary;
+    font-family: $family-inter;
     font-size: $size-xs;
     font-weight: $weight-bold;
     letter-spacing: px-to-rem(2);

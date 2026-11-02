@@ -1,4 +1,113 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/functions' as *;
+@use '../abstracts/colors' as *;
+@use '../abstracts/mixins' as *;
+@use '../components/buttons' as *;
+
 .navbar {
     display: flex;
+    position: sticky;
+    align-items: center;
     justify-content: space-between;
+    padding: px-to-rem(23) px-to-rem(4) 0 0;
+    font-size: $size-sm;
+    font-family: $family-std-bold;
+
+    @include respond-to('tablet') {
+        padding: px-to-rem(16) px-to-rem(12) 0;
+    }
+
+    @include respond-to(px-to-rem(768)) {
+        padding: px-to-rem(16) px-to-rem(48) 0 px-to-rem(52);
+    }
+
+    @include respond-to('desktop') {
+        padding: px-to-rem(49) px-to-rem(100) 0 px-to-rem(114);
+    }
+
+    &__hamburger,
+    &__logo-link {
+        padding: 0;
+        line-height: 0;
+    }
+
+    &__hamburger {
+        height: fit-content;
+        border: none;
+        background: none;
+
+        @include respond-to('desktop') {
+            display: none;
+        }
+    }
+
+    &__logo-link {
+        @include respond-to('tablet') {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        @include respond-to('desktop') {
+            position: static;
+            left: auto;
+            transform: none;
+        }
+    }
+
+    &__links {
+        display: none;
+        align-items: center;
+        justify-content: center;
+        column-gap: px-to-rem(64);
+        padding-top: px-to-rem(4);
+        font-size: px-to-rem(14);
+
+        @include respond-to('desktop') {
+            display: flex;
+        }
+    }
+
+    &__link {
+        color: $color-text-light;
+        transition: color 0.2s ease;
+
+        &:hover,
+        &:focus-visible,
+        &--active {
+            color: $color-text-dark;
+        }
+    }
+
+    &__actions {
+        display: none;
+        align-items: center;
+
+        @include respond-to('tablet') {
+            display: flex;
+        }
+    }
+
+    &__btn {
+        @extend .btn-base;
+
+        @include respond-to('tablet') {
+            margin: px-to-rem(4) 0;
+            padding: px-to-rem(8) px-to-rem(23);
+        }
+
+        @include respond-to(px-to-rem(768)) {
+            margin: 0;
+            padding: px-to-rem(12) px-to-rem(33);
+        }
+
+        @include respond-to('desktop') {
+            padding: px-to-rem(14) px-to-rem(33) px-to-rem(10);
+        }
+
+        &--primary {
+            color: $color-text-white;
+            background-color: $color-primary-dark;
+        }
+    }
 }

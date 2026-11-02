@@ -1,12 +1,17 @@
 @use 'sass:map';
+@use 'sass:meta';
 @use './breakpoints' as *;
 
 /// Mobile-first media query mixin
 /// Compiles to `@media (min-width: ...)`
-/// @param {String | Number} $breakpoint - Name from $breakpoints map
+/// @param {String | Number} $breakpoint - Name from $breakpoints map or a custom length (e.g., 800px)
 @mixin respond-to($breakpoint) {
     @if map.has-key($breakpoints, $breakpoint) {
         @media (min-width: map.get($breakpoints, $breakpoint)) {
+            @content;
+        }
+    } @else if meta.type-of($breakpoint) == 'number' {
+        @media (min-width: $breakpoint) {
             @content;
         }
     } @else {
