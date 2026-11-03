@@ -16,7 +16,7 @@ export class Navbar {
     }
 
     set currentDevice(device) {
-        this.currentDevice = device;
+        this.device = device;
     }
 
     adjustRegions = () => {
