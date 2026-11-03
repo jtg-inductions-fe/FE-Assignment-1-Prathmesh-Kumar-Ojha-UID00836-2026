@@ -1,6 +1,7 @@
 import '../styles/main.scss';
-import { initNavbar } from './components/navbar';
+import { Navbar } from './components/navbar';
 
 document.addEventListener('DOMContentLoaded', () => {
-    initNavbar();
+    const navbar = new Navbar();
+    navbar.init();
 });
