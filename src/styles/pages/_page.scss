@@ -1,6 +1,10 @@
 @use '../abstracts/variables' as *;
 @use '../abstracts/mixins' as *;
 
+html {
+    overflow-x: clip;
+}
+
 .container {
     padding: $size-bs;
     min-width: 15rem; // Minimum support for 240px width devices

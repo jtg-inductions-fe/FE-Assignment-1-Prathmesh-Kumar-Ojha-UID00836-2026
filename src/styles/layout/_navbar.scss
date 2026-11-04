@@ -111,20 +111,27 @@
     }
 
     &__overlay {
-        display: none;
+        display: flex;
         position: absolute;
         top: 0;
-        left: 100%;
+        left: 0;
+        transform: translateX(100%);
+        visibility: hidden;
         z-index: 10;
+        transition:
+            transform 200ms ease,
+            visibility 0s linear 200ms;
         background-color: $color-bg-white;
         padding: px-to-rem(16);
         width: 100%;
         height: 100%;
+        pointer-events: none;
 
         &--active {
-            display: flex;
-            left: 0;
-            transition: left 0.2 ease;
+            transform: translateX(0);
+            visibility: visible;
+            transition-delay: 0s;
+            pointer-events: auto;
         }
     }
 
@@ -136,9 +143,16 @@
         width: min-content;
         height: fit-content;
 
-        svg {
+        #back-button {
+            transform: rotate(0deg);
+            transform-origin: center;
+            transition: transform 250ms ease;
             width: px-to-rem(40);
             height: px-to-rem(40);
+
+            &.navbar__back-button--rotated {
+                transform: rotate(180deg);
+            }
         }
     }
 }
