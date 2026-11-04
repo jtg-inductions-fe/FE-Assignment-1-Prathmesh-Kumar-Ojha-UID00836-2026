@@ -103,6 +103,12 @@ export class Navbar {
         window.addEventListener('popstate', this.closeDrawer);
 
         this.back.addEventListener('click', this.closeDrawer);
+
+        if (this.currentDevice !== 'desktop') {
+            this.navOverlay.appendChild(
+                document.querySelector('.navbar__links'),
+            );
+        }
     };
 
     init = () => {
