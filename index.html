@@ -32,6 +32,12 @@
     </head>
 
     <body>
+        <noscript>
+            <p>
+                JavaScript is disabled in your browser. Please enable JavaScript
+                to use this website.
+            </p>
+        </noscript>
         <div class="container">
             <nav class="navbar" aria-label="Main navigation">
                 <!-- Region 1: Hamburger (visible on mobile + tablet only) -->
@@ -92,11 +98,21 @@
             </nav>
 
             <!-- Overlay for drawer close on outside click -->
-            <div
-                class="navbar__overlay"
-                id="navbar-overlay"
-                aria-hidden="true"
-            ></div>
+            <div class="navbar__overlay" id="navbar-overlay" aria-hidden="true">
+                <div class="navbar__back-container">
+                    <svg
+                        xmlns="http://w3.org"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                    >
+                        <path d="m15 18-6-6 6-6" />
+                    </svg>
+                </div>
+            </div>
         </div>
         <script type="module" src="./src/script/index.js"></script>
     </body>
