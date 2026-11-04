@@ -119,9 +119,6 @@
         transform: translateX(100%);
         visibility: hidden;
         z-index: 10;
-        transition:
-            transform 200ms ease,
-            visibility 0s linear 200ms;
         background-color: $color-bg-white;
         padding: px-to-rem(16);
         width: 100%;
@@ -136,15 +133,20 @@
         &--active {
             transform: translateX(0);
             visibility: visible;
-            transition-delay: 0s;
             pointer-events: auto;
+        }
+
+        &--resizing {
+            transition: none;
         }
     }
 
     &__back-container {
         display: flex;
         flex-direction: column;
-        padding-top: px-to-rem(23);
+        margin-top: px-to-rem(23);
+        border-radius: px-to-rem(8);
+        background-color: #cccccc80;
         width: min-content;
         height: fit-content;
 
@@ -154,7 +156,6 @@
         #back-button {
             transform: rotate(0deg);
             transform-origin: center;
-            transition: transform 250ms ease;
             width: px-to-rem(40);
             height: px-to-rem(40);
 
@@ -169,5 +170,23 @@
                 }
             }
         }
+    }
+}
+
+// Remove the transition declarations from the base overlay and #back-button.
+
+html.drawer-ready {
+    .navbar__overlay {
+        transition:
+            transform 200ms ease,
+            visibility 0s linear 200ms;
+    }
+
+    .navbar__overlay--active {
+        transition-delay: 0s;
+    }
+
+    .navbar__back-container #back-button {
+        transition: transform 250ms ease;
     }
 }
