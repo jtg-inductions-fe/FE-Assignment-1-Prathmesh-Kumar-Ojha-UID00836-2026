@@ -9,7 +9,6 @@ export class Navbar {
         this.backButton = this.back.querySelector('#back-button');
 
         this.device = 'mobile';
-
         this.isDrawerOpen = false;
     }
 
@@ -22,14 +21,28 @@ export class Navbar {
     }
 
     adjustRegions = () => {
-        if (window.innerWidth <= 430) {
+        const viewWidth = document.documentElement.clientWidth;
+        const drawerIsClosed = !this.isDrawerOpen;
+
+        if (drawerIsClosed) {
+            this.navOverlay.classList.add('navbar__overlay--resizing');
+        }
+
+        if (viewWidth <= 430) {
             this.currentDevice = 'mobile';
             this.navbar.insertBefore(this.logoLink, this.menu);
-        } else if (window.innerWidth <= 1024) {
+        } else if (viewWidth <= 1024) {
             this.currentDevice = 'tablet';
             this.navbar.insertBefore(this.menu, this.logoLink);
         } else {
             this.currentDevice = 'desktop';
+        }
+
+        if (drawerIsClosed) {
+            this.navOverlay.getBoundingClientRect();
+            requestAnimationFrame(() => {
+                this.navOverlay.classList.remove('navbar__overlay--resizing');
+            });
         }
     };
 
@@ -97,5 +110,6 @@ export class Navbar {
         this.handleLinkActive();
         this.handleDrawer();
         window.addEventListener('resize', this.adjustRegions);
+        document.documentElement.classList.add('drawer-ready'); // This helps keep the drawer closed when page loads
     };
 }
