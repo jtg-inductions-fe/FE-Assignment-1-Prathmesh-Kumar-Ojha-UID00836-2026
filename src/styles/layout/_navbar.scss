@@ -56,25 +56,49 @@
     }
 
     &__links {
-        display: none;
+        display: flex;
         column-gap: px-to-rem(64);
+        flex-direction: column;
         justify-content: center;
-        align-items: center;
+        align-items: left;
         padding-top: px-to-rem(4);
 
+        & > :first-child {
+            border-top: 2px solid black;
+
+            @include respond-to('desktop') {
+                border: none;
+            }
+        }
+
         @include respond-to('desktop') {
-            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+    }
+
+    &__link-item {
+        border-bottom: 2px solid black;
+        padding: px-to-rem(20) 0;
+
+        @include respond-to('desktop') {
+            border: none;
+            padding: 0;
         }
     }
 
     &__link {
-        transition: color 0.2s ease;
-        color: $color-text-light;
+        color: $color-text-dark;
 
-        &:hover,
-        &:focus-visible,
-        &--active {
-            color: $color-text-dark;
+        @include respond-to('desktop') {
+            transition: color 0.2s ease;
+            color: $color-text-light;
+
+            &:hover,
+            &:focus-visible,
+            &--active {
+                color: $color-text-dark;
+            }
         }
     }
 
@@ -104,6 +128,11 @@
             padding: px-to-rem(14) px-to-rem(33) px-to-rem(10);
         }
 
+        &--ghost {
+            background-color: transparent;
+            color: $color-text-dark;
+        }
+
         &--primary {
             background-color: $color-primary-dark;
             color: $color-text-white;
@@ -115,6 +144,7 @@
         position: absolute;
         top: 0;
         left: 0;
+        flex-direction: column;
         justify-content: start;
         transform: translateX(100%);
         visibility: hidden;
@@ -126,7 +156,7 @@
         pointer-events: none;
 
         @include respond-to('tablet') {
-            justify-content: end;
+            justify-content: start;
             transform: translateX(-100%);
         }
 
@@ -144,7 +174,7 @@
     &__back-container {
         display: flex;
         flex-direction: column;
-        margin-top: px-to-rem(23);
+        margin: px-to-rem(23) 0;
         border-radius: px-to-rem(8);
         background-color: #cccccc80;
         width: min-content;
