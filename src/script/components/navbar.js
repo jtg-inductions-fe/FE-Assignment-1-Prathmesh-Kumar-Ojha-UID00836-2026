@@ -6,6 +6,7 @@ export class Navbar {
         this.navLinks = document.querySelectorAll('.navbar__link');
         this.navOverlay = document.querySelector('.navbar__overlay');
         this.back = document.querySelector('.navbar__back-container');
+        this.backButton = this.back.querySelector('#back-button');
 
         this.device = 'mobile';
 
@@ -47,21 +48,40 @@ export class Navbar {
     };
 
     openDrawer = () => {
-        this.isDrawerOpen = true;
-        this.navOverlay.classList.toggle('navbar__overlay--active');
+        if (this.isDrawerOpen) return;
 
-        history.pushState({ isDrawerOpen: this.isDrawerOpen }, '');
+        this.isDrawerOpen = true;
+        this.backButton.classList.remove('navbar__back-button--rotated');
+        this.navOverlay.classList.add('navbar__overlay--active');
+        history.pushState({ isDrawerOpen: true }, '');
     };
 
     closeDrawer = () => {
         if (!this.isDrawerOpen) return;
 
         this.isDrawerOpen = false;
-        this.navOverlay.classList.toggle('navbar__overlay--active');
 
-        if (history.state?.isDrawerOpen) {
-            history.back();
-        }
+        this.backButton.addEventListener(
+            'transitionend',
+            (event) => {
+                if (event.propertyName !== 'transform') return;
+
+                this.navOverlay.classList.remove('navbar__overlay--active');
+
+                if (history.state?.isDrawerOpen) {
+                    history.back();
+                }
+
+                setTimeout(() => {
+                    this.backButton.classList.remove(
+                        'navbar__back-button--rotated',
+                    );
+                }, 200); // This resets the rotation of the #back-button
+            },
+            { once: true },
+        );
+
+        this.backButton.classList.add('navbar__back-button--rotated');
     };
 
     handleDrawer = () => {
