@@ -91,24 +91,26 @@ export class Navbar {
     };
 
     /**
-     * Opens the mobile/tablet navigation drawer and pushes a browser history state.
+     * Opens the mobile/tablet navigation drawer and updates the button accessibility state.
      */
     openDrawer = () => {
         if (this.isDrawerOpen) return;
 
         this.isDrawerOpen = true;
+        this.menu.setAttribute('aria-expanded', String(true));
         this.backButton.classList.remove('navbar__back-button--rotated');
         this.navOverlay.classList.add('navbar__overlay--active');
         history.pushState({ isDrawerOpen: true }, '');
     };
 
     /**
-     * Closes the drawer and rotates the back button after the transition completes.
+     * Closes the drawer after the back button transition completes.
      */
     closeDrawer = () => {
         if (!this.isDrawerOpen) return;
 
         this.isDrawerOpen = false;
+        this.menu.setAttribute('aria-expanded', String(false));
 
         this.backButton.addEventListener(
             'transitionend',
