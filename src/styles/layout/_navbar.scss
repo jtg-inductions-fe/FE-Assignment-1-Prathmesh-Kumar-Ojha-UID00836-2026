@@ -149,40 +149,39 @@ $_navbar-back-control-background: primitive.$very-light-grey;
             color: $_navbar-primary-action-foreground;
         }
     }
+}
 
-    &__overlay {
-        display: flex;
-        position: absolute;
-        top: 0;
-        left: 0;
-        flex-direction: column;
-        justify-content: start;
-        transform: translateX(100%);
-        visibility: hidden;
-        z-index: 10;
-        background-color: $color-surface-default;
-        padding: spacing(4);
-        width: 100%;
-        height: 100%;
-        pointer-events: none;
+.drawer-overlay {
+    display: flex;
+    position: absolute;
+    top: 0;
+    left: 0;
+    flex-direction: column;
+    justify-content: start;
+    transform: translateX(100%);
+    visibility: hidden;
+    z-index: 10;
+    background-color: $color-surface-default;
+    padding: spacing(4);
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
 
-        @include respond-to('tablet') {
-            justify-content: start;
-            transform: translateX(-100%);
-        }
-
-        &--active {
-            transform: translateX(0);
-            visibility: visible;
-            pointer-events: auto;
-        }
-
-        &--resizing {
-            transition: none;
-        }
+    @include respond-to('tablet') {
+        transform: translateX(-100%);
     }
 
-    &__back-container {
+    &--active {
+        transform: translateX(0);
+        visibility: visible;
+        pointer-events: auto;
+    }
+
+    &--resizing {
+        transition: none;
+    }
+
+    &__close-button {
         display: flex;
         flex-direction: column;
         margin: px-to-rem(23) 0;
@@ -195,44 +194,40 @@ $_navbar-back-control-background: primitive.$very-light-grey;
             outline: px-to-rem(2) solid currentColor;
             outline-offset: spacing(1);
         }
+    }
+
+    &__icon {
+        transform: rotate(0deg);
+        transform-origin: center;
+        width: px-to-rem(40);
+        height: px-to-rem(40);
 
         @include respond-to('tablet') {
+            transform: rotate(180deg);
         }
 
-        #back-icon {
-            transform: rotate(0deg);
-            transform-origin: center;
-            width: px-to-rem(40);
-            height: px-to-rem(40);
+        &--rotated {
+            transform: rotate(180deg);
 
             @include respond-to('tablet') {
-                transform: rotate(180deg);
-            }
-
-            &.navbar__back-button--rotated {
-                transform: rotate(180deg);
-                @include respond-to('tablet') {
-                    transform: rotate(0deg);
-                }
+                transform: rotate(0deg);
             }
         }
     }
 }
 
-// Remove the transition declarations from the base overlay and #back-button.
-
 html.drawer-ready {
-    .navbar__overlay {
+    .drawer-overlay {
         transition:
             transform 200ms ease,
             visibility 0s linear 200ms;
     }
 
-    .navbar__overlay--active {
+    .drawer-overlay--active {
         transition-delay: 0s;
     }
 
-    .navbar__back-container #back-icon {
+    .drawer-overlay__icon {
         transition: transform 250ms ease;
     }
 }
