@@ -2,25 +2,23 @@
 
 // Layer 2: semantic tokens mapped to Layer 1 primitive values.
 
-// Actions and accents
-$color-action-primary-background: primitive.$slate-blue;
-$color-action-primary-foreground: primitive.$white;
+// Global brand accents
 $color-accent-pink: primitive.$brilliant-rose;
 $color-accent-orange: primitive.$outrageous-orange;
-$color-accent-yellow: primitive.$kournikova;
 
-// Text roles
+// Global text colors
 $color-text-primary: primitive.$black-russian-light;
 $color-text-high-emphasis: primitive.$bunker;
 $color-text-muted: rgba(primitive.$black-russian, 0.75);
 $color-text-low-emphasis: rgba(primitive.$black-russian, 0.5);
 
-// Surfaces, borders, and controls
+// Global background and surface colors
 $color-surface-default: primitive.$white;
 $color-surface-subtle: primitive.$snow;
 $color-surface-card: primitive.$white;
 $color-surface-accent-yellow: primitive.$old-lace;
 $color-surface-accent-pink: primitive.$lavender-blush;
+
+// Global border colors
 $color-border-subtle: primitive.$whisper;
 $color-border-high-emphasis: primitive.$black;
-$color-control-back-button-surface: primitive.$very-light-grey;
