@@ -1,0 +1,7 @@
+@use './variables' as *;
+@use './functions' as *;
+
+$breakpoints: (
+    'tablet': px-to-rem(430),
+    'desktop': px-to-rem(1024),
+);
