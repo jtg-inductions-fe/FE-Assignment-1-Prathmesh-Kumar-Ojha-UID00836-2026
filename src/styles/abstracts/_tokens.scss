@@ -1,0 +1,40 @@
+@use './primitives' as primitive;
+
+// Layer 2: semantic tokens mapped to Layer 1 primitive values.
+
+// Actions and accents
+$color-action-primary: primitive.$slate-blue;
+$color-action-primary-contrast: primitive.$white;
+$color-text-on-primary: primitive.$white;
+$color-accent-pink: primitive.$brilliant-rose;
+$color-accent-orange: primitive.$outrageous-orange;
+$color-accent-yellow: primitive.$kournikova;
+
+// Text roles
+$color-text-primary: primitive.$black-russian-light;
+$color-text-strong: primitive.$bunker;
+$color-text-muted: rgba(primitive.$black-russian, 0.75);
+$color-text-subtle: rgba(primitive.$black-russian, 0.5);
+
+// Surfaces, borders, and controls
+$color-surface-primary: primitive.$white;
+$color-surface-subtle: primitive.$snow;
+$color-surface-card: primitive.$white;
+$color-surface-highlight-yellow: primitive.$old-lace;
+$color-surface-highlight-pink: primitive.$lavender-blush;
+$color-border-subtle: primitive.$whisper;
+$color-border-strong: primitive.$black;
+$color-control-backdrop: primitive.$very-light-grey;
+
+// Legacy aliases for existing component styles; prefer semantic names in new styles.
+$color-primary-dark: $color-action-primary;
+$color-primary-light: $color-border-subtle;
+$color-text-main: $color-text-primary;
+$color-text-dark: $color-text-strong;
+$color-text-light: $color-text-subtle;
+$color-text-white: $color-text-on-primary;
+$color-bg-white: $color-surface-primary;
+$color-bg-light: $color-surface-subtle;
+$color-bg-card: $color-surface-card;
+$color-bg-yellow-tint: $color-surface-highlight-yellow;
+$color-bg-pink-tint: $color-surface-highlight-pink;
