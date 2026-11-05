@@ -14,14 +14,6 @@ body {
     font-size: $size-bs;
     line-height: $line-loose;
     font-family: $family-inter;
-
-    // @include respond-to('tablet') {
-    //     font-size: $size-bs;
-    // }
-
-    // @include respond-to('desktop') {
-    //     font-size: $size-md;
-    // }
 }
 
 // Headings Hierarchy
@@ -45,7 +37,7 @@ h1 {
     }
 
     @include respond-to('desktop') {
-        font-size: px-to-rem(69);
+        font-size: $size-hero;
     }
 }
 
@@ -57,7 +49,7 @@ h3 {
     }
 
     @include respond-to('desktop') {
-        font-size: px-to-rem(44);
+        font-size: $size-3xl;
     }
 }
 
@@ -66,9 +58,9 @@ h4 {
 }
 
 h5 {
-    font-size: px-to-rem(28);
+    font-size: $size-xl;
 }
 
 h6 {
-    font-size: px-to-rem(23);
+    font-size: $size-lg;
 }
