@@ -151,6 +151,12 @@ export class Navbar {
     handleDrawer = () => {
         this.menu.addEventListener('click', this.openDrawer);
 
+        this.navOverlay.addEventListener('click', (event) => {
+            if (event.target === this.navOverlay) {
+                this.closeDrawer();
+            }
+        });
+
         window.addEventListener('popstate', this.closeDrawer);
 
         this.back.addEventListener('click', this.closeDrawer);
