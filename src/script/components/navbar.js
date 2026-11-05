@@ -100,6 +100,7 @@ export class Navbar {
         this.menu.setAttribute('aria-expanded', String(true));
         this.backButton.classList.remove('navbar__back-button--rotated');
         this.navOverlay.classList.add('navbar__overlay--active');
+        this.navbar.classList.add('navbar--hidden');
         history.pushState({ isDrawerOpen: true }, '');
     };
 
@@ -118,6 +119,8 @@ export class Navbar {
                 if (event.propertyName !== 'transform') return;
 
                 this.navOverlay.classList.remove('navbar__overlay--active');
+
+                this.navbar.classList.remove('navbar--hidden');
 
                 if (history.state?.isDrawerOpen) {
                     history.back();
