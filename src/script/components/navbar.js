@@ -1,4 +1,11 @@
+/**
+ * Provides responsive navbar behavior for mobile, tablet, and desktop layouts.
+ * Handles region ordering, drawer toggling, and active nav state updates.
+ */
 export class Navbar {
+    /**
+     * Creates the navbar controller and caches DOM references used across the component.
+     */
     constructor() {
         this.navbar = document.querySelector('.navbar');
         this.menu = document.querySelector('.navbar__hamburger');
@@ -16,14 +23,25 @@ export class Navbar {
         this.isDrawerOpen = false;
     }
 
+    /**
+     * Returns the current viewport mode for the navbar.
+     * @returns {'mobile' | 'tablet' | 'desktop'} The current device mode.
+     */
     get currentDevice() {
         return this.device;
     }
 
+    /**
+     * Sets the active viewport mode used by responsive layout logic.
+     * @param {'mobile' | 'tablet' | 'desktop'} device - The device mode to apply.
+     */
     set currentDevice(device) {
         this.device = device;
     }
 
+    /**
+     * Reorders navbar regions based on the active viewport and drawer state.
+     */
     adjustRegions = () => {
         const drawerIsClosed = !this.isDrawerOpen;
 
@@ -56,6 +74,9 @@ export class Navbar {
         }
     };
 
+    /**
+     * Attaches click handlers so only the selected navigation link keeps the active style.
+     */
     handleLinkActive = () => {
         this.navLinks.forEach((link) => {
             const setActive = () => {
@@ -69,6 +90,9 @@ export class Navbar {
         });
     };
 
+    /**
+     * Opens the mobile/tablet navigation drawer and pushes a browser history state.
+     */
     openDrawer = () => {
         if (this.isDrawerOpen) return;
 
@@ -78,6 +102,9 @@ export class Navbar {
         history.pushState({ isDrawerOpen: true }, '');
     };
 
+    /**
+     * Closes the drawer and rotates the back button after the transition completes.
+     */
     closeDrawer = () => {
         if (!this.isDrawerOpen) return;
 
@@ -106,6 +133,9 @@ export class Navbar {
         this.backButton.classList.add('navbar__back-button--rotated');
     };
 
+    /**
+     * Binds menu button and overlay dismissal events used to control the drawer.
+     */
     handleDrawer = () => {
         this.menu.addEventListener('click', this.openDrawer);
 
@@ -114,6 +144,9 @@ export class Navbar {
         this.back.addEventListener('click', this.closeDrawer);
     };
 
+    /**
+     * Initializes responsive behavior, active link handling, and drawer events.
+     */
     init = () => {
         this.mobileQuery.addEventListener('change', this.adjustRegions);
         this.desktopQuery.addEventListener('change', this.adjustRegions);
