@@ -66,7 +66,7 @@ export class Navbar {
             if (this.isDrawerOpen) {
                 this.isDrawerOpen = false;
                 this.menu.setAttribute('aria-expanded', String(false));
-                this.navOverlay.classList.remove('navbar__overlay--active');
+                this.toggleDrawer(false);
                 this.navbar.classList.remove('navbar--hidden');
             }
         } else {
@@ -79,6 +79,14 @@ export class Navbar {
                 this.navOverlay.classList.remove('navbar__overlay--resizing');
             });
         }
+    };
+
+    /**
+     * Synchronizes the drawer overlay class with the requested drawer state.
+     * @param {boolean} isOpen - Whether the drawer overlay should be visible.
+     */
+    toggleDrawer = (isOpen) => {
+        this.navOverlay.classList.toggle('navbar__overlay--active', isOpen);
     };
 
     /**
@@ -106,7 +114,7 @@ export class Navbar {
         this.isDrawerOpen = true;
         this.menu.setAttribute('aria-expanded', String(true));
         this.backButton.classList.remove('navbar__back-button--rotated');
-        this.navOverlay.classList.add('navbar__overlay--active');
+        this.toggleDrawer(true);
         this.navbar.classList.add('navbar--hidden');
         history.pushState({ isDrawerOpen: true }, '');
     };
@@ -125,7 +133,7 @@ export class Navbar {
             (event) => {
                 if (event.propertyName !== 'transform') return;
 
-                this.navOverlay.classList.remove('navbar__overlay--active');
+                this.toggleDrawer(false);
 
                 this.navbar.classList.remove('navbar--hidden');
 
