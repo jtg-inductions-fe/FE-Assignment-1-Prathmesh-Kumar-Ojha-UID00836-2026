@@ -62,6 +62,13 @@ export class Navbar {
 
         if (this.currentDevice === 'desktop') {
             this.navbar.insertBefore(this.navLinkContainer, this.actions);
+
+            if (this.isDrawerOpen) {
+                this.isDrawerOpen = false;
+                this.menu.setAttribute('aria-expanded', String(false));
+                this.navOverlay.classList.remove('navbar__overlay--active');
+                this.navbar.classList.remove('navbar--hidden');
+            }
         } else {
             this.navOverlay.appendChild(this.navLinkContainer);
         }
