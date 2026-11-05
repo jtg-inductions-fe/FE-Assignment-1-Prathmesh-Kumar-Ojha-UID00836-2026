@@ -13,9 +13,9 @@ export class Navbar {
         this.actions = document.querySelector('.navbar__actions');
         this.navLinkContainer = document.querySelector('.navbar__links');
         this.navLinks = document.querySelectorAll('.navbar__link');
-        this.navOverlay = document.querySelector('.navbar__overlay');
-        this.back = document.querySelector('.navbar__back-container');
-        this.backButton = this.back.querySelector('#back-icon');
+        this.navOverlay = document.querySelector('.drawer-overlay');
+        this.back = document.querySelector('.drawer-overlay__close-button');
+        this.backButton = this.back.querySelector('.drawer-overlay__icon');
         this.mobileQuery = window.matchMedia('(max-width: 430px)');
         this.desktopQuery = window.matchMedia('(min-width: 1025px)');
 
@@ -46,7 +46,7 @@ export class Navbar {
         const drawerIsClosed = !this.isDrawerOpen;
 
         if (drawerIsClosed) {
-            this.navOverlay.classList.add('navbar__overlay--resizing');
+            this.navOverlay.classList.add('drawer-overlay--resizing');
         }
 
         if (this.mobileQuery.matches) {
@@ -76,7 +76,7 @@ export class Navbar {
         if (drawerIsClosed) {
             this.navOverlay.getBoundingClientRect();
             requestAnimationFrame(() => {
-                this.navOverlay.classList.remove('navbar__overlay--resizing');
+                this.navOverlay.classList.remove('drawer-overlay--resizing');
             });
         }
     };
@@ -86,7 +86,7 @@ export class Navbar {
      * @param {boolean} isOpen - Whether the drawer overlay should be visible.
      */
     toggleDrawer = (isOpen) => {
-        this.navOverlay.classList.toggle('navbar__overlay--active', isOpen);
+        this.navOverlay.classList.toggle('drawer-overlay--active', isOpen);
     };
 
     /**
@@ -113,7 +113,7 @@ export class Navbar {
 
         this.isDrawerOpen = true;
         this.menu.setAttribute('aria-expanded', String(true));
-        this.backButton.classList.remove('navbar__back-button--rotated');
+        this.backButton.classList.remove('drawer-overlay__icon--rotated');
         this.toggleDrawer(true);
         this.navbar.classList.add('navbar--hidden');
         history.pushState({ isDrawerOpen: true }, '');
@@ -143,14 +143,14 @@ export class Navbar {
 
                 setTimeout(() => {
                     this.backButton.classList.remove(
-                        'navbar__back-button--rotated',
+                        'drawer-overlay__icon--rotated',
                     );
                 }, 200); // This resets the rotation of the #back-button
             },
             { once: true },
         );
 
-        this.backButton.classList.add('navbar__back-button--rotated');
+        this.backButton.classList.add('drawer-overlay__icon--rotated');
     };
 
     /**
