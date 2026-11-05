@@ -49,15 +49,17 @@ $_navbar-back-control-background: primitive.$very-light-grey;
 
     &__logo-link {
         @include respond-to('tablet') {
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
+            position: static;
+            left: auto;
+            transform: none;
+            margin-inline: auto;
         }
 
         @include respond-to('desktop') {
             position: static;
             left: auto;
             transform: none;
+            margin-inline: 0;
         }
     }
 
@@ -111,9 +113,11 @@ $_navbar-back-control-background: primitive.$very-light-grey;
     &__actions {
         display: none;
         align-items: center;
+        min-width: px-to-rem(160);
 
         @include respond-to('tablet') {
             display: flex;
+            justify-content: flex-end;
         }
     }
 
