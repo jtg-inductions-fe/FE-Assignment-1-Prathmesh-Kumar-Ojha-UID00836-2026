@@ -1,8 +1,5 @@
-@use '../abstracts/variables' as *;
-@use '../abstracts/functions' as *;
-@use '../abstracts/tokens' as *;
+@use '../abstracts' as *;
 @use '../abstracts/primitives' as primitive;
-@use '../abstracts/mixins' as *;
 @use '../components/buttons' as *;
 
 // Navbar-specific colors
