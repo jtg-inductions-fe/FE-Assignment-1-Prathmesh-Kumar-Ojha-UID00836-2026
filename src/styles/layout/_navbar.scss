@@ -19,6 +19,10 @@ $_navbar-back-control-background: primitive.$very-light-grey;
     font-size: $size-sm;
     font-family: $family-std-bold;
 
+    &--hidden {
+        visibility: hidden;
+    }
+
     @include respond-to('tablet') {
         padding: px-to-rem(16) px-to-rem(12) 0;
     }
