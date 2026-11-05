@@ -186,10 +186,15 @@ $_navbar-back-control-background: primitive.$very-light-grey;
         width: min-content;
         height: fit-content;
 
+        &:focus-visible {
+            outline: px-to-rem(2) solid currentColor;
+            outline-offset: px-to-rem(4);
+        }
+
         @include respond-to('tablet') {
         }
 
-        #back-button {
+        #back-icon {
             transform: rotate(0deg);
             transform-origin: center;
             width: px-to-rem(40);
@@ -222,7 +227,7 @@ html.drawer-ready {
         transition-delay: 0s;
     }
 
-    .navbar__back-container #back-button {
+    .navbar__back-container #back-icon {
         transition: transform 250ms ease;
     }
 }

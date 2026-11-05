@@ -8,7 +8,7 @@ export class Navbar {
         this.navLinks = document.querySelectorAll('.navbar__link');
         this.navOverlay = document.querySelector('.navbar__overlay');
         this.back = document.querySelector('.navbar__back-container');
-        this.backButton = this.back.querySelector('#back-button');
+        this.backButton = this.back.querySelector('#back-icon');
         this.mobileQuery = window.matchMedia('(max-width: 430px)');
         this.desktopQuery = window.matchMedia('(min-width: 1025px)');
 
