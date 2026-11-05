@@ -66,7 +66,6 @@ export class Navbar {
             };
 
             link.addEventListener('click', setActive);
-            link.addEventListener('focus', setActive);
         });
     };
 
