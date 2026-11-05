@@ -64,7 +64,7 @@
         padding-top: px-to-rem(4);
 
         & > :first-child {
-            border-top: 2px solid black;
+            border-top: 2px solid $color-border-strong;
 
             @include respond-to('desktop') {
                 border: none;
@@ -78,7 +78,7 @@
     }
 
     &__link-item {
-        border-bottom: 2px solid black;
+        border-bottom: 2px solid $color-border-strong;
         padding: px-to-rem(20) 0;
 
         @include respond-to('desktop') {
@@ -88,16 +88,16 @@
     }
 
     &__link {
-        color: $color-text-dark;
+        color: $color-text-strong;
 
         @include respond-to('desktop') {
             transition: color 0.2s ease;
-            color: $color-text-light;
+            color: $color-text-subtle;
 
             &:hover,
             &:focus-visible,
             &--active {
-                color: $color-text-dark;
+                color: $color-text-strong;
             }
         }
     }
@@ -130,12 +130,12 @@
 
         &--ghost {
             background-color: transparent;
-            color: $color-text-dark;
+            color: $color-text-strong;
         }
 
         &--primary {
-            background-color: $color-primary-dark;
-            color: $color-text-white;
+            background-color: $color-action-primary;
+            color: $color-text-on-primary;
         }
     }
 
@@ -149,7 +149,7 @@
         transform: translateX(100%);
         visibility: hidden;
         z-index: 10;
-        background-color: $color-bg-white;
+        background-color: $color-surface-primary;
         padding: px-to-rem(16);
         width: 100%;
         height: 100%;
@@ -176,7 +176,7 @@
         flex-direction: column;
         margin: px-to-rem(23) 0;
         border-radius: px-to-rem(8);
-        background-color: #cccccc80;
+        background-color: $color-control-backdrop;
         width: min-content;
         height: fit-content;
 
