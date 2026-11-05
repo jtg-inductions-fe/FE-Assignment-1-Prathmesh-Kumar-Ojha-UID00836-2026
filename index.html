@@ -97,20 +97,28 @@
 
             <!-- Overlay for drawer close on outside click -->
             <div class="navbar__overlay" id="navbar-overlay" aria-hidden="true">
-                <div class="navbar__back-container">
+                <button
+                    type="button"
+                    class="navbar__back-container"
+                    id="back-button"
+                    aria-label="Close menu"
+                    aria-controls="nav-drawer"
+                >
                     <svg
-                        xmlns="http://w3.org"
+                        xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 24 24"
                         fill="none"
                         stroke="currentColor"
                         stroke-width="2"
                         stroke-linecap="round"
                         stroke-linejoin="round"
-                        id="back-button"
+                        aria-hidden="true"
+                        focusable="false"
+                        id="back-icon"
                     >
                         <path d="m15 18-6-6 6-6" />
                     </svg>
-                </div>
+                </button>
             </div>
         </div>
         <script type="module" src="./src/script/index.js"></script>
