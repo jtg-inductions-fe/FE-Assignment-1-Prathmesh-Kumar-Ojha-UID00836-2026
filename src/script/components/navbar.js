@@ -8,10 +8,10 @@ export class Navbar {
      */
     constructor() {
         this.navbar = document.querySelector('.navbar');
-        this.menu = document.querySelector('.navbar__hamburger');
-        this.logoLink = document.querySelector('.navbar__logo-link');
+        this.menu = document.querySelector('.navbar__menu-toggle');
+        this.logoLink = document.querySelector('.navbar__logo');
         this.actions = document.querySelector('.navbar__actions');
-        this.navLinkContainer = document.querySelector('.navbar__links');
+        this.navLinkContainer = document.querySelector('.navbar__list');
         this.navLinks = document.querySelectorAll('.navbar__link');
         this.navOverlay = document.querySelector('.drawer-overlay');
         this.back = document.querySelector('.drawer-overlay__close-button');

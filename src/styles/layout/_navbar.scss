@@ -3,7 +3,7 @@
 @use '../components/buttons';
 
 // Navbar-specific colors
-$_navbar-back-control-background: primitive.$very-light-grey;
+$_drawer-overlay-close-button-background: primitive.$very-light-grey;
 
 .navbar {
     display: flex;
@@ -23,7 +23,7 @@ $_navbar-back-control-background: primitive.$very-light-grey;
         padding: spacing(8) spacing(3) 0;
     }
 
-    @include respond-to(px-to-rem(768)) {
+    @include respond-to(768px) {
         padding: spacing(8) spacing(12) 0 spacing(13);
     }
 
@@ -31,13 +31,13 @@ $_navbar-back-control-background: primitive.$very-light-grey;
         padding: spacing(16.25) spacing(25.25) 0 spacing(28.5);
     }
 
-    &__hamburger,
-    &__logo-link {
+    &__menu-toggle,
+    &__logo {
         padding: 0;
         line-height: 0;
     }
 
-    &__hamburger {
+    &__menu-toggle {
         border: none;
         background: none;
         height: fit-content;
@@ -47,11 +47,11 @@ $_navbar-back-control-background: primitive.$very-light-grey;
         }
     }
 
-    &__logo-link {
+    &__logo {
         @include respond-to('tablet') {
             position: static;
             left: auto;
-            transform: none;
+            transform: translate(87px, -1px);
             margin-inline: auto;
         }
 
@@ -63,7 +63,7 @@ $_navbar-back-control-background: primitive.$very-light-grey;
         }
     }
 
-    &__links {
+    &__list {
         display: flex;
         column-gap: spacing(16);
         flex-direction: column;
@@ -85,7 +85,7 @@ $_navbar-back-control-background: primitive.$very-light-grey;
         }
     }
 
-    &__link-item {
+    &__item {
         border-bottom: 2px solid $color-border-high-emphasis;
         padding: spacing(5) 0;
 
@@ -126,9 +126,9 @@ $_navbar-back-control-background: primitive.$very-light-grey;
                 padding: spacing(2) px-to-rem(23);
             }
 
-            @include respond-to(px-to-rem(768)) {
+            @include respond-to(768px) {
                 margin: 0;
-                padding: spacing(3) spacing(8);
+                padding: px-to-rem(14) px-to-rem(32) px-to-rem(10);
             }
 
             @include respond-to('desktop') {
@@ -167,38 +167,38 @@ $_navbar-back-control-background: primitive.$very-light-grey;
     &--resizing {
         transition: none;
     }
+}
 
-    &__close-button {
-        display: flex;
-        flex-direction: column;
-        margin: px-to-rem(23) 0;
-        border-radius: px-to-rem(8);
-        background-color: $_navbar-back-control-background;
-        width: min-content;
-        height: fit-content;
+.drawer-overlay__close-button {
+    display: flex;
+    flex-direction: column;
+    margin: px-to-rem(23) 0;
+    border-radius: px-to-rem(8);
+    background-color: $_drawer-overlay-close-button-background;
+    width: min-content;
+    height: fit-content;
 
-        &:focus-visible {
-            outline: px-to-rem(2) solid currentColor;
-            outline-offset: spacing(1);
-        }
+    &:focus-visible {
+        outline: px-to-rem(2) solid currentColor;
+        outline-offset: spacing(1);
+    }
+}
+
+.drawer-overlay__icon {
+    transform: rotate(0deg);
+    transform-origin: center;
+    width: px-to-rem(40);
+    height: px-to-rem(40);
+
+    @include respond-to('tablet') {
+        transform: rotate(180deg);
     }
 
-    &__icon {
-        transform: rotate(0deg);
-        transform-origin: center;
-        width: px-to-rem(40);
-        height: px-to-rem(40);
+    &--rotated {
+        transform: rotate(180deg);
 
         @include respond-to('tablet') {
-            transform: rotate(180deg);
-        }
-
-        &--rotated {
-            transform: rotate(180deg);
-
-            @include respond-to('tablet') {
-                transform: rotate(0deg);
-            }
+            transform: rotate(0deg);
         }
     }
 }
