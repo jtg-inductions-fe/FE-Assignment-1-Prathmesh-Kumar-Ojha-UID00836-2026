@@ -3,5 +3,5 @@
 
 $breakpoints: (
     'tablet': '(width > 430px)',
-    'desktop': '(width >= 1024px)',
+    'desktop': '(width > 1024px)',
 ); //min-width to qualify as tablet / desktop

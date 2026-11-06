@@ -17,7 +17,7 @@ export class Navbar {
         this.back = document.querySelector('.drawer-overlay__close-button');
         this.backButton = this.back.querySelector('.drawer-overlay__icon');
         this.mobileQuery = window.matchMedia('(width <= 430px)');
-        this.desktopQuery = window.matchMedia('(width >= 1024px)');
+        this.desktopQuery = window.matchMedia('(width > 1024px)');
 
         this.isDrawerOpen = false;
     }

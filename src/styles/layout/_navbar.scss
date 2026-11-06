@@ -1,10 +1,8 @@
 @use '../abstracts' as *;
 @use '../abstracts/primitives' as primitive;
-@use '../components/buttons' as *;
+@use '../components/buttons';
 
 // Navbar-specific colors
-$_navbar-primary-action-background: primitive.$slate-blue;
-$_navbar-primary-action-foreground: primitive.$white;
 $_navbar-back-control-background: primitive.$very-light-grey;
 
 .navbar {
@@ -120,33 +118,21 @@ $_navbar-back-control-background: primitive.$very-light-grey;
             display: flex;
             justify-content: flex-end;
         }
-    }
 
-    &__btn {
-        @extend .btn-base;
+        .button {
+            @include respond-to('tablet') {
+                margin: spacing(1) 0;
+                padding: spacing(2) px-to-rem(23);
+            }
 
-        @include respond-to('tablet') {
-            margin: spacing(1) 0;
-            padding: spacing(2) px-to-rem(23);
-        }
+            @include respond-to(px-to-rem(768)) {
+                margin: 0;
+                padding: spacing(3) spacing(8);
+            }
 
-        @include respond-to(px-to-rem(768)) {
-            margin: 0;
-            padding: spacing(3) spacing(8);
-        }
-
-        @include respond-to('desktop') {
-            padding: px-to-rem(14) spacing(8) px-to-rem(10);
-        }
-
-        &--ghost {
-            background-color: transparent;
-            color: $color-text-high-emphasis;
-        }
-
-        &--primary {
-            background-color: $_navbar-primary-action-background;
-            color: $_navbar-primary-action-foreground;
+            @include respond-to('desktop') {
+                padding: px-to-rem(14) spacing(8) px-to-rem(10);
+            }
         }
     }
 }
