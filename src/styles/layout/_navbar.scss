@@ -28,7 +28,7 @@ $_navbar-back-control-background: primitive.$very-light-grey;
     }
 
     @include respond-to('desktop') {
-        padding: spacing(8.25) spacing(25) 0 spacing(28.5);
+        padding: spacing(16.25) spacing(25.25) 0 spacing(28.5);
     }
 
     &__hamburger,
