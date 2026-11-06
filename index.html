@@ -38,11 +38,12 @@
                 to use this website.
             </p>
         </noscript>
+
         <div class="container">
             <nav class="navbar" aria-label="Main navigation">
-                <!-- Region 1: Hamburger (visible on mobile + tablet only) -->
+                <!-- Hamburger -->
                 <button
-                    class="navbar__hamburger"
+                    class="navbar__menu-toggle"
                     id="nav-hamburger"
                     aria-label="Open menu"
                     aria-expanded="false"
@@ -50,53 +51,45 @@
                 >
                     <img
                         src="/assets/menu.svg"
-                        alt="hamburger-menu"
+                        alt=""
                         class="navbar__menu-icon"
                     />
                 </button>
 
-                <!-- Region 2: Logo (always visible) -->
-                <a
-                    href="/"
-                    class="navbar__logo-link"
-                    aria-label="Travelog home"
-                >
+                <!-- Logo -->
+                <a href="/" class="navbar__logo" aria-label="Travelog home">
                     <img
                         src="/assets/logos/logo.svg"
-                        alt="Travelog"
-                        class="navbar__logo"
+                        alt=""
+                        class="navbar__logo-image"
                     />
                 </a>
 
-                <!-- Region 3: Nav links — inline on desktop, drawer on mobile/tablet -->
-                <ul class="navbar__links" id="nav-drawer" role="list">
-                    <li class="navbar__link-item">
+                <!-- Navigation links -->
+                <ul class="navbar__list" id="nav-drawer" role="list">
+                    <li class="navbar__item">
                         <a href="#" class="navbar__link">Home</a>
                     </li>
-                    <li class="navbar__link-item">
+                    <li class="navbar__item">
                         <a href="#" class="navbar__link">Discover</a>
                     </li>
-                    <li class="navbar__link-item">
+                    <li class="navbar__item">
                         <a href="#" class="navbar__link">Special Deals</a>
                     </li>
-                    <li class="navbar__link-item">
+                    <li class="navbar__item">
                         <a href="#" class="navbar__link">Contact</a>
                     </li>
                 </ul>
 
-                <!-- Region 4: CTA buttons (hidden on mobile, visible tablet+) -->
+                <!-- CTA buttons -->
                 <div class="navbar__actions">
                     <a href="#" class="button button--ghost">Log In</a>
                     <a href="#" class="button button--primary">Sign Up</a>
                 </div>
             </nav>
 
-            <!-- Overlay for drawer close on outside click -->
-            <div
-                class="drawer-overlay"
-                aria-label="Navigation menu"
-                id="navbar-overlay"
-            >
+            <!-- Navigation overlay -->
+            <div class="drawer-overlay" id="navbar-overlay">
                 <button
                     type="button"
                     class="drawer-overlay__close-button"
@@ -115,17 +108,55 @@
                         aria-hidden="true"
                         focusable="false"
                         class="drawer-overlay__icon"
-                        id="back-icon"
                     >
                         <path d="m15 18-6-6 6-6" />
                     </svg>
                 </button>
             </div>
 
-            <section class="hero" aria-label="Hero section">
-                <div class="hero__gallery" aria-label="Photo gallery"></div>
-            </section>
+            <!-- Hero -->
+            <main>
+                <section class="hero" aria-labelledby="hero-title">
+                    <div class="hero__gallery">
+                        <div class="hero__gallery-left">
+                            <div class="hero__gallery-item">
+                                <img
+                                    src="/assets/images/hero/hero-1.avif"
+                                    alt="Santorini coastal village overlooking the sea"
+                                    class="hero__image"
+                                    id="img-1"
+                                />
+                            </div>
+
+                            <div class="hero__gallery-item">
+                                <img
+                                    src="/assets/images/hero/hero-2.avif"
+                                    alt="Traveler enjoying a mountain view"
+                                    class="hero__image"
+                                    id="img-2"
+                                />
+                            </div>
+                        </div>
+
+                        <div class="hero__gallery-right">
+                            <div class="hero__gallery-item">
+                                <img
+                                    src="/assets/images/hero/hero-3.avif"
+                                    alt="Traveler exploring a city with a backpack"
+                                    class="hero__image"
+                                    id="img-3"
+                                />
+                            </div>
+                        </div>
+                    </div>
+
+                    <h1 class="hero__title" id="hero-title">
+                        Travel top destination of the world
+                    </h1>
+                </section>
+            </main>
         </div>
+
         <script type="module" src="./src/script/index.js"></script>
     </body>
 </html>
