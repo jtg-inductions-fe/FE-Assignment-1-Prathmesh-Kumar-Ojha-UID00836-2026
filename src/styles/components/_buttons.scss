@@ -1,0 +1,19 @@
+@use '../abstracts' as *;
+@use '../abstracts/primitives' as primitive;
+
+.button {
+    display: inline-flex;
+    align-items: center;
+    border-radius: px-to-rem(32);
+    padding: spacing(3) spacing(8);
+
+    &--ghost {
+        background-color: transparent;
+        color: $color-text-high-emphasis;
+    }
+
+    &--primary {
+        background-color: primitive.$slate-blue;
+        color: primitive.$white;
+    }
+}

@@ -1,0 +1,220 @@
+@use '../abstracts' as *;
+@use '../abstracts/primitives' as primitive;
+@use '../components/buttons';
+
+// Navbar-specific colors
+$_navbar-back-control-background: primitive.$very-light-grey;
+
+.navbar {
+    display: flex;
+    position: sticky;
+    top: 0;
+    justify-content: space-between;
+    align-items: center;
+    padding: spacing(9.75) spacing(1) 0 0;
+    font-size: $size-sm;
+    font-family: $family-std-bold;
+
+    &--hidden {
+        visibility: hidden;
+    }
+
+    @include respond-to('tablet') {
+        padding: spacing(8) spacing(3) 0;
+    }
+
+    @include respond-to(px-to-rem(768)) {
+        padding: spacing(8) spacing(12) 0 spacing(13);
+    }
+
+    @include respond-to('desktop') {
+        padding: spacing(16.25) spacing(25.25) 0 spacing(28.5);
+    }
+
+    &__hamburger,
+    &__logo-link {
+        padding: 0;
+        line-height: 0;
+    }
+
+    &__hamburger {
+        border: none;
+        background: none;
+        height: fit-content;
+
+        @include respond-to('desktop') {
+            display: none;
+        }
+    }
+
+    &__logo-link {
+        @include respond-to('tablet') {
+            position: static;
+            left: auto;
+            transform: none;
+            margin-inline: auto;
+        }
+
+        @include respond-to('desktop') {
+            position: static;
+            left: auto;
+            transform: none;
+            margin-inline: 0;
+        }
+    }
+
+    &__links {
+        display: flex;
+        column-gap: spacing(16);
+        flex-direction: column;
+        justify-content: center;
+        align-items: left;
+        padding-top: spacing(1);
+
+        & > :first-child {
+            border-top: 2px solid $color-border-high-emphasis;
+
+            @include respond-to('desktop') {
+                border: none;
+            }
+        }
+
+        @include respond-to('desktop') {
+            flex-direction: row;
+            align-items: center;
+        }
+    }
+
+    &__link-item {
+        border-bottom: 2px solid $color-border-high-emphasis;
+        padding: spacing(5) 0;
+
+        @include respond-to('desktop') {
+            border: none;
+            padding: 0;
+        }
+    }
+
+    &__link {
+        color: $color-text-high-emphasis;
+
+        @include respond-to('desktop') {
+            transition: color 0.2s ease;
+            color: $color-text-low-emphasis;
+
+            &:hover,
+            &:focus-visible,
+            &--active {
+                color: $color-text-high-emphasis;
+            }
+        }
+    }
+
+    &__actions {
+        display: none;
+        align-items: center;
+        min-width: spacing(40);
+
+        @include respond-to('tablet') {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .button {
+            @include respond-to('tablet') {
+                margin: spacing(1) 0;
+                padding: spacing(2) px-to-rem(23);
+            }
+
+            @include respond-to(px-to-rem(768)) {
+                margin: 0;
+                padding: spacing(3) spacing(8);
+            }
+
+            @include respond-to('desktop') {
+                padding: px-to-rem(14) spacing(8) px-to-rem(10);
+            }
+        }
+    }
+}
+
+.drawer-overlay {
+    display: flex;
+    position: absolute;
+    top: 0;
+    left: 0;
+    flex-direction: column;
+    justify-content: start;
+    transform: translateX(100%);
+    visibility: hidden;
+    z-index: 10;
+    background-color: $color-surface-default;
+    padding: spacing(4);
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+
+    @include respond-to('tablet') {
+        transform: translateX(-100%);
+    }
+
+    &--active {
+        transform: translateX(0);
+        visibility: visible;
+        pointer-events: auto;
+    }
+
+    &--resizing {
+        transition: none;
+    }
+
+    &__close-button {
+        display: flex;
+        flex-direction: column;
+        margin: px-to-rem(23) 0;
+        border-radius: px-to-rem(8);
+        background-color: $_navbar-back-control-background;
+        width: min-content;
+        height: fit-content;
+
+        &:focus-visible {
+            outline: px-to-rem(2) solid currentColor;
+            outline-offset: spacing(1);
+        }
+    }
+
+    &__icon {
+        transform: rotate(0deg);
+        transform-origin: center;
+        width: px-to-rem(40);
+        height: px-to-rem(40);
+
+        @include respond-to('tablet') {
+            transform: rotate(180deg);
+        }
+
+        &--rotated {
+            transform: rotate(180deg);
+
+            @include respond-to('tablet') {
+                transform: rotate(0deg);
+            }
+        }
+    }
+}
+
+html.drawer-ready {
+    .drawer-overlay {
+        transition:
+            transform 200ms ease,
+            visibility 0s linear 200ms;
+    }
+
+    .drawer-overlay--active {
+        transition-delay: 0s;
+    }
+
+    .drawer-overlay__icon {
+        transition: transform 250ms ease;
+    }
+}

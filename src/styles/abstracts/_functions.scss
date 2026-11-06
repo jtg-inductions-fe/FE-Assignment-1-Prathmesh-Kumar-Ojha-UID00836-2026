@@ -6,3 +6,11 @@
 @function px-to-rem($px) {
     @return math.div($px, 16) * 1rem;
 }
+
+/// Base 4px spacing scale used for consistent layout rhythm.
+/// Example: spacing(4) => 1rem, spacing(8) => 2rem.
+/// @param {Number} $step - spacing multiplier based on the 4px grid
+/// @return {Number} Rem value
+@function spacing($step) {
+    @return px-to-rem($step * 4);
+}

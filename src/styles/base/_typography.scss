@@ -10,18 +10,10 @@ html {
 }
 
 body {
-    font-family: $family-inter;
-    font-size: $size-md;
     font-weight: $weight-nm;
+    font-size: $size-bs;
     line-height: $line-loose;
-
-    @include respond-to('tablet') {
-        font-size: $size-bs;
-    }
-
-    @include respond-to('desktop') {
-        font-size: $size-md;
-    }
+    font-family: $family-inter;
 }
 
 // Headings Hierarchy
@@ -32,9 +24,9 @@ h3,
 h4,
 h5,
 h6 {
-    font-family: $family-std-bold;
     font-weight: $weight-bold;
     line-height: $line-tight;
+    font-family: $family-std-bold;
 }
 
 h1 {
@@ -45,7 +37,7 @@ h1 {
     }
 
     @include respond-to('desktop') {
-        font-size: px-to-rem(69);
+        font-size: $size-hero;
     }
 }
 
@@ -57,7 +49,7 @@ h3 {
     }
 
     @include respond-to('desktop') {
-        font-size: px-to-rem(44);
+        font-size: $size-3xl;
     }
 }
 
@@ -66,81 +58,9 @@ h4 {
 }
 
 h5 {
-    font-size: px-to-rem(28);
+    font-size: $size-xl;
 }
 
 h6 {
-    font-size: px-to-rem(23);
-}
-
-// Utility Classes
-
-// --- Eyebrow ---
-
-.eyebrow {
-    font-family: $family-primary;
-    font-size: $size-xs;
-    font-weight: $weight-bold;
-    letter-spacing: px-to-rem(2);
-    text-transform: uppercase;
-
-    @include respond-to('desktop') {
-        font-size: $size-sm;
-    }
-}
-
-// --- Body text ---
-
-.body-lg {
-    font-family: $family-inter;
-    font-size: $size-md;
-    font-weight: $weight-nm;
-    line-height: $line-loose;
-
-    @include respond-to('tablet') {
-        font-size: $size-bs;
-    }
-
-    @include respond-to('desktop') {
-        font-size: $size-md;
-    }
-}
-
-.body-sm {
-    font-family: $family-inter;
-    font-size: $size-sm;
-    font-weight: $weight-nm;
-    line-height: $line-normal;
-}
-
-// --- Caption ---
-
-.caption {
-    font-family: $family-inter;
-    font-size: $size-sm;
-    font-weight: $weight-nm;
-    line-height: $line-loose;
-
-    @include respond-to('desktop') {
-        font-size: $size-bs;
-    }
-}
-
-// --- Label ---
-
-.label {
-    font-family: $family-std-book;
-    font-size: $size-sm;
-    font-weight: $weight-book;
-    line-height: $line-normal;
-}
-
-// --- Color highlights ---
-
-.highlight-pink {
-    color: $color-accent-pink;
-}
-
-.highlight-orange {
-    color: $color-accent-orange;
+    font-size: $size-lg;
 }
