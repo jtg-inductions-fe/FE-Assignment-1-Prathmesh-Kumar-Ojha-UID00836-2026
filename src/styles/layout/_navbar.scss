@@ -8,9 +8,10 @@ $_navbar-back-control-background: primitive.$very-light-grey;
 .navbar {
     display: flex;
     position: sticky;
+    top: 0;
     justify-content: space-between;
     align-items: center;
-    padding: px-to-rem(23) spacing(1) 0 0;
+    padding: spacing(9.75) spacing(1) 0 0;
     font-size: $size-sm;
     font-family: $family-std-bold;
 
@@ -19,15 +20,15 @@ $_navbar-back-control-background: primitive.$very-light-grey;
     }
 
     @include respond-to('tablet') {
-        padding: spacing(4) spacing(3) 0;
+        padding: spacing(8) spacing(3) 0;
     }
 
     @include respond-to(px-to-rem(768)) {
-        padding: spacing(4) spacing(12) 0 spacing(13);
+        padding: spacing(8) spacing(12) 0 spacing(13);
     }
 
     @include respond-to('desktop') {
-        padding: px-to-rem(49) px-to-rem(100) 0 px-to-rem(114);
+        padding: spacing(8.25) spacing(25) 0 spacing(28.5);
     }
 
     &__hamburger,
