@@ -92,7 +92,11 @@
             </nav>
 
             <!-- Overlay for drawer close on outside click -->
-            <div class="drawer-overlay" id="navbar-overlay">
+            <div
+                class="drawer-overlay"
+                aria-label="Navigation menu"
+                id="navbar-overlay"
+            >
                 <button
                     type="button"
                     class="drawer-overlay__close-button"
@@ -118,7 +122,9 @@
                 </button>
             </div>
 
-            <section class="hero" aria-label="hero-section"></section>
+            <section class="hero" aria-label="Hero section">
+                <div class="hero__gallery" aria-label="Photo gallery"></div>
+            </section>
         </div>
         <script type="module" src="./src/script/index.js"></script>
     </body>
