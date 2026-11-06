@@ -13,3 +13,23 @@ html {
     max-width: 100%;
     overflow-x: clip;
 }
+
+.hero {
+    position: relative;
+    isolation: isolate;
+}
+
+.hero::before {
+    position: absolute;
+    top: -90px;
+    left: -33px;
+    opacity: 0.55;
+    z-index: -1;
+    filter: blur(150px);
+    border-radius: 50%;
+    background: #ff5722;
+    width: 272px;
+    height: 348px;
+    pointer-events: none;
+    content: '';
+}
