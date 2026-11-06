@@ -8,6 +8,7 @@ html {
 .container {
     position: relative;
     padding: $size-bs;
+    padding-top: 0;
     min-width: 240px;
     max-width: 100%;
     overflow-x: clip;
