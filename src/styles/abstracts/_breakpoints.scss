@@ -2,6 +2,6 @@
 @use './functions' as *;
 
 $breakpoints: (
-    'tablet': px-to-rem(431),
-    'desktop': px-to-rem(1025),
+    'tablet': '(width > 430px)',
+    'desktop': '(width >= 1024px)',
 ); //min-width to qualify as tablet / desktop

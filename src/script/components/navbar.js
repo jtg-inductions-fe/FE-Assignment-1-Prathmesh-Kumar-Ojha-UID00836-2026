@@ -16,10 +16,9 @@ export class Navbar {
         this.navOverlay = document.querySelector('.drawer-overlay');
         this.back = document.querySelector('.drawer-overlay__close-button');
         this.backButton = this.back.querySelector('.drawer-overlay__icon');
-        this.mobileQuery = window.matchMedia('(max-width: 430px)');
-        this.desktopQuery = window.matchMedia('(min-width: 1025px)');
+        this.mobileQuery = window.matchMedia('(width <= 430px)');
+        this.desktopQuery = window.matchMedia('(width >= 1024px)');
 
-        this.device = 'mobile';
         this.isDrawerOpen = false;
     }
 
@@ -28,15 +27,8 @@ export class Navbar {
      * @returns {'mobile' | 'tablet' | 'desktop'} The current device mode.
      */
     get currentDevice() {
-        return this.device;
-    }
-
-    /**
-     * Sets the active viewport mode used by responsive layout logic.
-     * @param {'mobile' | 'tablet' | 'desktop'} device - The device mode to apply.
-     */
-    set currentDevice(device) {
-        this.device = device;
+        if (this.desktopQuery.matches) return 'desktop';
+        return this.mobileQuery.matches ? 'mobile' : 'tablet';
     }
 
     /**
@@ -50,13 +42,10 @@ export class Navbar {
         }
 
         if (this.mobileQuery.matches) {
-            this.currentDevice = 'mobile';
             this.navbar.insertBefore(this.logoLink, this.menu);
         } else if (this.desktopQuery.matches) {
-            this.currentDevice = 'desktop';
             this.navbar.insertBefore(this.menu, this.logoLink);
         } else {
-            this.currentDevice = 'tablet';
             this.navbar.insertBefore(this.menu, this.logoLink);
         }
 
@@ -158,15 +147,12 @@ export class Navbar {
      */
     handleDrawer = () => {
         this.menu.addEventListener('click', this.openDrawer);
-
         this.navOverlay.addEventListener('click', (event) => {
             if (event.target === this.navOverlay) {
                 this.closeDrawer();
             }
         });
-
         window.addEventListener('popstate', this.closeDrawer);
-
         this.back.addEventListener('click', this.closeDrawer);
     };
 
