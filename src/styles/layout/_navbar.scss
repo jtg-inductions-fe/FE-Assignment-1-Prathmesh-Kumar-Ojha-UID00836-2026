@@ -157,6 +157,7 @@ $_navbar-back-control-background: primitive.$very-light-grey;
     &--resizing {
         transition: none;
     }
+}
 
     &__close-button {
         display: flex;
@@ -179,16 +180,15 @@ $_navbar-back-control-background: primitive.$very-light-grey;
         width: rem(40);
         height: rem(40);
 
+    @include respond-to('tablet') {
+        transform: rotate(180deg);
+    }
+
+    &--rotated {
+        transform: rotate(180deg);
+
         @include respond-to('tablet') {
-            transform: rotate(180deg);
-        }
-
-        &--rotated {
-            transform: rotate(180deg);
-
-            @include respond-to('tablet') {
-                transform: rotate(0deg);
-            }
+            transform: rotate(0deg);
         }
     }
 }
