@@ -123,16 +123,12 @@ $_drawer-overlay-close-button-background: primitive.$very-light-grey;
         .button {
             @include respond-to('tablet') {
                 margin: spacing(1) 0;
-                padding: spacing(2) px-to-rem(23);
+                padding: spacing(2) spacing(5.75);
             }
 
             @include respond-to(768px) {
                 margin: 0;
-                padding: px-to-rem(14) px-to-rem(32) px-to-rem(10);
-            }
-
-            @include respond-to('desktop') {
-                padding: px-to-rem(14) spacing(8) px-to-rem(10);
+                padding: spacing(3.5) spacing(8) spacing(2.5);
             }
         }
     }
@@ -172,8 +168,8 @@ $_drawer-overlay-close-button-background: primitive.$very-light-grey;
 .drawer-overlay__close-button {
     display: flex;
     flex-direction: column;
-    margin: px-to-rem(23) 0;
-    border-radius: px-to-rem(8);
+    margin: spacing(5.75) 0;
+    border-radius: spacing(2);
     background-color: $_drawer-overlay-close-button-background;
     width: min-content;
     height: fit-content;
