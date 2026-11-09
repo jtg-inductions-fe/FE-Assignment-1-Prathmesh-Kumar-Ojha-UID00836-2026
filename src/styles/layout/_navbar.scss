@@ -11,6 +11,7 @@ $_drawer-overlay-close-button-background: primitive.$very-light-grey;
     top: 0;
     justify-content: space-between;
     align-items: center;
+    z-index: 100;
     padding: spacing(9.75) spacing(1) 0 0;
     font-size: $size-sm;
     font-family: $family-std-bold;

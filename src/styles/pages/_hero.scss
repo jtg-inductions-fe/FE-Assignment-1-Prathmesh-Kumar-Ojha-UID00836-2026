@@ -77,7 +77,6 @@
                 display: block;
                 width: 100%;
                 height: px-to-rem(154);
-                object-fit: cover;
             }
         }
     }
@@ -99,14 +98,42 @@
             img {
                 width: $size-sm;
                 height: $size-sm;
-                object-fit: contain;
             }
         }
 
         &--location {
+            right: 0;
+            bottom: 0;
+            justify-content: center;
+            align-items: center;
+            gap: spacing(1);
+            transform: translate(50%, spacing(-6.25));
+            border-radius: px-to-rem(32);
+            background: $color-surface-default;
+            padding: spacing(2.25) spacing(2.25) spacing(2) spacing(4);
+
+            img {
+                width: $size-xs;
+                height: $size-xs;
+            }
+
+            p {
+                font-size: px-to-rem(7);
+                font-family: $family-std-bold;
+            }
         }
 
         &--profile {
+            right: 50%;
+            bottom: 0;
+            transform: translate(spacing(1), spacing(15.5));
+            border-radius: 50%;
+            background: $color-accent-orange;
+            padding: spacing(2.25);
+            img {
+                width: $size-sm;
+                height: $size-sm;
+            }
         }
 
         &-image {
