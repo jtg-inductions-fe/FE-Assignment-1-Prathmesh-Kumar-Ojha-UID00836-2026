@@ -40,6 +40,7 @@
         </noscript>
 
         <div class="container">
+            <!-- Navbar -->
             <nav class="navbar" aria-label="Main navigation">
                 <!-- Hamburger -->
                 <button
@@ -88,11 +89,11 @@
                 </div>
             </nav>
 
-            <!-- Navigation overlay -->
-            <div class="drawer-overlay" id="navbar-overlay">
+            <!-- Navigation drawer -->
+            <div class="navbar-drawer" id="navbar-overlay">
                 <button
                     type="button"
-                    class="drawer-overlay__close-button"
+                    class="navbar-drawer__close-button"
                     id="back-button"
                     aria-label="Close menu"
                     aria-controls="nav-drawer"
@@ -107,7 +108,7 @@
                         stroke-linejoin="round"
                         aria-hidden="true"
                         focusable="false"
-                        class="drawer-overlay__icon"
+                        class="navbar-drawer__icon"
                     >
                         <path d="m15 18-6-6 6-6" />
                     </svg>
@@ -118,7 +119,9 @@
             <main>
                 <section class="hero" aria-labelledby="hero-title">
                     <div class="hero__gallery">
-                        <div class="hero__gallery-left">
+                        <div
+                            class="hero__gallery-column hero__gallery-column--left"
+                        >
                             <div class="hero__gallery-item">
                                 <img
                                     src="/assets/images/hero/hero-1.avif"
@@ -126,13 +129,14 @@
                                     class="hero__image"
                                     id="img-1"
                                 />
+
                                 <div
                                     class="hero__decoration hero__decoration--plane"
                                 >
                                     <img
                                         class="hero__decoration-image"
                                         src="/assets/images/illustrations/plane.svg"
-                                        alt="Circular decorator with plane icon"
+                                        alt=""
                                     />
                                 </div>
                             </div>
@@ -147,7 +151,9 @@
                             </div>
                         </div>
 
-                        <div class="hero__gallery-right">
+                        <div
+                            class="hero__gallery-column hero__gallery-column--right"
+                        >
                             <div class="hero__gallery-item">
                                 <img
                                     src="/assets/images/hero/hero-3.avif"
@@ -161,9 +167,14 @@
                                 >
                                     <img
                                         class="hero__decoration-image"
+                                        id="decoration_location-image"
                                         src="/assets/images/illustrations/location.svg"
                                         alt=""
                                     />
+
+                                    <p id="decoration_location-title">
+                                        Top Places
+                                    </p>
                                 </div>
 
                                 <div

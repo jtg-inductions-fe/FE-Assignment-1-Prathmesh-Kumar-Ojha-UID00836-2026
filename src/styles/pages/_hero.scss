@@ -36,7 +36,7 @@
 
         &::before {
             position: absolute;
-            top: spacing(-10);
+            top: spacing(-9.75);
             z-index: -9;
             background-image: url('/assets/images/illustrations/globe.svg');
             background-position: center;
@@ -48,22 +48,23 @@
             content: '';
         }
 
-        &-left {
+        &-column {
             display: flex;
-            position: relative;
-            right: spacing(2);
-            flex-direction: column;
-            align-items: flex-start;
-            gap: spacing(4);
-        }
-
-        &-right {
-            display: flex;
-            justify-content: center;
             align-items: flex-start;
 
-            .hero__image {
-                height: auto;
+            &--left {
+                position: relative;
+                right: spacing(2);
+                flex-direction: column;
+                gap: spacing(4);
+            }
+
+            &--right {
+                justify-content: center;
+
+                .hero__image {
+                    height: auto;
+                }
             }
         }
 
