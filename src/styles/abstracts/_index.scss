@@ -2,3 +2,5 @@
 @forward 'variables';
 @forward 'tokens';
 @forward 'mixins';
+@forward 'breakpoints';
+@forward 'primitives' as primitive-*;
