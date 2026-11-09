@@ -21,7 +21,7 @@ $_navbar-back-control-background: primitive.$very-light-grey;
     justify-content: space-between;
     align-items: center;
     z-index: 1;
-    padding-bottom: 0;
+    padding: spacing(9.75) spacing(1) 0 0;
     font-size: $size-sm;
     font-family: $family-std-bold;
 
