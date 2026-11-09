@@ -1,5 +1,6 @@
 @use 'sass:map';
 @use 'sass:meta';
+
 @use './breakpoints' as *;
 
 /// Applies a media query using a named breakpoint or a custom minimum width.

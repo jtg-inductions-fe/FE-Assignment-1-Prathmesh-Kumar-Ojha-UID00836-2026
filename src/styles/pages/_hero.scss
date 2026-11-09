@@ -1,3 +1,5 @@
+@use 'sass:color';
+
 @use '../abstracts' as *;
 
 .hero {
@@ -8,10 +10,10 @@
     &::before {
         position: absolute;
         top: -180px;
-        left: -100px;
+        left: -50px;
         opacity: 1;
-        z-index: -10;
-        filter: blur(180px);
+        z-index: 2;
+        filter: blur(160px);
         border-radius: 50%;
         background: $color-accent-orange;
         width: 245px;
@@ -37,7 +39,7 @@
         &::before {
             position: absolute;
             top: spacing(-9.75);
-            z-index: -9;
+            z-index: -1;
             background-image: url('/assets/images/illustrations/globe.svg');
             background-position: center;
             background-size: contain;
@@ -73,16 +75,20 @@
             width: px-to-rem(140);
             line-height: 0;
 
+            &::after {
+                position: absolute;
+                inset: 0;
+                border-radius: px-to-rem(16);
+                pointer-events: none;
+                content: '';
+            }
+
             img {
                 display: block;
                 width: 100%;
                 height: px-to-rem(154);
             }
         }
-    }
-
-    &__image {
-        opacity: 1;
     }
 
     &__decoration {
@@ -140,9 +146,6 @@
                 width: $size-sm;
                 height: $size-sm;
             }
-        }
-
-        &-image {
         }
     }
 
