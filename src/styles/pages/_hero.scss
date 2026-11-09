@@ -117,11 +117,11 @@
             bottom: 0;
             justify-content: center;
             align-items: center;
-            gap: spacing(1);
-            transform: translate(50%, spacing(-6.25));
-            border-radius: px-to-rem(32);
-            background: $color-surface-default;
-            padding: spacing(2.25) spacing(2.25) spacing(2) spacing(4);
+            gap: 4px;
+            transform: translate(50%, -1.5625rem);
+            border-radius: 2rem;
+            background: #ffffff;
+            padding: spacing(2) spacing(1.5) spacing(2) spacing(4);
 
             img {
                 width: $size-xs;
@@ -129,8 +129,10 @@
             }
 
             p {
-                font-size: px-to-rem(7);
+                font-size: px-to-rem(8);
                 font-family: $family-std-bold;
+                letter-spacing: px-to-rem(-0.2);
+                word-spacing: px-to-rem(-0.5);
             }
         }
 
