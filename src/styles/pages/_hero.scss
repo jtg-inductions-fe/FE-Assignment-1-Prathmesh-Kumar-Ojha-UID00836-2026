@@ -1,16 +1,25 @@
 @use 'sass:color';
 
 @use '../abstracts' as *;
+@use '../components/buttons';
+
+$bg-white: $color-surface-default;
+$text-grey: $color-text-low-emphasis;
+$text-white: $color-border-subtle;
+$border-white: $color-border-subtle;
 
 .hero {
+    display: flex;
     position: relative;
-    top: 107px;
+    top: spacing(26.75);
+    flex-direction: column;
+    align-items: center;
     isolation: isolate;
 
     &::before {
         position: absolute;
-        top: -180px;
-        left: -50px;
+        top: spacing(-45);
+        left: spacing(-12.5);
         opacity: 1;
         z-index: 2;
         filter: blur(160px);
@@ -117,11 +126,11 @@
             bottom: 0;
             justify-content: center;
             align-items: center;
-            gap: 4px;
+            gap: spacing(1);
             transform: translate(50%, -1.5625rem);
-            border-radius: 2rem;
-            background: #ffffff;
-            padding: spacing(2) spacing(1.5) spacing(2) spacing(4);
+            border-radius: px-to-rem(32);
+            background: $bg-white;
+            padding: spacing(2) spacing(1.75) spacing(2) spacing(4);
 
             img {
                 width: $size-xs;
@@ -131,7 +140,7 @@
             p {
                 font-size: px-to-rem(8);
                 font-family: $family-std-bold;
-                letter-spacing: px-to-rem(-0.2);
+                letter-spacing: px-to-rem(-0.25);
                 word-spacing: px-to-rem(-0.5);
             }
         }
@@ -142,7 +151,7 @@
             transform: translate(spacing(1), spacing(15.5));
             border-radius: 50%;
             background: $color-accent-orange;
-            padding: spacing(2.25);
+            padding: spacing(2.375);
 
             img {
                 width: $size-sm;
@@ -151,7 +160,82 @@
         }
     }
 
+    &__explore {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: spacing(4.5);
+        margin-top: spacing(8.5);
+        box-shadow:
+            0 0 0 0 rgba(0, 0, 0, 0.07),
+            0 34px 75px 0 rgba(0, 0, 0, 0.07),
+            0 137px 137px 0 rgba(0, 0, 0, 0.06),
+            0 308px 185px 0 rgba(0, 0, 0, 0.04),
+            0 548px 219px 0 rgba(0, 0, 0, 0.01);
+        border-radius: px-to-rem(32);
+        background: $bg-white;
+        padding: spacing(4.5) spacing(8) spacing(4.5) spacing(8);
+        color: $color-accent-pink;
+        font-size: $size-sm;
+        line-height: $line-tight;
+        font-family: $family-std-bold;
+
+        &-title {
+            margin-top: spacing(1);
+        }
+
+        &-image {
+            margin-right: spacing(0.5);
+        }
+    }
+
     &__title {
+        margin-top: spacing(4.75);
+        color: black;
         text-align: center;
+
+        &-highlight {
+            margin-right: spacing(2.5);
+            color: $color-accent-pink;
+        }
+    }
+
+    &__subtitle {
+        margin-top: spacing(5.5);
+        padding-right: spacing(0.5);
+        color: $text-grey;
+        font-size: px-to-rem(17);
+        font-family: $family-inter;
+        text-align: center;
+    }
+
+    &__actions {
+        display: flex;
+        flex-direction: column;
+        margin-top: spacing(8);
+        width: 100%;
+        font-size: $size-sm;
+
+        .button {
+            gap: spacing(2.5);
+            padding: 18px 10px;
+
+            &--primary {
+                padding-top: 22px;
+                padding-bottom: 17px;
+                color: $text-white;
+            }
+
+            &--ghost {
+                margin-top: spacing(6);
+                border: px-to-rem(2) solid $border-white;
+                padding-top: 22px;
+                padding-bottom: 20px;
+            }
+
+            &__text {
+                transform: translate(spacing(0.25), spacing(0.375));
+            }
+        }
     }
 }
