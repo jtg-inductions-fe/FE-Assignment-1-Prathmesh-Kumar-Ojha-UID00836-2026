@@ -21,11 +21,11 @@ $_drawer-overlay-close-button-background: primitive.$very-light-grey;
     }
 
     @include respond-to('tablet') {
-        padding: spacing(8) spacing(3) 0;
+        padding: spacing(9) spacing(3) 0;
     }
 
     @include respond-to(768px) {
-        padding: spacing(8) spacing(12) 0 spacing(13);
+        padding: spacing(8.5) spacing(12) 0 spacing(13);
     }
 
     @include respond-to('desktop') {
@@ -124,12 +124,12 @@ $_drawer-overlay-close-button-background: primitive.$very-light-grey;
         .button {
             @include respond-to('tablet') {
                 margin: spacing(1) 0;
-                padding: spacing(2) spacing(5.75);
             }
 
             @include respond-to(768px) {
                 margin: 0;
-                padding: spacing(3.5) spacing(8) spacing(2.5);
+                padding: spacing(4) spacing(8.25) spacing(4) spacing(7.75);
+                // padding: spacing(3.5) spacing(8) spacing(2.5);
             }
         }
     }

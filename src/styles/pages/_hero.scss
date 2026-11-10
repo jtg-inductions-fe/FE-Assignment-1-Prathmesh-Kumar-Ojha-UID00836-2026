@@ -54,8 +54,7 @@
             pointer-events: none;
             content: '';
             @include respond-to('tablet') {
-                top: spacing(-18.75);
-                aspect-ratio: 772 / 287;
+                top: spacing(-18.5);
             }
         }
 
@@ -65,6 +64,7 @@
 
             @include respond-to('tablet') {
                 position: relative;
+                top: 1px;
                 right: spacing(2);
             }
 
@@ -75,18 +75,19 @@
                 gap: spacing(4);
                 @include respond-to('tablet') {
                     right: spacing(1.75);
-                    gap: spacing(8.25);
+                    gap: spacing(8);
                 }
             }
 
             &--right {
                 justify-content: center;
+                @include respond-to('tablet') {
+                }
             }
         }
 
         &-item {
             position: relative;
-            width: clamp(rem(140), 26.6vw, rem(3020));
             line-height: 0;
 
             &::after {
@@ -99,13 +100,12 @@
 
             img {
                 display: block;
-                aspect-ratio: 140 / 154;
+                aspect-ratio: 272 / 300;
                 width: 100%;
-                height: auto;
             }
 
             &--third img {
-                aspect-ratio: 140 / 205.875;
+                aspect-ratio: 272 / 401;
             }
         }
     }
@@ -184,9 +184,18 @@
             background: $color-accent-orange;
             padding: spacing(2.375);
 
+            @include respond-to('tablet') {
+                transform: translate(spacing(2), spacing(30.5));
+                padding: spacing(4.75);
+            }
+
             img {
                 width: $size-sm;
                 height: $size-sm;
+                @include respond-to('tablet') {
+                    width: 26px;
+                    height: 26px;
+                }
             }
         }
     }
@@ -196,7 +205,7 @@
         justify-content: center;
         align-items: center;
         gap: spacing(4.5);
-        margin-top: spacing(8.75);
+        margin-top: spacing(8.5);
         box-shadow:
             0 0 0 0 rgba(0, 0, 0, 0.07),
             0 rem(34) rem(75) 0 rgba(0, 0, 0, 0.07),
@@ -210,6 +219,10 @@
         font-size: $size-sm;
         line-height: $line-tight;
         font-family: $family-std-bold;
+
+        @include respond-to('tablet') {
+            margin-top: spacing(33.75);
+        }
 
         &-title {
             margin-top: spacing(1);
@@ -225,9 +238,18 @@
         color: black;
         text-align: center;
 
+        @include respond-to('tablet') {
+            margin-top: spacing(11.75);
+            padding: 0 spacing(50);
+        }
+
         &-highlight {
             margin-right: spacing(2.5);
             color: $color-accent-pink;
+            @include respond-to('tablet') {
+                margin-right: spacing(3.5);
+                word-break: break-all;
+            }
         }
     }
 
@@ -236,21 +258,41 @@
         padding-right: spacing(0.5);
         color: $color-text-low-emphasis;
         font-size: rem(17);
+        line-height: $line-loose;
         font-family: $family-inter;
         text-align: center;
+
+        @include respond-to('tablet') {
+            margin-top: spacing(10);
+            padding: 0 spacing(70);
+            font-size: rem(18);
+            line-height: 1.6;
+            letter-spacing: rem(0.2);
+            word-spacing: rem(2);
+        }
     }
 
     &__actions {
         display: flex;
         flex-direction: column;
-        margin-top: spacing(8);
+        margin-top: spacing(7.5);
         width: 100%;
         font-size: $size-sm;
 
+        @include respond-to('tablet') {
+            flex-direction: row;
+            justify-content: center;
+            align-items: flex-start;
+            gap: spacing(4);
+            margin-top: spacing(10);
+        }
+
         .button {
             gap: spacing(2.5);
-            padding: spacing(4.5) spacing(2.5);
-            padding-top: spacing(5.5);
+
+            @include respond-to('tablet') {
+                padding: 0;
+            }
 
             &--primary {
                 z-index: 1;
@@ -260,8 +302,14 @@
                     0 rem(20) rem(20) 0 rgba(0, 0, 0, 0.09),
                     0 rem(45) rem(27) 0 rgba(0, 0, 0, 0.05),
                     0 rem(81) rem(32) 0 rgba(0, 0, 0, 0.01);
-                padding-bottom: spacing(4.25);
+                padding-top: spacing(6.75);
+                padding-bottom: spacing(6);
                 color: $color-border-subtle;
+
+                @include respond-to('tablet') {
+                    margin-top: spacing(0.5);
+                    padding: spacing(4.75) spacing(8) spacing(4) spacing(8);
+                }
             }
 
             &--ghost {
@@ -269,7 +317,12 @@
                 margin-top: spacing(6);
                 border: rem(2) solid $color-border-subtle;
                 background: $color-surface-default;
-                padding-bottom: spacing(5);
+                padding: spacing(6) 0;
+
+                @include respond-to('tablet') {
+                    margin: 0;
+                    padding: spacing(4.5) spacing(8);
+                }
             }
 
             &__text {
