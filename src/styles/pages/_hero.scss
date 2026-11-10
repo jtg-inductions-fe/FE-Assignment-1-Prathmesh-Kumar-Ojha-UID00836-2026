@@ -36,7 +36,8 @@
         width: 100%;
 
         @include respond-to('tablet') {
-            top: spacing(6.75);
+            top: spacing(16);
+            gap: spacing(8);
             width: 78%;
         }
 
@@ -52,31 +53,40 @@
             width: 100%;
             pointer-events: none;
             content: '';
+            @include respond-to('tablet') {
+                top: spacing(-18.75);
+                aspect-ratio: 772 / 287;
+            }
         }
 
         &-column {
             display: flex;
             align-items: flex-start;
 
+            @include respond-to('tablet') {
+                position: relative;
+                right: spacing(2);
+            }
+
             &--left {
                 position: relative;
                 right: spacing(2);
                 flex-direction: column;
                 gap: spacing(4);
+                @include respond-to('tablet') {
+                    right: spacing(1.75);
+                    gap: spacing(8.25);
+                }
             }
 
             &--right {
                 justify-content: center;
-
-                .hero__image {
-                    height: auto;
-                }
             }
         }
 
         &-item {
             position: relative;
-            width: rem(140);
+            width: clamp(rem(140), 26.6vw, rem(3020));
             line-height: 0;
 
             &::after {
@@ -89,8 +99,13 @@
 
             img {
                 display: block;
+                aspect-ratio: 140 / 154;
                 width: 100%;
-                height: rem(154);
+                height: auto;
+            }
+
+            &--third img {
+                aspect-ratio: 140 / 205.875;
             }
         }
     }
@@ -99,20 +114,24 @@
         display: flex;
         position: absolute;
         z-index: 1;
+        box-shadow:
+            0 rem(9.75) rem(9.75) 0 rgba(0, 0, 0, 0.09),
+            0 rem(22) rem(13.5) 0 rgba(0, 0, 0, 0.05),
+            0 rem(40) rem(16) 0 rgba(0, 0, 0, 0.01);
         width: auto;
         height: auto;
 
         &--plane {
             bottom: 0;
             left: 0;
-            transform: translate(-53%, 46%);
+            transform: translate(-53%, clamp(45%, 46%, 46%));
             border-radius: 50%;
             background: $color-accent-pink;
-            padding: spacing(2.5);
+            padding: clamp(spacing(2.25), 1.75vw, spacing(10));
 
             img {
-                width: $size-sm;
-                height: $size-sm;
+                width: clamp($size-sm, 2.75vw, spacing(20));
+                height: clamp($size-sm, 2.75vw, spacing(20));
             }
         }
 
@@ -123,13 +142,26 @@
             align-items: center;
             gap: spacing(1);
             transform: translate(50%, spacing(-6));
+            box-shadow:
+                0 rem(22) rem(13.5) 0 rgba(0, 0, 0, 0.05),
+                0 rem(40) rem(16) 0 rgba(0, 0, 0, 0.01);
             border-radius: rem(32);
             background: $color-surface-default;
             padding: spacing(2) spacing(1.75) spacing(2) spacing(4);
 
+            @include respond-to('tablet') {
+                gap: spacing(2.25);
+                transform: translate(90px, -47px);
+                padding: spacing(4.5) spacing(8) spacing(4) spacing(8);
+            }
+
             img {
                 width: $size-xs;
                 height: $size-xs;
+                @include respond-to('tablet') {
+                    width: 22px;
+                    height: 22px;
+                }
             }
 
             p {
@@ -137,6 +169,10 @@
                 font-family: $family-std-bold;
                 letter-spacing: rem(-0.25);
                 word-spacing: rem(-0.5);
+                @include respond-to('tablet') {
+                    font-size: rem(14);
+                    letter-spacing: 0;
+                }
             }
         }
 
@@ -160,7 +196,7 @@
         justify-content: center;
         align-items: center;
         gap: spacing(4.5);
-        margin-top: spacing(8.625);
+        margin-top: spacing(8.75);
         box-shadow:
             0 0 0 0 rgba(0, 0, 0, 0.07),
             0 rem(34) rem(75) 0 rgba(0, 0, 0, 0.07),
