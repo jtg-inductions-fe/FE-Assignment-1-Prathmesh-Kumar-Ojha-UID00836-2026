@@ -33,11 +33,13 @@
         align-items: center;
         gap: spacing(2);
         margin-inline: auto;
+        padding: 0 spacing(13.75);
         width: 100%;
 
         @include respond-to('tablet') {
             top: spacing(16);
             gap: spacing(8);
+            padding: 0;
             width: 78%;
         }
 
