@@ -11,6 +11,10 @@
     margin-top: spacing(26.625);
     isolation: isolate;
 
+    @include respond-to('desktop') {
+        flex-direction: row-reverse;
+    }
+
     &::before {
         position: absolute;
         top: spacing(-45);
@@ -31,22 +35,21 @@
         position: relative;
         justify-content: center;
         align-items: center;
-        gap: spacing(2);
         margin-inline: auto;
         padding: 0 spacing(13.75);
         padding-bottom: spacing(0.25);
         width: 100%;
 
+        @include fluid(gap, 8, 32, 32);
+
         @include respond-to('tablet') {
             top: spacing(16);
-            gap: spacing(8);
             padding: 0;
             width: 78%;
         }
 
         &::before {
             position: absolute;
-            top: spacing(-9.5625);
             z-index: -1;
             background-image: url('/assets/images/illustrations/globe.svg');
             background-position: center;
@@ -56,9 +59,8 @@
             width: 100%;
             pointer-events: none;
             content: '';
-            @include respond-to('tablet') {
-                top: spacing(-18.5);
-            }
+
+            @include fluid(top, -38.25, -74, -74);
         }
 
         &-column {
@@ -75,17 +77,16 @@
                 position: relative;
                 right: spacing(2);
                 flex-direction: column;
-                gap: spacing(4);
+
+                @include fluid(gap, 16, 32, 32);
+
                 @include respond-to('tablet') {
                     right: spacing(1.75);
-                    gap: spacing(8);
                 }
             }
 
             &--right {
                 justify-content: center;
-                @include respond-to('tablet') {
-                }
             }
         }
 
@@ -100,16 +101,16 @@
                 pointer-events: none;
                 content: '';
             }
+        }
+    }
 
-            img {
-                display: block;
-                aspect-ratio: 272 / 300;
-                width: 100%;
-            }
+    &__image {
+        display: block;
+        aspect-ratio: 272 / 300;
+        width: 100%;
 
-            &--third img {
-                aspect-ratio: 272 / 401;
-            }
+        .hero__gallery-item--third & {
+            aspect-ratio: 272 / 401;
         }
     }
 
@@ -124,6 +125,23 @@
         width: auto;
         height: auto;
 
+        &-image {
+            display: block;
+            flex-shrink: 0;
+        }
+
+        &-location-title {
+            font-family: $family-std-bold;
+            letter-spacing: rem(-0.25);
+            word-spacing: rem(-0.5);
+
+            @include fluid(font-size, 8, 14, 14);
+
+            @include respond-to('tablet') {
+                letter-spacing: 0;
+            }
+        }
+
         &--plane {
             // 594px is the distance between the two viewport widths: 1024 - 430 = 594
             --tablet-progress: clamp(0, calc((100vw - 430px) / 594px), 1);
@@ -136,11 +154,12 @@
             );
             border-radius: 50%;
             background: $color-accent-pink;
+
             @include fluid(padding, 9, 19, 19);
 
-            img {
-                width: clamp($size-sm, 2.75vw, spacing(6.5));
-                height: clamp($size-sm, 2.75vw, spacing(6.5));
+            .hero__decoration-image {
+                @include fluid(width, 16, 26, 26);
+                @include fluid(height, 16, 26, 26);
             }
         }
 
@@ -149,39 +168,23 @@
             bottom: 0;
             justify-content: center;
             align-items: center;
-            gap: spacing(1);
-            transform: translate(55%, spacing(-6.25));
             box-shadow:
                 0 rem(22) rem(13.5) 0 rgba(0, 0, 0, 0.05),
                 0 rem(40) rem(16) 0 rgba(0, 0, 0, 0.01);
             border-radius: rem(32);
             background: $color-surface-default;
-            padding: spacing(2) spacing(4);
 
-            @include respond-to('tablet') {
-                gap: spacing(2.25);
-                transform: translate(90px, -47px);
-                padding: spacing(4.5) spacing(8) spacing(4) spacing(8);
-            }
+            @include fluid(padding-block, 8, 17, 17);
+            @include fluid(padding-inline, 16, 32, 32);
 
-            img {
-                width: $size-xs;
-                height: $size-xs;
-                @include respond-to('tablet') {
-                    width: 22px;
-                    height: 22px;
-                }
-            }
+            @include fluid(gap, 4, 9, 9);
 
-            p {
-                font-size: rem(8);
-                font-family: $family-std-bold;
-                letter-spacing: rem(-0.25);
-                word-spacing: rem(-0.5);
-                @include respond-to('tablet') {
-                    font-size: rem(14);
-                    letter-spacing: 0;
-                }
+            @include fluid(--location-y, -25, -47, -47);
+            transform: translate(55%, var(--location-y));
+
+            .hero__decoration-image {
+                @include fluid(width, 12, 22, 22);
+                @include fluid(height, 12, 22, 22);
             }
         }
 
@@ -191,20 +194,16 @@
             transform: translate(spacing(1), spacing(15.5));
             border-radius: 50%;
             background: $color-accent-orange;
-            padding: spacing(2.375);
+
+            @include fluid(padding, 9, 19, 19);
 
             @include respond-to('tablet') {
-                transform: translate(spacing(2), spacing(30.5));
-                padding: spacing(4.75);
+                transform: translate(rem(8), rem(122));
             }
 
-            img {
-                width: $size-sm;
-                height: $size-sm;
-                @include respond-to('tablet') {
-                    width: rem(26);
-                    height: rem(26);
-                }
+            .hero__decoration-image {
+                @include fluid(width, 14, 26, 26);
+                @include fluid(height, 14, 26, 26);
             }
         }
     }
@@ -214,7 +213,6 @@
         justify-content: center;
         align-items: center;
         gap: spacing(4.5);
-        margin-top: spacing(8.5);
         box-shadow:
             0 0 0 0 rgba(0, 0, 0, 0.07),
             0 rem(34) rem(75) 0 rgba(0, 0, 0, 0.07),
@@ -229,9 +227,7 @@
         line-height: $line-tight;
         font-family: $family-std-bold;
 
-        @include respond-to('tablet') {
-            margin-top: spacing(33.75);
-        }
+        @include fluid(margin-top, 34, 135, 135);
 
         &-title {
             margin-top: spacing(1);
@@ -243,18 +239,19 @@
     }
 
     &__title {
-        margin-top: spacing(4.75);
         color: black;
         text-align: center;
 
+        @include fluid(margin-top, 19, 47, 47);
+
         @include respond-to('tablet') {
-            margin-top: spacing(11.75);
             padding: 0 spacing(50);
         }
 
         &-highlight {
             margin-right: spacing(2.5);
             color: $color-accent-pink;
+
             @include respond-to('tablet') {
                 margin-right: spacing(3.5);
                 word-break: break-all;
@@ -263,18 +260,17 @@
     }
 
     &__subtitle {
-        margin-top: spacing(5.5);
         padding-right: spacing(0.5);
         color: $color-text-low-emphasis;
-        font-size: rem(17);
         line-height: 1.5;
         font-family: $family-inter;
         text-align: center;
 
+        @include fluid(margin-top, 22, 40, 40);
+        @include fluid(font-size, 17, 18, 18);
+
         @include respond-to('tablet') {
-            margin-top: spacing(10);
             padding: 0 spacing(70);
-            font-size: rem(18);
             line-height: 1.6;
             letter-spacing: rem(0.2);
             word-spacing: rem(2);
