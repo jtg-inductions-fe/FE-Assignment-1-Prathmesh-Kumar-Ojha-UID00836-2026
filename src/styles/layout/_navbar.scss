@@ -21,11 +21,11 @@ $_drawer-overlay-close-button-background: primitive.$very-light-grey;
     }
 
     @include respond-to('tablet') {
-        padding: spacing(10) spacing(3) 0;
+        padding: spacing(9) spacing(3) 0;
     }
 
     @include respond-to(768px) {
-        padding: spacing(9.25) spacing(12) 0 spacing(13);
+        padding: spacing(8.5) spacing(12) 0 spacing(13);
     }
 
     @include respond-to('desktop') {
@@ -50,12 +50,12 @@ $_drawer-overlay-close-button-background: primitive.$very-light-grey;
 
     &__logo {
         @include respond-to('tablet') {
-            transform: translate(60px, -1px);
+            transform: translate(rem(59), 0);
             margin-inline: auto;
         }
 
-        @include respond-to(768) {
-            transform: translate(87px, -1px);
+        @include respond-to(768px) {
+            transform: translate(rem(87), rem(-1));
         }
 
         @include respond-to('desktop') {
