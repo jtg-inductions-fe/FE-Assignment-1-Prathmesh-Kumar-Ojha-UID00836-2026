@@ -6,9 +6,9 @@
 .hero {
     display: flex;
     position: relative;
-    top: spacing(26.625);
     flex-direction: column;
     align-items: center;
+    margin-top: spacing(26.625);
     isolation: isolate;
 
     &::before {
@@ -34,6 +34,7 @@
         gap: spacing(2);
         margin-inline: auto;
         padding: 0 spacing(13.75);
+        padding-bottom: spacing(0.25);
         width: 100%;
 
         @include respond-to('tablet') {
@@ -124,12 +125,22 @@
         height: auto;
 
         &--plane {
+            // 594px is the distance between the two viewport widths: 1024 - 430 = 594
+            --tablet-progress: clamp(0, calc((100vw - 430px) / 594px), 1);
+
             bottom: 0;
             left: 0;
-            transform: translate(-53%, clamp(45%, 46%, 46%));
+            transform: translate(
+                calc(-53% - 2% * var(--tablet-progress)),
+                calc(46% + 1% * var(--tablet-progress))
+            );
             border-radius: 50%;
             background: $color-accent-pink;
-            padding: clamp(spacing(2.25), 1.75vw, spacing(3.75));
+            padding: clamp(
+                spacing(2.25),
+                calc(1.6835vw + 1.761px),
+                spacing(4.75)
+            );
 
             img {
                 width: clamp($size-sm, 2.75vw, spacing(6.5));
@@ -143,13 +154,13 @@
             justify-content: center;
             align-items: center;
             gap: spacing(1);
-            transform: translate(50%, spacing(-6));
+            transform: translate(55%, spacing(-6.25));
             box-shadow:
                 0 rem(22) rem(13.5) 0 rgba(0, 0, 0, 0.05),
                 0 rem(40) rem(16) 0 rgba(0, 0, 0, 0.01);
             border-radius: rem(32);
             background: $color-surface-default;
-            padding: spacing(2) spacing(1.75) spacing(2) spacing(4);
+            padding: spacing(2) spacing(4);
 
             @include respond-to('tablet') {
                 gap: spacing(2.25);
@@ -181,7 +192,7 @@
         &--profile {
             right: 50%;
             bottom: 0;
-            transform: translate(spacing(1), spacing(15.75));
+            transform: translate(spacing(1), spacing(15.5));
             border-radius: 50%;
             background: $color-accent-orange;
             padding: spacing(2.375);
@@ -195,8 +206,8 @@
                 width: $size-sm;
                 height: $size-sm;
                 @include respond-to('tablet') {
-                    width: 26px;
-                    height: 26px;
+                    width: rem(26);
+                    height: rem(26);
                 }
             }
         }
@@ -260,7 +271,7 @@
         padding-right: spacing(0.5);
         color: $color-text-low-emphasis;
         font-size: rem(17);
-        line-height: $line-loose;
+        line-height: 1.5;
         font-family: $family-inter;
         text-align: center;
 
@@ -277,7 +288,7 @@
     &__actions {
         display: flex;
         flex-direction: column;
-        margin-top: spacing(7.25);
+        margin-top: spacing(8);
         width: 100%;
         font-size: $size-sm;
 
