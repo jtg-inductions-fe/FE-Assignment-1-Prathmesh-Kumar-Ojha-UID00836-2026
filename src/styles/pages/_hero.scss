@@ -136,11 +136,7 @@
             );
             border-radius: 50%;
             background: $color-accent-pink;
-            padding: clamp(
-                spacing(2.25),
-                calc(1.6835vw + 1.761px),
-                spacing(4.75)
-            );
+            @include fluid(padding, 9, 19, 19);
 
             img {
                 width: clamp($size-sm, 2.75vw, spacing(6.5));

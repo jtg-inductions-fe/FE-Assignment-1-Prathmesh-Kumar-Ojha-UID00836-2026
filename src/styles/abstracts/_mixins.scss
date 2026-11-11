@@ -1,7 +1,46 @@
 @use 'sass:map';
 @use 'sass:meta';
+@use 'sass:math';
 
 @use './breakpoints' as *;
+@use './functions' as fn;
+
+/// Applies a fluid property from mobile through tablet and a fixed desktop value.
+/// Mobile and tablet values are unitless pixels interpolated from 430px to 1024px.
+/// Desktop value applies at the configured desktop breakpoint.
+/// @param {String} $property - CSS property to set.
+/// @param {Number} $mobile - Unitless pixel value for mobile.
+/// @param {Number} $tablet - Unitless pixel value for tablet.
+/// @param {Number} $desktop - Unitless pixel value for desktop.
+@mixin fluid($property, $mobile, $tablet, $desktop) {
+    @each $value in $mobile, $tablet, $desktop {
+        @if not math.is-unitless($value) {
+            @error 'fluid() expects unitless pixel values. Received #{$value}.';
+        }
+    }
+
+    $mobile-width: math.div(map.get($breakpoints, 'tablet'), 1px);
+    $tablet-width: math.div(map.get($breakpoints, 'desktop'), 1px);
+    $slope: math.div($tablet - $mobile, $tablet-width - $mobile-width);
+    $intercept: $mobile - ($slope * $mobile-width);
+    $preferred: calc(#{$slope * 100}vw + #{fn.rem($intercept)});
+
+    @if $intercept < 0 {
+        $preferred: calc(#{$slope * 100}vw - #{fn.rem(math.abs($intercept))});
+    }
+
+    & {
+        #{$property}: clamp(
+            #{fn.rem(math.min($mobile, $tablet))},
+            #{$preferred},
+            #{fn.rem(math.max($mobile, $tablet))}
+        );
+    }
+
+    @include respond-to('desktop') {
+        #{$property}: fn.rem($desktop);
+    }
+}
 
 /// Applies a media query using a named breakpoint or a custom minimum width.
 ///
