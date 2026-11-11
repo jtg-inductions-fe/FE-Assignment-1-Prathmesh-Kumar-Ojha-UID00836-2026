@@ -129,11 +129,11 @@
             transform: translate(-53%, clamp(45%, 46%, 46%));
             border-radius: 50%;
             background: $color-accent-pink;
-            padding: clamp(spacing(2.25), 1.75vw, spacing(10));
+            padding: clamp(spacing(2.25), 1.75vw, spacing(3.75));
 
             img {
-                width: clamp($size-sm, 2.75vw, spacing(20));
-                height: clamp($size-sm, 2.75vw, spacing(20));
+                width: clamp($size-sm, 2.75vw, spacing(6.5));
+                height: clamp($size-sm, 2.75vw, spacing(6.5));
             }
         }
 
@@ -277,7 +277,7 @@
     &__actions {
         display: flex;
         flex-direction: column;
-        margin-top: spacing(7.5);
+        margin-top: spacing(7.25);
         width: 100%;
         font-size: $size-sm;
 
