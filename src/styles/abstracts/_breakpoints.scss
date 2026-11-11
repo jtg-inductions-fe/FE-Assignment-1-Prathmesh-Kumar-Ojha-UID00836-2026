@@ -1,7 +1,15 @@
 @use './variables' as *;
 @use './functions' as *;
 
+/// Defines the named responsive breakpoints.
+///
+/// Each breakpoint represents the minimum viewport width at which
+/// the corresponding layout should apply.
+///
+/// @type Map
+/// @prop {Number} tablet - Minimum width for tablet layouts (430px).
+/// @prop {Number} desktop - Minimum width for desktop layouts (1024px).
 $breakpoints: (
-    'tablet': '(width > 430px)',
-    'desktop': '(width > 1024px)',
-); //min-width to qualify as tablet / desktop
+    'tablet': 430px,
+    'desktop': 1024px,
+);
