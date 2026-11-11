@@ -12,24 +12,16 @@ $_drawer-overlay-close-button-background: primitive.$very-light-grey;
     justify-content: space-between;
     align-items: center;
     z-index: 1;
-    padding: spacing(9.75) spacing(1) 0 0;
+    padding-bottom: 0;
     font-size: $size-sm;
     font-family: $family-std-bold;
 
+    @include fluid(padding-top, 39, 34, 67);
+    @include fluid(padding-left, 0, 52, 114);
+    @include fluid(padding-right, 4, 48, 101);
+
     &--hidden {
         visibility: hidden;
-    }
-
-    @include respond-to('tablet') {
-        padding: spacing(9) spacing(3) 0;
-    }
-
-    @include respond-to(768px) {
-        padding: spacing(8.5) spacing(12) 0 spacing(13);
-    }
-
-    @include respond-to('desktop') {
-        padding: spacing(16.25) spacing(25.25) 0 spacing(28.5);
     }
 
     &__menu-toggle,
@@ -124,15 +116,9 @@ $_drawer-overlay-close-button-background: primitive.$very-light-grey;
         }
 
         .button {
-            @include respond-to('tablet') {
-                margin: spacing(1) 0;
-                padding: spacing(2.25);
-            }
-
-            @include respond-to(768px) {
-                margin: 0;
-                padding: spacing(4) spacing(8.25) spacing(4) spacing(7.75);
-            }
+            margin: 0;
+            @include fluid(padding-block, 9, 16, 16);
+            @include fluid(padding-inline, 9, 32, 32);
         }
     }
 }
