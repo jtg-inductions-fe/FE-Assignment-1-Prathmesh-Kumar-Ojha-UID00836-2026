@@ -15,5 +15,8 @@ else
   fi
 fi
 
+# Format files before validation
+npm run prettier
+
 # Run pre-commit script
 npm run pre-commit
