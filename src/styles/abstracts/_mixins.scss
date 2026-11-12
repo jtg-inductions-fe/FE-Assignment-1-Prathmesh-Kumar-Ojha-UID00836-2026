@@ -1,12 +1,39 @@
 @use 'sass:map';
+@use 'sass:meta';
 @use './breakpoints' as *;
 
-/// Mobile-first media query mixin
-/// Compiles to `@media (min-width: ...)`
-/// @param {String | Number} $breakpoint - Name from $breakpoints map
+/// Applies a media query using a named breakpoint or a custom minimum width.
+///
+/// Named breakpoints are retrieved from the `$breakpoints` map.
+/// Numeric values are treated as custom minimum viewport widths.
+///
+/// @param {String | Number} $breakpoint
+///   A breakpoint name from `$breakpoints` or a custom length (e.g., 768px).
+///
+/// @content Styles to apply when the viewport meets the breakpoint.
+///
+/// @example scss - Using a named breakpoint
+///   .container {
+///     @include respond-to('tablet') {
+///       padding: 2rem;
+///     }
+///   }
+///
+/// @example scss - Using a custom breakpoint
+///   .container {
+///     @include respond-to(768px) {
+///       padding: 3rem;
+///     }
+///   }
+///
+/// @throw If the breakpoint is neither a configured name nor a number.
 @mixin respond-to($breakpoint) {
     @if map.has-key($breakpoints, $breakpoint) {
-        @media (min-width: map.get($breakpoints, $breakpoint)) {
+        @media (min-width: (map.get($breakpoints, $breakpoint) + 1)) {
+            @content;
+        }
+    } @else if meta.type-of($breakpoint) == 'number' {
+        @media (min-width: $breakpoint) {
             @content;
         }
     } @else {
