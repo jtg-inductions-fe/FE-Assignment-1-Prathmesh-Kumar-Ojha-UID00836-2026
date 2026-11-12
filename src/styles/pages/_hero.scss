@@ -124,7 +124,7 @@
             flex-shrink: 0;
         }
 
-        &-location-title {
+        &-title {
             font-family: $family-std-bold;
             letter-spacing: rem(-0.25);
             word-spacing: rem(-0.5);
@@ -296,7 +296,7 @@
             text-align: left;
             word-spacing: rem(1.75);
 
-            &-break {
+            &-line {
                 &::after {
                     content: '\A';
                     white-space: pre;
@@ -378,7 +378,7 @@
 
         @include fluid('height', 75, 175, 175);
 
-        img {
+        &-image {
             aspect-ratio: 66/169;
             height: 100%;
         }
