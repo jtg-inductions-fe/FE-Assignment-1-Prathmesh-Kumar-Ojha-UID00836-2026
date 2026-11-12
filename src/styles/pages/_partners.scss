@@ -21,6 +21,7 @@
 
         column-gap: clamp(rem(8), calc(9.74vw - #{rem(15.37)}), rem(26.5));
         max-width: 100%;
+        @include fluid('column-gap', 26.5, 26.5, 100);
 
         @include respond-to('tablet') {
             justify-content: center;
