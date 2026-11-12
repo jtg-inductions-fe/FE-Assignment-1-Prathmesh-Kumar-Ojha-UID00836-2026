@@ -11,6 +11,8 @@
     margin-top: spacing(26.625);
     isolation: isolate;
 
+    @include fluid(padding-inline, 0, 110, 110);
+
     @include respond-to('desktop') {
         flex-direction: row-reverse;
     }
@@ -36,17 +38,13 @@
         justify-content: center;
         align-items: center;
         margin-inline: auto;
-        padding: 0 spacing(13.75);
         padding-bottom: spacing(0.25);
         width: 100%;
 
-        @include fluid(gap, 8, 32, 32);
-
-        @include respond-to('tablet') {
-            top: spacing(16);
-            padding: 0;
-            width: 78%;
-        }
+        @include fluid(gap, 16, 31, 32);
+        @include fluid(top, 0, 64, 64);
+        @include fluid(padding-inline, 51, 0, 0);
+        @include fluid(padding-bottom, 1, 0, 0);
 
         &::before {
             position: absolute;
@@ -65,23 +63,22 @@
 
         &-column {
             display: flex;
+            position: relative;
             align-items: flex-start;
 
+            @include fluid(right, 4, 8, 8);
+
             @include respond-to('tablet') {
-                position: relative;
                 top: 1px;
-                right: spacing(2);
             }
 
             &--left {
                 position: relative;
-                right: spacing(2);
                 flex-direction: column;
 
                 @include fluid(gap, 16, 32, 32);
 
                 @include respond-to('tablet') {
-                    right: spacing(1.75);
                 }
             }
 
@@ -191,7 +188,7 @@
         &--profile {
             right: 50%;
             bottom: 0;
-            transform: translate(spacing(1), spacing(15.5));
+            transform: translate(11.5%, 192.5%);
             border-radius: 50%;
             background: $color-accent-orange;
 
@@ -245,7 +242,7 @@
         @include fluid(margin-top, 19, 47, 47);
 
         @include respond-to('tablet') {
-            padding: 0 spacing(50);
+            padding: 0 spacing(20);
         }
 
         &-highlight {
@@ -270,7 +267,7 @@
         @include fluid(font-size, 17, 18, 18);
 
         @include respond-to('tablet') {
-            padding: 0 spacing(70);
+            padding: 0 spacing(42.5);
             line-height: 1.6;
             letter-spacing: rem(0.2);
             word-spacing: rem(2);
