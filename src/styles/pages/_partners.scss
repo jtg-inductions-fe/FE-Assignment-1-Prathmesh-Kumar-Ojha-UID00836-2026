@@ -29,13 +29,12 @@
         }
     }
 
-    &__bottom {
+    &--bottom {
         justify-content: center;
     }
 
-    &__logos {
+    &__section &__logo {
         max-width: 100%;
-
         height: clamp(rem(11), 4.65vw, rem(20));
 
         @include respond-to('tablet') {
