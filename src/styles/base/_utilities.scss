@@ -1,0 +1,9 @@
+@use '../abstracts' as *;
+
+.pink-highlight {
+    padding-left: spacing(0.75);
+    color: $color-accent-pink;
+    font-family: $family-std-bold;
+    letter-spacing: spacing(0.8);
+    text-transform: uppercase;
+}

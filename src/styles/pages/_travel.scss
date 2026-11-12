@@ -1,0 +1,49 @@
+@use '../abstracts' as *;
+
+.travel {
+    display: flex;
+    row-gap: spacing(9);
+    flex-direction: column;
+    padding: spacing(27) 0;
+
+    &__bg {
+        width: 100%;
+        &-image {
+            display: block;
+            aspect-ratio: 428/342;
+            width: 100%;
+        }
+    }
+
+    &__point {
+        display: flex;
+        flex-direction: column;
+        padding-inline: spacing(5);
+        text-align: center;
+
+        &-content {
+            display: flex;
+            row-gap: spacing(7.5);
+            flex-direction: column;
+        }
+
+        &-main {
+            display: flex;
+            row-gap: spacing(5);
+            flex-direction: column;
+        }
+
+        &-title {
+        }
+
+        &-subtitle {
+            color: $color-text-primary;
+        }
+
+        &-description {
+            color: $color-text-low-emphasis;
+            line-height: $line-loose;
+            font-family: $family-inter;
+        }
+    }
+}

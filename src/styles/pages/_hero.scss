@@ -279,7 +279,9 @@
         color: $color-text-low-emphasis;
         line-height: 1.5;
         font-family: $family-inter;
+        letter-spacing: -0.5px;
         text-align: center;
+        word-spacing: -0.5px;
 
         @include fluid(margin-top, 22, 40, 40);
         @include fluid(font-size, 17, 18, 18);
