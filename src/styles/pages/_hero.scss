@@ -108,7 +108,7 @@
             flex-shrink: 0;
         }
 
-        &-location-title {
+        &-title {
             font-family: $family-std-bold;
             letter-spacing: rem(-0.25);
             word-spacing: rem(-0.5);
@@ -279,7 +279,7 @@
             max-width: 400px;
             text-align: left;
 
-            &-break {
+            &-line {
                 &::after {
                     content: '\A';
                     white-space: pre;
