@@ -368,4 +368,21 @@
             }
         }
     }
+
+    &__vector {
+        display: none;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+
+        @include respond-to('tablet') {
+            display: block;
+            transform: translate(30%, 30%);
+        }
+
+        @include respond-to('desktop') {
+            display: block;
+            transform: translate(35%, 100%);
+        }
+    }
 }
