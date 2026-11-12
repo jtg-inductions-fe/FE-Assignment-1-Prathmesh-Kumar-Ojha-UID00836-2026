@@ -1,7 +1,4 @@
-@use 'sass:color';
-
 @use '../abstracts' as *;
-@use '../components/buttons';
 
 .hero {
     display: flex;
@@ -268,7 +265,11 @@
 
             @include respond-to('tablet') {
                 margin-right: spacing(3.5);
-                // word-break: break-all;
+
+                &::after {
+                    content: '\A';
+                    white-space: pre;
+                }
             }
         }
     }
@@ -284,7 +285,7 @@
         @include fluid(font-size, 17, 18, 18);
 
         @include respond-to('tablet') {
-            padding: 0 spacing(42.5);
+            max-width: 450px;
             line-height: 1.6;
             letter-spacing: rem(0.2);
             word-spacing: rem(2);
@@ -294,6 +295,13 @@
             padding: 0;
             text-align: left;
             word-spacing: rem(1.75);
+
+            &-break {
+                &::after {
+                    content: '\A';
+                    white-space: pre;
+                }
+            }
         }
     }
 
@@ -314,7 +322,7 @@
 
         @include respond-to('desktop') {
             justify-content: flex-start;
-            margin-top: spacing(17.5);
+            margin-top: spacing(10.5);
         }
 
         .button {
