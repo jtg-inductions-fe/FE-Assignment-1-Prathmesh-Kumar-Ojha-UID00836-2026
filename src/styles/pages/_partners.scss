@@ -1,0 +1,38 @@
+@use '../abstracts' as *;
+
+.partners {
+    display: flex;
+    position: relative;
+    row-gap: spacing(8);
+    flex-direction: column;
+    justify-content: center;
+    @include fluid('column-gap', 0, 0, 100);
+    @include fluid('margin-top', 64, 128, 176);
+
+    @include respond-to('desktop') {
+        column-gap: spacing(25);
+        flex-direction: row;
+        margin-left: spacing(3);
+    }
+
+    &__section {
+        display: flex;
+
+        @include fluid('column-gap', 26.5, 26.5, 100);
+
+        @include respond-to('tablet') {
+            justify-content: center;
+        }
+    }
+
+    &__bottom {
+        justify-content: center;
+    }
+
+    &__logos {
+        display: block;
+        width: auto;
+
+        @include fluid('height', 20, 32, 32);
+    }
+}
