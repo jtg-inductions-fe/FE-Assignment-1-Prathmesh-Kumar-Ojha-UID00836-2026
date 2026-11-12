@@ -11,7 +11,7 @@
     margin-top: spacing(26.625);
     isolation: isolate;
 
-    @include fluid(padding-inline, 0, 110, 110);
+    @include fluid(padding-inline, 0, 110, 100);
 
     @include respond-to('desktop') {
         flex-direction: row-reverse;
@@ -42,7 +42,7 @@
         width: 100%;
 
         @include fluid(gap, 16, 31, 32);
-        @include fluid(top, 0, 64, 64);
+        @include fluid(top, 0, 64, 52);
         @include fluid(padding-inline, 51, 0, 0);
         @include fluid(padding-bottom, 1, 0, 0);
 
@@ -205,6 +205,11 @@
         }
     }
 
+    &__main {
+        padding: 14px;
+        max-width: 435px;
+    }
+
     &__explore {
         display: flex;
         justify-content: center;
@@ -224,7 +229,11 @@
         line-height: $line-tight;
         font-family: $family-std-bold;
 
-        @include fluid(margin-top, 34, 135, 135);
+        @include fluid(margin-top, 34, 135, 40);
+
+        @include respond-to('desktop') {
+            max-width: 225px;
+        }
 
         &-title {
             margin-top: spacing(1);
@@ -245,13 +254,19 @@
             padding: 0 spacing(20);
         }
 
+        @include respond-to('desktop') {
+            padding: 0;
+            text-align: left;
+            word-wrap: break-word;
+        }
+
         &-highlight {
             margin-right: spacing(2.5);
             color: $color-accent-pink;
 
             @include respond-to('tablet') {
                 margin-right: spacing(3.5);
-                word-break: break-all;
+                // word-break: break-all;
             }
         }
     }
@@ -272,6 +287,12 @@
             letter-spacing: rem(0.2);
             word-spacing: rem(2);
         }
+
+        @include respond-to('desktop') {
+            padding: 0;
+            text-align: left;
+            word-spacing: rem(1.75);
+        }
     }
 
     &__actions {
@@ -287,6 +308,11 @@
             align-items: flex-start;
             gap: spacing(4);
             margin-top: spacing(10);
+        }
+
+        @include respond-to('desktop') {
+            justify-content: flex-start;
+            margin-top: spacing(17.5);
         }
 
         .button {
