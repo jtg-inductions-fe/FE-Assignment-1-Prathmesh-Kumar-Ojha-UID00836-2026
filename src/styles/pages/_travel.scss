@@ -31,13 +31,13 @@
             display: flex;
             row-gap: spacing(5);
             flex-direction: column;
-        }
 
-        &-title {
-        }
+            &--title {
+            }
 
-        &-subtitle {
-            color: $color-text-primary;
+            &--subtitle {
+                color: $color-text-primary;
+            }
         }
 
         &-description {
