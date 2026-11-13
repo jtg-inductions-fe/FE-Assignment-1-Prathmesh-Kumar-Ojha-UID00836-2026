@@ -1,0 +1,29 @@
+[
+    {
+        "id": 1,
+        "profilePicture": "/assets/images/testimonial/profile.avif",
+        "user": {
+            "name": "Mark Smith",
+            "type": "Travel Enthusiast"
+        },
+        "rating": 5
+    },
+    {
+        "id": 2,
+        "profilePicture": "/assets/images/testimonial/profile.avif",
+        "user": {
+            "name": "Sarah Jones",
+            "type": "Solo Traveler"
+        },
+        "rating": 4
+    },
+    {
+        "id": 3,
+        "profilePicture": "/assets/images/testimonial/profile.avif",
+        "user": {
+            "name": "Prathmesh Ojha",
+            "type": "Foody Traveler"
+        },
+        "rating": 5
+    }
+]
