@@ -1,0 +1,396 @@
+@use '../abstracts' as *;
+
+.hero {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    align-items: center;
+    margin-top: spacing(26.625);
+    isolation: isolate;
+
+    @include fluid(padding-inline, 0, 110, 100);
+
+    @include respond-to('desktop') {
+        flex-direction: row-reverse;
+    }
+
+    &::before {
+        position: absolute;
+        top: spacing(-45);
+        left: spacing(-12.5);
+        opacity: 1;
+        z-index: 2;
+        filter: blur(rem(160));
+        border-radius: 50%;
+        background: $color-accent-orange;
+        width: rem(245);
+        height: rem(245);
+        pointer-events: none;
+        content: '';
+    }
+
+    &__gallery {
+        display: flex;
+        position: relative;
+        justify-content: center;
+        align-items: center;
+        margin-inline: auto;
+        padding-bottom: spacing(0.25);
+        width: 100%;
+
+        @include fluid(gap, 16, 31, 32);
+        @include fluid(top, 0, 64, 52);
+        @include fluid(padding-inline, 51, 0, 0);
+        @include fluid(padding-bottom, 1, 0, 0);
+
+        &::before {
+            position: absolute;
+            z-index: -1;
+            background-image: url('/assets/images/illustrations/globe.svg');
+            background-position: center;
+            background-size: contain;
+            background-repeat: no-repeat;
+            aspect-ratio: 772 / 288;
+            width: 100%;
+            pointer-events: none;
+            content: '';
+
+            @include fluid(top, -38.25, -74, -74);
+        }
+
+        &-column {
+            display: flex;
+            position: relative;
+            align-items: flex-start;
+
+            @include fluid(right, 4, 8, 8);
+
+            @include respond-to('tablet') {
+                top: 1px;
+            }
+
+            &--left {
+                position: relative;
+                flex-direction: column;
+
+                @include fluid(gap, 16, 32, 32);
+
+                @include respond-to('tablet') {
+                }
+            }
+
+            &--right {
+                justify-content: center;
+            }
+        }
+
+        &-item {
+            position: relative;
+            line-height: 0;
+
+            &::after {
+                position: absolute;
+                inset: 0;
+                border-radius: rem(16);
+                pointer-events: none;
+                content: '';
+            }
+        }
+    }
+
+    &__image {
+        display: block;
+        aspect-ratio: 272 / 300;
+        width: 100%;
+
+        .hero__gallery-item--third & {
+            aspect-ratio: 272 / 401;
+        }
+    }
+
+    &__decoration {
+        display: flex;
+        position: absolute;
+        z-index: 1;
+        box-shadow:
+            0 rem(9.75) rem(9.75) 0 rgba(0, 0, 0, 0.09),
+            0 rem(22) rem(13.5) 0 rgba(0, 0, 0, 0.05),
+            0 rem(40) rem(16) 0 rgba(0, 0, 0, 0.01);
+        width: auto;
+        height: auto;
+
+        &-image {
+            display: block;
+            flex-shrink: 0;
+        }
+
+        &-location-title {
+            font-family: $family-std-bold;
+            letter-spacing: rem(-0.25);
+            word-spacing: rem(-0.5);
+
+            @include fluid(font-size, 8, 14, 14);
+
+            @include respond-to('tablet') {
+                letter-spacing: 0;
+            }
+        }
+
+        &--plane {
+            // 594px is the distance between the two viewport widths: 1024 - 430 = 594
+            --tablet-progress: clamp(0, calc((100vw - 430px) / 594px), 1);
+
+            bottom: 0;
+            left: 0;
+            transform: translate(
+                calc(-53% - 2% * var(--tablet-progress)),
+                calc(46% + 1% * var(--tablet-progress))
+            );
+            border-radius: 50%;
+            background: $color-accent-pink;
+
+            @include fluid(padding, 9, 19, 19);
+
+            .hero__decoration-image {
+                @include fluid(width, 16, 26, 26);
+                @include fluid(height, 16, 26, 26);
+            }
+        }
+
+        &--location {
+            right: 0;
+            bottom: 0;
+            justify-content: center;
+            align-items: center;
+            box-shadow:
+                0 rem(22) rem(13.5) 0 rgba(0, 0, 0, 0.05),
+                0 rem(40) rem(16) 0 rgba(0, 0, 0, 0.01);
+            border-radius: rem(32);
+            background: $color-surface-default;
+
+            @include fluid(padding-block, 8, 17, 17);
+            @include fluid(padding-inline, 16, 32, 32);
+
+            @include fluid(gap, 4, 9, 9);
+
+            @include fluid(--location-y, -25, -47, -47);
+            transform: translate(55%, var(--location-y));
+
+            .hero__decoration-image {
+                @include fluid(width, 12, 22, 22);
+                @include fluid(height, 12, 22, 22);
+            }
+        }
+
+        &--profile {
+            right: 50%;
+            bottom: 0;
+            transform: translate(11.5%, 192.5%);
+            border-radius: 50%;
+            background: $color-accent-orange;
+
+            @include fluid(padding, 9, 19, 19);
+
+            @include respond-to('tablet') {
+                transform: translate(rem(8), rem(122));
+            }
+
+            .hero__decoration-image {
+                @include fluid(width, 14, 26, 26);
+                @include fluid(height, 14, 26, 26);
+            }
+        }
+    }
+
+    &__main {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        @include respond-to('desktop') {
+            align-items: flex-start;
+            padding: 14px;
+            max-width: 435px;
+        }
+    }
+
+    &__explore {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: spacing(4.5);
+        box-shadow:
+            0 0 0 0 rgba(0, 0, 0, 0.07),
+            0 rem(34) rem(75) 0 rgba(0, 0, 0, 0.07),
+            0 rem(137) rem(137) 0 rgba(0, 0, 0, 0.06),
+            0 rem(308) rem(185) 0 rgba(0, 0, 0, 0.04),
+            0 rem(548) rem(219) 0 rgba(0, 0, 0, 0.01);
+        border-radius: rem(32);
+        background: $color-surface-default;
+        padding: spacing(4.5) spacing(8) spacing(4.5) spacing(8);
+        color: $color-accent-pink;
+        font-size: $size-sm;
+        line-height: $line-tight;
+        font-family: $family-std-bold;
+
+        @include fluid(margin-top, 34, 135, 40);
+
+        max-width: 225px;
+        @include respond-to('desktop') {
+        }
+
+        &-title {
+            margin-top: spacing(1);
+        }
+
+        &-image {
+            margin-right: spacing(0.5);
+        }
+    }
+
+    &__title {
+        color: black;
+        text-align: center;
+
+        @include fluid(margin-top, 19, 47, 47);
+
+        @include respond-to('desktop') {
+            text-align: left;
+            word-wrap: break-word;
+        }
+
+        &-highlight {
+            color: $color-accent-pink;
+            line-height: $line-tight;
+
+            @include respond-to('tablet') {
+                margin-right: spacing(3.5);
+
+                &::after {
+                    content: '\A';
+                    white-space: pre;
+                }
+            }
+        }
+    }
+
+    &__subtitle {
+        padding-right: spacing(0.5);
+        color: $color-text-low-emphasis;
+        line-height: 1.5;
+        font-family: $family-inter;
+        text-align: center;
+
+        @include fluid(margin-top, 22, 40, 40);
+        @include fluid(font-size, 17, 18, 18);
+
+        @include respond-to('tablet') {
+            max-width: 450px;
+            line-height: 1.6;
+            letter-spacing: rem(0.2);
+            word-spacing: rem(2);
+        }
+
+        @include respond-to('desktop') {
+            padding: 0;
+            text-align: left;
+            word-spacing: rem(1.75);
+
+            &-break {
+                &::after {
+                    content: '\A';
+                    white-space: pre;
+                }
+            }
+        }
+    }
+
+    &__actions {
+        display: flex;
+        flex-direction: column;
+        margin-top: spacing(8);
+        width: 100%;
+        font-size: $size-sm;
+
+        @include respond-to('tablet') {
+            flex-direction: row;
+            justify-content: center;
+            align-items: flex-start;
+            gap: spacing(4);
+            margin-top: spacing(10);
+        }
+
+        @include respond-to('desktop') {
+            justify-content: flex-start;
+            margin-top: spacing(10.5);
+        }
+
+        .button {
+            gap: spacing(2.5);
+
+            @include respond-to('tablet') {
+                padding: 0;
+            }
+
+            &--primary {
+                z-index: 1;
+                box-shadow:
+                    0 0 0 0 rgba(0, 0, 0, 0.1),
+                    0 rem(5) rem(11) 0 rgba(0, 0, 0, 0.1),
+                    0 rem(20) rem(20) 0 rgba(0, 0, 0, 0.09),
+                    0 rem(45) rem(27) 0 rgba(0, 0, 0, 0.05),
+                    0 rem(81) rem(32) 0 rgba(0, 0, 0, 0.01);
+                padding-top: spacing(6.75);
+                padding-bottom: spacing(6);
+                color: $color-border-subtle;
+
+                @include respond-to('tablet') {
+                    margin-top: spacing(0.5);
+                    padding: spacing(4.75) spacing(8) spacing(4) spacing(8);
+                }
+            }
+
+            &--ghost {
+                z-index: 2;
+                margin-top: spacing(6);
+                border: rem(2) solid $color-border-subtle;
+                background: $color-surface-default;
+                padding: spacing(6) 0;
+
+                @include respond-to('tablet') {
+                    margin: 0;
+                    padding: spacing(4.5) spacing(8);
+                }
+            }
+
+            &__text {
+                transform: translate(spacing(0.25), spacing(0.375));
+            }
+        }
+    }
+
+    &__vector {
+        display: none;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        height: 173px;
+
+        @include fluid('height', 75, 175, 175);
+
+        img {
+            aspect-ratio: 66/169;
+            height: 100%;
+        }
+
+        @include respond-to('tablet') {
+            display: block;
+            transform: translate(30%, 30%);
+        }
+
+        @include respond-to('desktop') {
+            display: block;
+            transform: translate(35%, 100%);
+        }
+    }
+}

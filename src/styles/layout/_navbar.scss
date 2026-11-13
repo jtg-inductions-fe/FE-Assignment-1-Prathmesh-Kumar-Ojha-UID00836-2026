@@ -3,7 +3,7 @@
 @use '../components/buttons';
 
 // Navbar-specific colors
-$_navbar-back-control-background: primitive.$very-light-grey;
+$_drawer-overlay-close-button-background: primitive.$very-light-grey;
 
 .navbar {
     display: flex;
@@ -11,33 +11,26 @@ $_navbar-back-control-background: primitive.$very-light-grey;
     top: 0;
     justify-content: space-between;
     align-items: center;
-    padding: spacing(9.75) spacing(1) 0 0;
+    z-index: 1;
+    padding-bottom: 0;
     font-size: $size-sm;
     font-family: $family-std-bold;
+
+    @include fluid(padding-top, 39, 34, 67);
+    @include fluid(padding-left, 0, 52, 114);
+    @include fluid(padding-right, 4, 48, 101);
 
     &--hidden {
         visibility: hidden;
     }
 
-    @include respond-to('tablet') {
-        padding: spacing(8) spacing(3) 0;
-    }
-
-    @include respond-to(px-to-rem(768)) {
-        padding: spacing(8) spacing(12) 0 spacing(13);
-    }
-
-    @include respond-to('desktop') {
-        padding: spacing(16.25) spacing(25.25) 0 spacing(28.5);
-    }
-
-    &__hamburger,
-    &__logo-link {
+    &__menu-toggle,
+    &__logo {
         padding: 0;
         line-height: 0;
     }
 
-    &__hamburger {
+    &__menu-toggle {
         border: none;
         background: none;
         height: fit-content;
@@ -47,12 +40,14 @@ $_navbar-back-control-background: primitive.$very-light-grey;
         }
     }
 
-    &__logo-link {
+    &__logo {
         @include respond-to('tablet') {
-            position: static;
-            left: auto;
-            transform: none;
+            transform: translate(rem(59), 0);
             margin-inline: auto;
+        }
+
+        @include respond-to(768px) {
+            transform: translate(rem(87), rem(-1));
         }
 
         @include respond-to('desktop') {
@@ -63,7 +58,7 @@ $_navbar-back-control-background: primitive.$very-light-grey;
         }
     }
 
-    &__links {
+    &__list {
         display: flex;
         column-gap: spacing(16);
         flex-direction: column;
@@ -85,7 +80,7 @@ $_navbar-back-control-background: primitive.$very-light-grey;
         }
     }
 
-    &__link-item {
+    &__item {
         border-bottom: 2px solid $color-border-high-emphasis;
         padding: spacing(5) 0;
 
@@ -121,24 +116,14 @@ $_navbar-back-control-background: primitive.$very-light-grey;
         }
 
         .button {
-            @include respond-to('tablet') {
-                margin: spacing(1) 0;
-                padding: spacing(2) px-to-rem(23);
-            }
-
-            @include respond-to(px-to-rem(768)) {
-                margin: 0;
-                padding: spacing(3) spacing(8);
-            }
-
-            @include respond-to('desktop') {
-                padding: px-to-rem(14) spacing(8) px-to-rem(10);
-            }
+            margin: 0;
+            @include fluid(padding-block, 9, 16, 16);
+            @include fluid(padding-inline, 9, 32, 32);
         }
     }
 }
 
-.drawer-overlay {
+.navbar-drawer {
     display: flex;
     position: absolute;
     top: 0;
@@ -171,14 +156,14 @@ $_navbar-back-control-background: primitive.$very-light-grey;
     &__close-button {
         display: flex;
         flex-direction: column;
-        margin: px-to-rem(23) 0;
-        border-radius: px-to-rem(8);
-        background-color: $_navbar-back-control-background;
+        margin: spacing(5.75) 0;
+        border-radius: spacing(2);
+        background-color: $_drawer-overlay-close-button-background;
         width: min-content;
         height: fit-content;
 
         &:focus-visible {
-            outline: px-to-rem(2) solid currentColor;
+            outline: rem(2) solid currentColor;
             outline-offset: spacing(1);
         }
     }
@@ -186,8 +171,8 @@ $_navbar-back-control-background: primitive.$very-light-grey;
     &__icon {
         transform: rotate(0deg);
         transform-origin: center;
-        width: px-to-rem(40);
-        height: px-to-rem(40);
+        width: rem(40);
+        height: rem(40);
 
         @include respond-to('tablet') {
             transform: rotate(180deg);
@@ -204,17 +189,17 @@ $_navbar-back-control-background: primitive.$very-light-grey;
 }
 
 html.drawer-ready {
-    .drawer-overlay {
+    .navbar-drawer {
         transition:
             transform 200ms ease,
             visibility 0s linear 200ms;
-    }
 
-    .drawer-overlay--active {
-        transition-delay: 0s;
-    }
+        &--active {
+            transition-delay: 0s;
+        }
 
-    .drawer-overlay__icon {
-        transition: transform 250ms ease;
+        &__icon {
+            transition: transform 250ms ease;
+        }
     }
 }

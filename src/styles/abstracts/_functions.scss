@@ -3,7 +3,7 @@
 /// Convert px value to rem units (based on 16px root font size)
 /// @param {Number} $px - Pixel value (without px unit)
 /// @return {Number} Rem value
-@function px-to-rem($px) {
+@function rem($px) {
     @return math.div($px, 16) * 1rem;
 }
 
@@ -12,5 +12,5 @@
 /// @param {Number} $step - spacing multiplier based on the 4px grid
 /// @return {Number} Rem value
 @function spacing($step) {
-    @return px-to-rem($step * 4);
+    @return rem($step * 4);
 }
