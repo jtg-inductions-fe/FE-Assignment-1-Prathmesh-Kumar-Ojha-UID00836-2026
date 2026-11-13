@@ -1,0 +1,103 @@
+@use 'sass:color';
+
+@use '../abstracts' as *;
+@use '../base/utilities' as *;
+
+.testimonial {
+    display: flex;
+    row-gap: spacing(15.5);
+    flex-direction: column;
+    padding: spacing(4.5) spacing(5);
+    text-align: center;
+
+    &__head {
+        display: flex;
+        row-gap: spacing(4.75);
+        flex-direction: column;
+
+        &--content {
+            display: flex;
+            justify-content: center;
+        }
+
+        &--title {
+            @extend .pink-highlight;
+        }
+
+        &--subtitle {
+            font-family: $family-std-bold;
+        }
+    }
+
+    // &__profile {
+    //     &-image {
+    //     }
+    // }
+
+    &__info {
+        display: flex;
+        row-gap: 34px;
+        flex-direction: column;
+
+        &-text {
+            display: flex;
+            column-gap: spacing(1.75);
+            justify-content: center;
+            align-items: baseline;
+            line-height: 1.3;
+
+            &--content {
+                display: inline-block;
+                line-height: inherit;
+            }
+
+            &--name {
+                color: $color-accent-orange;
+            }
+
+            &--type {
+                color: $color-text-muted;
+            }
+        }
+
+        &-rating {
+            display: flex;
+            column-gap: 18px;
+            justify-content: center;
+
+            .fa-solid {
+                color: $color-accent-yellow;
+                font-size: 24px;
+            }
+        }
+    }
+
+    &__desc {
+        padding-top: 8px;
+
+        &-content {
+            color: $color-text-muted;
+            font-size: 18px;
+            line-height: $line-loose;
+            font-family: $family-std-book;
+        }
+    }
+
+    &__indicator {
+        display: flex;
+        column-gap: 18px;
+        justify-content: center;
+
+        .fa-solid {
+            font-size: 24px;
+        }
+
+        &--active {
+            color: $color-accent-pink;
+        }
+
+        &--inactive {
+            color: color.change($color-text-primary, $alpha: 0.05);
+        }
+    }
+}
