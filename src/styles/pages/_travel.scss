@@ -1,22 +1,23 @@
 @use '../abstracts' as *;
+@use '../base/utilities' as *;
 
 .travel {
     display: flex;
-    row-gap: spacing(9);
+    row-gap: spacing(10);
     flex-direction: column;
-    padding: spacing(27) 0;
+    padding: spacing(28) 0;
 
     &__bg {
         width: 100%;
         &-image {
             display: block;
-            aspect-ratio: 428/342;
             width: 100%;
         }
     }
 
     &__point {
         display: flex;
+        row-gap: 32px;
         flex-direction: column;
         padding-inline: spacing(5);
         text-align: center;
@@ -33,6 +34,7 @@
             flex-direction: column;
 
             &--title {
+                @extend .pink-highlight;
             }
 
             &--subtitle {
@@ -44,6 +46,39 @@
             color: $color-text-low-emphasis;
             line-height: $line-loose;
             font-family: $family-inter;
+        }
+
+        &-stat {
+            display: grid;
+            grid-template-rows: repeat(4, 1fr);
+            grid-template-columns: 1fr;
+            row-gap: spacing(4.5);
+            padding-inline: spacing(5);
+
+            &-item {
+                display: flex;
+                row-gap: spacing(4.5);
+                flex-direction: column;
+                border: rem(1) solid black;
+                border-radius: rem(32);
+                padding: spacing(8.675);
+
+                &--heading {
+                    color: $color-accent-orange;
+                }
+
+                &--body {
+                    font-size: $size-md;
+                    font-family: $family-inter;
+                }
+            }
+
+            &--decorator {
+                display: none;
+                position: absolute;
+                top: 0;
+                right: 0;
+            }
         }
     }
 }
