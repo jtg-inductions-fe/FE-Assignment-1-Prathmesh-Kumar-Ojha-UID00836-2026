@@ -7,6 +7,8 @@
     flex-direction: column;
     padding: spacing(28) 0;
 
+    @include fluid(row-gap, 40, 88, 48);
+
     &__bg {
         width: 100%;
         &-image {
@@ -17,10 +19,14 @@
 
     &__point {
         display: flex;
-        row-gap: 32px;
+        row-gap: spacing(8);
         flex-direction: column;
         padding-inline: spacing(5);
         text-align: center;
+
+        @include respond-to('tablet') {
+            row-gap: spacing(16);
+        }
 
         &-content {
             display: flex;
@@ -30,8 +36,10 @@
 
         &-main {
             display: flex;
-            row-gap: spacing(5);
+            // row-gap: spacing(5);
             flex-direction: column;
+
+            @include fluid('row-gap', 20, 18, 18);
 
             &--title {
                 @extend .pink-highlight;
@@ -46,14 +54,24 @@
             color: $color-text-low-emphasis;
             line-height: $line-loose;
             font-family: $family-inter;
+
+            @include fluid('padding-inline', 0, 48, 48);
+            @include fluid('font-size', 16, 18, 18);
         }
 
         &-stat {
             display: grid;
             grid-template-rows: repeat(4, 1fr);
             grid-template-columns: 1fr;
-            row-gap: spacing(4.5);
-            padding-inline: spacing(5);
+            row-gap: spacing(4);
+
+            @include fluid('padding-inline', 20, 44, 40);
+
+            @include respond-to('tablet') {
+                grid-template-rows: repeat(2, 1fr);
+                grid-template-columns: repeat(2, 1fr);
+                gap: spacing(8);
+            }
 
             &-item {
                 display: flex;
@@ -61,7 +79,7 @@
                 flex-direction: column;
                 border: rem(1) solid black;
                 border-radius: rem(32);
-                padding: spacing(8.675);
+                padding: spacing(8.875);
 
                 &--heading {
                     color: $color-accent-orange;
