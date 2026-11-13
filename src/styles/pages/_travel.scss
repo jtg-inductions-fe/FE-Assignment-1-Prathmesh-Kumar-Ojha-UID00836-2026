@@ -9,8 +9,20 @@
 
     @include fluid(row-gap, 40, 88, 48);
 
+    @include respond-to('desktop') {
+        flex-direction: row;
+        padding: spacing(31) 0;
+    }
+
     &__bg {
         width: 100%;
+
+        @include respond-to('desktop') {
+            flex: 0 1 rem(866);
+            min-width: 0;
+            max-width: rem(866);
+        }
+
         &-image {
             display: block;
             width: 100%;
@@ -22,10 +34,19 @@
         row-gap: spacing(8);
         flex-direction: column;
         padding-inline: spacing(5);
+        width: 100%;
         text-align: center;
 
         @include respond-to('tablet') {
             row-gap: spacing(16);
+        }
+
+        @include respond-to('desktop') {
+            flex: 1 1 rem(455);
+            padding: 12px 0;
+            min-width: 0;
+            max-width: rem(455);
+            text-align: left;
         }
 
         &-content {
@@ -36,17 +57,24 @@
 
         &-main {
             display: flex;
-            // row-gap: spacing(5);
             flex-direction: column;
 
             @include fluid('row-gap', 20, 18, 18);
 
             &--title {
                 @extend .pink-highlight;
+
+                @include respond-to('desktop') {
+                    padding: 0;
+                }
             }
 
             &--subtitle {
                 color: $color-text-primary;
+
+                @include respond-to('desktop') {
+                    max-width: 500px;
+                }
             }
         }
 
@@ -55,22 +83,32 @@
             line-height: $line-loose;
             font-family: $family-inter;
 
-            @include fluid('padding-inline', 0, 48, 48);
+            @include respond-to('desktop') {
+                max-width: 500px;
+            }
+
+            @include fluid('padding-inline', 0, 48, 0);
             @include fluid('font-size', 16, 18, 18);
         }
 
         &-stat {
             display: grid;
+            position: relative;
             grid-template-rows: repeat(4, 1fr);
             grid-template-columns: 1fr;
             row-gap: spacing(4);
 
-            @include fluid('padding-inline', 20, 44, 40);
+            @include fluid('padding-inline', 20, 44, 0);
 
             @include respond-to('tablet') {
                 grid-template-rows: repeat(2, 1fr);
                 grid-template-columns: repeat(2, 1fr);
                 gap: spacing(8);
+            }
+
+            @include respond-to('desktop') {
+                max-width: 455px;
+                text-align: center;
             }
 
             &-item {
@@ -80,6 +118,10 @@
                 border: rem(1) solid black;
                 border-radius: rem(32);
                 padding: spacing(8.875);
+
+                @include respond-to('desktop') {
+                    padding: spacing(9) spacing(0);
+                }
 
                 &--heading {
                     color: $color-accent-orange;
@@ -96,6 +138,30 @@
                 position: absolute;
                 top: 0;
                 right: 0;
+                place-items: center;
+                transform: translate(59px, -43px);
+                border-radius: 64px;
+                background: $color-accent-yellow;
+                width: rem(112);
+                height: rem(112);
+
+                @include respond-to('desktop') {
+                    display: grid;
+                }
+
+                .fa-ticket-simple {
+                    position: absolute;
+                    transform: scale(1.1, 1.5);
+                    z-index: 1;
+                    color: $color-surface-default;
+                    font-size: rem(32);
+                    line-height: 1;
+                }
+
+                .fa-star {
+                    z-index: 2;
+                    color: $color-accent-yellow;
+                }
             }
         }
     }
