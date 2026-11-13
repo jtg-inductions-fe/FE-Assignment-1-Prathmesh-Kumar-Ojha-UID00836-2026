@@ -261,6 +261,7 @@
 
         &-highlight {
             color: $color-accent-pink;
+            line-height: $line-tight;
 
             @include respond-to('tablet') {
                 margin-right: spacing(3.5);
