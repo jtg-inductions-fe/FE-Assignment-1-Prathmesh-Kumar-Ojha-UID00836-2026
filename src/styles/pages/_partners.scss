@@ -29,10 +29,10 @@
         @include respond-to('desktop') {
             column-gap: spacing(25);
         }
-    }
 
-    &--bottom {
-        justify-content: center;
+        &--bottom {
+            justify-content: center;
+        }
     }
 
     &__section &__logo {
