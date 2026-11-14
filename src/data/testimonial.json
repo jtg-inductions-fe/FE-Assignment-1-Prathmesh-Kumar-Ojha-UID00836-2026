@@ -6,7 +6,8 @@
             "name": "Mark Smith",
             "type": "Travel Enthusiast"
         },
-        "rating": 5
+        "rating": 5,
+        "desc": "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC."
     },
     {
         "id": 2,
@@ -15,7 +16,8 @@
             "name": "Sarah Jones",
             "type": "Solo Traveler"
         },
-        "rating": 4
+        "rating": 4,
+        "desc": "Another great travel experience with seamless planning from start to finish."
     },
     {
         "id": 3,
@@ -24,6 +26,7 @@
             "name": "Prathmesh Ojha",
             "type": "Foody Traveler"
         },
-        "rating": 5
+        "rating": 5,
+        "desc": "Every destination recommended had incredible local food and zero stress."
     }
 ]
