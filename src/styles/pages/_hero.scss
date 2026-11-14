@@ -124,7 +124,7 @@
             flex-shrink: 0;
         }
 
-        &-location-title {
+        &-title {
             font-family: $family-std-bold;
             letter-spacing: rem(-0.25);
             word-spacing: rem(-0.5);
@@ -162,6 +162,7 @@
             bottom: 0;
             justify-content: center;
             align-items: center;
+            transform: translate(55%, var(--location-y));
             box-shadow:
                 0 rem(22) rem(13.5) 0 rgba(0, 0, 0, 0.05),
                 0 rem(40) rem(16) 0 rgba(0, 0, 0, 0.01);
@@ -174,7 +175,6 @@
             @include fluid(gap, 4, 9, 9);
 
             @include fluid(--location-y, -25, -47, -47);
-            transform: translate(55%, var(--location-y));
 
             .hero__decoration-image {
                 @include fluid(width, 12, 22, 22);
@@ -235,9 +235,9 @@
 
         @include fluid(margin-top, 34, 135, 40);
 
-        max-width: 225px;
-        @include respond-to('desktop') {
-        }
+        // @include respond-to('desktop') {
+        //     // max-width: 225px;
+        // }
 
         &-title {
             margin-top: spacing(1);
@@ -279,7 +279,9 @@
         color: $color-text-low-emphasis;
         line-height: 1.5;
         font-family: $family-inter;
+        letter-spacing: -0.5px;
         text-align: center;
+        word-spacing: -0.5px;
 
         @include fluid(margin-top, 22, 40, 40);
         @include fluid(font-size, 17, 18, 18);
@@ -287,16 +289,15 @@
         @include respond-to('tablet') {
             max-width: 450px;
             line-height: 1.6;
-            letter-spacing: rem(0.2);
-            word-spacing: rem(2);
+            letter-spacing: rem(0);
+            word-spacing: rem(0);
         }
 
         @include respond-to('desktop') {
             padding: 0;
             text-align: left;
-            word-spacing: rem(1.75);
 
-            &-break {
+            &-line {
                 &::after {
                     content: '\A';
                     white-space: pre;
@@ -378,11 +379,6 @@
 
         @include fluid('height', 75, 175, 175);
 
-        img {
-            aspect-ratio: 66/169;
-            height: 100%;
-        }
-
         @include respond-to('tablet') {
             display: block;
             transform: translate(30%, 30%);
@@ -391,6 +387,10 @@
         @include respond-to('desktop') {
             display: block;
             transform: translate(35%, 100%);
+        }
+
+        &-image {
+            aspect-ratio: 65/169.95;
         }
     }
 }

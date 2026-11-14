@@ -24,13 +24,13 @@
         @include respond-to('tablet') {
             justify-content: center;
         }
+
+        &--bottom {
+            justify-content: center;
+        }
     }
 
-    &__bottom {
-        justify-content: center;
-    }
-
-    &__logos {
+    &__section &__logo {
         display: block;
         width: auto;
 

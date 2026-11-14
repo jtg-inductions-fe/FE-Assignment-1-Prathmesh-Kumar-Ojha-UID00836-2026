@@ -1,0 +1,11 @@
+@use '../abstracts' as *;
+
+.pink-highlight {
+    padding-left: spacing(0.75);
+    color: $color-accent-pink;
+    font-family: $family-std-bold;
+    text-transform: uppercase;
+
+    @include fluid('font-size', 16, 24, 24);
+    @include fluid('letter-spacing', 3.2, 4, 4);
+}
