@@ -8,14 +8,11 @@ $color-left-pointer: $color-primary-btn;
 .testimonial {
     display: flex;
     position: relative;
-    row-gap: spacing(15.5);
+    row-gap: spacing(15);
     flex-direction: column;
-    align-items: center;
-    padding-top: spacing(0.5);
-    text-align: center;
 
     @include respond-to('tablet') {
-        row-gap: spacing(13.25);
+        row-gap: spacing(12.5);
     }
 
     @include respond-to('desktop') {
@@ -41,8 +38,9 @@ $color-left-pointer: $color-primary-btn;
 
     &__head {
         display: flex;
-        row-gap: spacing(4.75);
+        row-gap: spacing(5);
         flex-direction: column;
+        padding-top: spacing(0.5);
 
         @include respond-to('tablet') {
             row-gap: spacing(5);
@@ -63,6 +61,29 @@ $color-left-pointer: $color-primary-btn;
         }
     }
 
+    &__slider {
+        width: 100%;
+        overflow: hidden;
+    }
+
+    &__card {
+        display: flex;
+        position: relative;
+        row-gap: spacing(16);
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+
+        @include respond-to('tablet') {
+            row-gap: spacing(14);
+            padding-top: 2px;
+        }
+
+        &.swiper-slide {
+            display: flex;
+        }
+    }
+
     &__profile {
         display: flex;
         position: relative;
@@ -74,10 +95,9 @@ $color-left-pointer: $color-primary-btn;
         display: flex;
         row-gap: spacing(8);
         flex-direction: column;
-        padding-top: spacing(0.25);
 
         @include respond-to('tablet') {
-            padding-top: spacing(0.5);
+            // padding-top: spacing(0.5);
         }
 
         &-text {
@@ -110,11 +130,15 @@ $color-left-pointer: $color-primary-btn;
                 color: $color-accent-yellow;
                 font-size: rem(24);
             }
+
+            .fa-regular {
+                font-size: rem(24);
+            }
         }
     }
 
     &__desc {
-        padding-top: spacing(2);
+        padding: spacing(1) 0;
 
         &-content {
             color: $color-text-muted;
@@ -124,6 +148,7 @@ $color-left-pointer: $color-primary-btn;
         }
 
         @include respond-to('tablet') {
+            padding-bottom: 0;
             max-width: 600px;
 
             &-content {
@@ -146,6 +171,12 @@ $color-left-pointer: $color-primary-btn;
             font-size: rem(24);
         }
 
+        &--bullet {
+            transition: color 0.2s ease;
+            cursor: pointer;
+            color: color.change($color-text-primary, $alpha: 0.05);
+        }
+
         &--active {
             color: $color-accent-pink;
         }
@@ -156,22 +187,25 @@ $color-left-pointer: $color-primary-btn;
     }
 
     &__pointers {
-        display: none;
+        display: flex;
         position: absolute;
-        top: 50%;
-        right: 0;
-        left: 0;
+        top: 167.5px;
+        right: -1px;
+        left: -1px;
         justify-content: space-between;
-        transform: translateY(-50%);
         z-index: 2;
         pointer-events: none;
 
         @include respond-to('tablet') {
-            display: flex;
+            top: 287px;
+            right: 0;
+            left: 0;
         }
 
         @include respond-to('desktop') {
-            left: 13px;
+            top: 272px;
+            right: -1px;
+            left: 12px;
             padding-inline: spacing(29.5);
         }
 
@@ -180,18 +214,21 @@ $color-left-pointer: $color-primary-btn;
             align-content: center;
             justify-content: center;
             place-items: center;
+            cursor: pointer;
             border: rem(1) solid;
             border-radius: rem(64);
+            background: none;
             padding: spacing(8);
             width: rem(16);
             height: rem(16);
             pointer-events: auto;
 
             .fa-solid {
-                font-size: rem(10);
+                font-size: rem(12);
             }
 
             @include respond-to('tablet') {
+                border: rem(2) solid;
                 padding: spacing(12);
 
                 .fa-solid {
