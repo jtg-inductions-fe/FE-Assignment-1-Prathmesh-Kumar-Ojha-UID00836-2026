@@ -18,10 +18,35 @@ $color-left-pointer: $color-primary-btn;
         row-gap: spacing(13.25);
     }
 
+    @include respond-to('desktop') {
+        padding-inline: spacing(29.5);
+        padding-left: spacing(32.75);
+
+        &::before {
+            position: absolute;
+            top: spacing(-44);
+            left: 0;
+            opacity: 0.1;
+            z-index: -1;
+            background-image: url('/public/assets/images/illustrations/testimonial-bg.svg');
+            background-position: center;
+            background-size: contain;
+            background-repeat: no-repeat;
+            aspect-ratio: 1440 / 1244;
+            width: 100%;
+            pointer-events: none;
+            content: '';
+        }
+    }
+
     &__head {
         display: flex;
         row-gap: spacing(4.75);
         flex-direction: column;
+
+        @include respond-to('tablet') {
+            row-gap: spacing(5);
+        }
 
         &--content {
             display: flex;
@@ -106,6 +131,10 @@ $color-left-pointer: $color-primary-btn;
                 letter-spacing: spacing(-0.1);
             }
         }
+
+        @include respond-to('desktop') {
+            max-width: 825px;
+        }
     }
 
     &__indicator {
@@ -134,9 +163,16 @@ $color-left-pointer: $color-primary-btn;
         left: 0;
         justify-content: space-between;
         transform: translateY(-50%);
+        z-index: 2;
+        pointer-events: none;
 
         @include respond-to('tablet') {
             display: flex;
+        }
+
+        @include respond-to('desktop') {
+            left: 13px;
+            padding-inline: spacing(29.5);
         }
 
         &--control {
@@ -149,6 +185,7 @@ $color-left-pointer: $color-primary-btn;
             padding: spacing(8);
             width: rem(16);
             height: rem(16);
+            pointer-events: auto;
 
             .fa-solid {
                 font-size: rem(10);

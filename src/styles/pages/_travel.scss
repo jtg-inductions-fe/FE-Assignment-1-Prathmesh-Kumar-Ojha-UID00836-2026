@@ -16,6 +16,7 @@
     @include respond-to('desktop') {
         flex-direction: row;
         padding: spacing(31) 0;
+        padding-bottom: spacing(25);
     }
 
     &__bg {
