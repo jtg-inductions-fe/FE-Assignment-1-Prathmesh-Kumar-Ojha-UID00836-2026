@@ -35,4 +35,8 @@ body {
     @include respond-to('tablet') {
         padding-inline: spacing(16);
     }
+
+    @include respond-to('desktop') {
+        padding-inline: spacing(0);
+    }
 }
