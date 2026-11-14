@@ -5,6 +5,7 @@
     position: relative;
     row-gap: spacing(8);
     flex-direction: column;
+    flex-wrap: wrap;
     justify-content: center;
     @include fluid('column-gap', 0, 0, 100);
     @include fluid('margin-top', 64, 128, 176);
