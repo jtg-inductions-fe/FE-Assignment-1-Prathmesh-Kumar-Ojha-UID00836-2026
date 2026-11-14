@@ -12,3 +12,13 @@ html {
     max-width: 100%;
     overflow-x: clip;
 }
+
+.bottom {
+    display: flex;
+    flex-direction: column;
+    padding: spacing(4);
+
+    @include respond-to('tablet') {
+        padding-inline: spacing(16);
+    }
+}
