@@ -10,8 +10,13 @@ $color-left-pointer: $color-primary-btn;
     position: relative;
     row-gap: spacing(15.5);
     flex-direction: column;
-    padding: spacing(4.5) spacing(4);
+    align-items: center;
+    padding-top: spacing(0.5);
     text-align: center;
+
+    @include respond-to('tablet') {
+        row-gap: spacing(13.25);
+    }
 
     &__head {
         display: flex;
@@ -42,15 +47,19 @@ $color-left-pointer: $color-primary-btn;
 
     &__info {
         display: flex;
-        row-gap: 32px;
+        row-gap: spacing(8);
         flex-direction: column;
+        padding-top: spacing(0.25);
+
+        @include respond-to('tablet') {
+            padding-top: spacing(0.5);
+        }
 
         &-text {
             display: flex;
             column-gap: spacing(1.75);
             justify-content: center;
             align-items: baseline;
-            padding-top: spacing(0.25);
             line-height: 1.4;
 
             &--content {
@@ -69,34 +78,43 @@ $color-left-pointer: $color-primary-btn;
 
         &-rating {
             display: flex;
-            column-gap: 18px;
+            column-gap: spacing(4.5);
             justify-content: center;
 
             .fa-solid {
                 color: $color-accent-yellow;
-                font-size: 24px;
+                font-size: rem(24);
             }
         }
     }
 
     &__desc {
-        padding-top: 8px;
+        padding-top: spacing(2);
 
         &-content {
             color: $color-text-muted;
-            font-size: 18px;
+            font-size: $size-md;
             line-height: $line-loose;
             font-family: $family-std-book;
+        }
+
+        @include respond-to('tablet') {
+            max-width: 600px;
+
+            &-content {
+                font-size: rem(24);
+                letter-spacing: spacing(-0.1);
+            }
         }
     }
 
     &__indicator {
         display: flex;
-        column-gap: 18px;
+        column-gap: spacing(4.5);
         justify-content: center;
 
         .fa-solid {
-            font-size: 24px;
+            font-size: rem(24);
         }
 
         &--active {
@@ -126,14 +144,22 @@ $color-left-pointer: $color-primary-btn;
             align-content: center;
             justify-content: center;
             place-items: center;
-            border: 1px solid;
-            border-radius: 64px;
-            padding: 31px;
-            width: 16px;
-            height: 16px;
+            border: rem(1) solid;
+            border-radius: rem(64);
+            padding: spacing(8);
+            width: rem(16);
+            height: rem(16);
 
             .fa-solid {
-                font-size: 10px;
+                font-size: rem(10);
+            }
+
+            @include respond-to('tablet') {
+                padding: spacing(12);
+
+                .fa-solid {
+                    font-size: $size-bs;
+                }
             }
         }
 
