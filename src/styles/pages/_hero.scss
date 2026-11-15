@@ -183,16 +183,16 @@
         }
 
         &--profile {
-            right: 50%;
+            right: 30%;
             bottom: 0;
-            transform: translate(11.5%, 192.5%);
+            transform: translate(-7.5%, 5%);
             border-radius: 50%;
             background: $color-accent-orange;
 
             @include fluid(padding, 9, 19, 19);
 
             @include respond-to('tablet') {
-                transform: translate(rem(8), rem(122));
+                transform: translate(-2.5%, 10%);
             }
 
             .hero__decoration-image {
@@ -252,7 +252,8 @@
         color: black;
         text-align: center;
 
-        @include fluid(margin-top, 19, 47, 47);
+        @include fluid('margin-top', 19, 47, 47);
+        @include fluid('font-size', 40, 56, 69);
 
         @include respond-to('desktop') {
             text-align: left;
@@ -374,8 +375,8 @@
         position: absolute;
         bottom: 0;
         left: 0;
-        height: 173px;
 
+        @include fluid('bottom', 30, 0, 0);
         @include fluid('height', 75, 175, 175);
 
         img {
@@ -391,6 +392,11 @@
         @include respond-to('desktop') {
             display: block;
             transform: translate(35%, 100%);
+        }
+
+        &-image {
+            aspect-ratio: 65/169.95;
+            @include fluid('width', 40, 66, 66);
         }
     }
 }
