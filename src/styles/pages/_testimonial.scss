@@ -3,7 +3,7 @@
 @use '../abstracts' as *;
 @use '../base/utilities' as *;
 
-$color-left-pointer: $color-primary-btn;
+$color-clicked-pointer: $color-primary-btn;
 
 .testimonial {
     display: flex;
@@ -214,8 +214,13 @@ $color-left-pointer: $color-primary-btn;
             align-content: center;
             justify-content: center;
             place-items: center;
+            transition:
+                background-color 400ms ease,
+                border-color 400ms ease,
+                box-shadow 400ms ease;
             cursor: pointer;
             border: rem(1) solid;
+            border-color: color.change($color-text-primary, $alpha: 0.1);
             border-radius: rem(64);
             background: none;
             padding: spacing(8);
@@ -224,7 +229,25 @@ $color-left-pointer: $color-primary-btn;
             pointer-events: auto;
 
             .fa-solid {
+                transition: color 400ms ease;
+                color: $color-text-primary;
                 font-size: rem(12);
+            }
+
+            &:active {
+                box-shadow:
+                    0 0 0 0 rgba(0, 0, 0, 0.08),
+                    0 rem(7) rem(16) 0 rgba(0, 0, 0, 0.07),
+                    0 rem(29) rem(29) 0 rgba(0, 0, 0, 0.06),
+                    0 rem(65) rem(39) 0 rgba(0, 0, 0, 0.04),
+                    0 rem(116) rem(46) 0 rgba(0, 0, 0, 0);
+
+                border-color: $color-clicked-pointer;
+                background-color: $color-clicked-pointer;
+
+                .fa-solid {
+                    color: $color-surface-default;
+                }
             }
 
             @include respond-to('tablet') {
@@ -234,30 +257,6 @@ $color-left-pointer: $color-primary-btn;
                 .fa-solid {
                     font-size: $size-bs;
                 }
-            }
-        }
-
-        &--left {
-            border-color: color.change($color-text-primary, $alpha: 0.1);
-
-            .fa-solid {
-                color: $color-text-primary;
-            }
-        }
-
-        &--right {
-            box-shadow:
-                0 0 0 0 rgba(0, 0, 0, 0.08),
-                0 rem(7) rem(16) 0 rgba(0, 0, 0, 0.07),
-                0 rem(29) rem(29) 0 rgba(0, 0, 0, 0.06),
-                0 rem(65) rem(39) 0 rgba(0, 0, 0, 0.04),
-                0 rem(116) rem(46) 0 rgba(0, 0, 0, 0);
-
-            border-color: $color-left-pointer;
-            background-color: $color-left-pointer;
-
-            .fa-solid {
-                color: $color-surface-default;
             }
         }
 
