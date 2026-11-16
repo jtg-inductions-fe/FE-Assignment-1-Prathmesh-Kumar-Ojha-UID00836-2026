@@ -17,24 +17,7 @@ $color-border-pointer: color.change($color-text-primary, $alpha: 0.1);
     }
 
     @include respond-to('desktop') {
-        padding-inline: spacing(29.5);
-        padding-left: spacing(32.75);
-
-        &::before {
-            position: absolute;
-            top: spacing(-44);
-            left: 0;
-            opacity: 0.1;
-            z-index: -1;
-            background-image: url('/public/assets/images/illustrations/testimonial-bg.svg');
-            background-position: center;
-            background-size: contain;
-            background-repeat: no-repeat;
-            aspect-ratio: 1440 / 1244;
-            width: 100%;
-            pointer-events: none;
-            content: '';
-        }
+        padding: spacing(2) 0;
     }
 
     &__head {
@@ -177,29 +160,28 @@ $color-border-pointer: color.change($color-text-primary, $alpha: 0.1);
         &--active {
             color: $color-accent-pink;
         }
+
+        @include respond-to('desktop') {
+            padding-top: spacing(0.5);
+        }
     }
 
     &__pointers {
         display: flex;
         position: absolute;
-        top: 167.5px;
-        right: -1px;
-        left: -1px;
+        top: 168px;
+        right: 0;
+        left: 0;
         justify-content: space-between;
         z-index: 2;
         pointer-events: none;
 
         @include respond-to('tablet') {
-            top: 287px;
-            right: 0;
-            left: 0;
+            top: 288px;
         }
 
         @include respond-to('desktop') {
-            top: 272px;
-            right: -1px;
-            left: 12px;
-            padding-inline: spacing(29.5);
+            top: spacing(70);
         }
 
         &--control {
@@ -214,11 +196,12 @@ $color-border-pointer: color.change($color-text-primary, $alpha: 0.1);
             cursor: pointer;
             border: rem(1) solid $color-border-pointer;
             border-radius: rem(64);
-            background: none;
-            padding: spacing(8);
+            background-color: $color-surface-default;
             width: rem(16);
             height: rem(16);
             pointer-events: auto;
+
+            @include fluid('padding', 31, 48, 48);
 
             .fa-solid {
                 transition: color 150ms ease;
@@ -244,7 +227,6 @@ $color-border-pointer: color.change($color-text-primary, $alpha: 0.1);
 
             @include respond-to('tablet') {
                 border-width: rem(2);
-                padding: spacing(12);
 
                 .fa-solid {
                     font-size: $size-bs;
