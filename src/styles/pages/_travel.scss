@@ -20,8 +20,8 @@
 
     @include respond-to('desktop') {
         flex-direction: row;
-        padding: spacing(31) 0;
-        padding-bottom: spacing(25);
+        padding: spacing(30) 0;
+        // padding-bottom: spacing(25);
     }
 
     @include ambient-glow($color: $color-accent-yellow, $right: spacing(-50)) {
@@ -33,11 +33,11 @@
     }
 
     &__bg {
+        display: flex;
         width: 100%;
 
         @include respond-to('desktop') {
             flex: 0 1 rem(866);
-            min-width: 0;
             max-width: rem(866);
         }
 
@@ -49,8 +49,10 @@
 
     &__point {
         display: flex;
+        position: relative;
         row-gap: spacing(8);
         flex-direction: column;
+        justify-content: flex-end;
         padding-inline: spacing(5);
         width: 100%;
         text-align: center;
@@ -60,9 +62,11 @@
         }
 
         @include respond-to('desktop') {
+            right: clamp(0rem, calc(-8.675vw + #{rem(124.92)}), rem(36));
             flex: 1 1 rem(455);
-            padding: spacing(3) 0;
-            min-width: 0;
+            padding: 0;
+            padding-top: spacing(4);
+            min-width: rem(480);
             max-width: rem(455);
             text-align: left;
         }
@@ -153,10 +157,9 @@
             &-decorator {
                 display: none;
                 position: absolute;
-                top: 0;
-                right: 0;
+                top: -43px;
+                right: -59px;
                 place-items: center;
-                transform: translate(59px, -43px);
                 border-radius: 64px;
                 background: $color-accent-yellow;
                 width: rem(112);
