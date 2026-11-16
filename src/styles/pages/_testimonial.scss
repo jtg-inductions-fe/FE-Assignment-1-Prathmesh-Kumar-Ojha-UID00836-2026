@@ -4,6 +4,7 @@
 @use '../base/utilities' as *;
 
 $color-clicked-pointer: $color-primary-btn;
+$color-border-pointer: color.change($color-text-primary, $alpha: 0.1);
 
 .testimonial {
     display: flex;
@@ -96,10 +97,6 @@ $color-clicked-pointer: $color-primary-btn;
         row-gap: spacing(8);
         flex-direction: column;
 
-        @include respond-to('tablet') {
-            // padding-top: spacing(0.5);
-        }
-
         &-text {
             display: flex;
             column-gap: spacing(1.75);
@@ -180,10 +177,6 @@ $color-clicked-pointer: $color-primary-btn;
         &--active {
             color: $color-accent-pink;
         }
-
-        &--inactive {
-            color: color.change($color-text-primary, $alpha: 0.05);
-        }
     }
 
     &__pointers {
@@ -219,8 +212,7 @@ $color-clicked-pointer: $color-primary-btn;
                 border-color 150ms ease,
                 box-shadow 150ms ease;
             cursor: pointer;
-            border: rem(1) solid;
-            border-color: color.change($color-text-primary, $alpha: 0.1);
+            border: rem(1) solid $color-border-pointer;
             border-radius: rem(64);
             background: none;
             padding: spacing(8);
@@ -251,7 +243,7 @@ $color-clicked-pointer: $color-primary-btn;
             }
 
             @include respond-to('tablet') {
-                border: rem(2) solid;
+                border-width: rem(2);
                 padding: spacing(12);
 
                 .fa-solid {
