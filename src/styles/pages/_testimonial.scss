@@ -215,9 +215,9 @@ $color-clicked-pointer: $color-primary-btn;
             justify-content: center;
             place-items: center;
             transition:
-                background-color 400ms ease,
-                border-color 400ms ease,
-                box-shadow 400ms ease;
+                background-color 150ms ease,
+                border-color 150ms ease,
+                box-shadow 150ms ease;
             cursor: pointer;
             border: rem(1) solid;
             border-color: color.change($color-text-primary, $alpha: 0.1);
@@ -229,7 +229,7 @@ $color-clicked-pointer: $color-primary-btn;
             pointer-events: auto;
 
             .fa-solid {
-                transition: color 400ms ease;
+                transition: color 150ms ease;
                 color: $color-text-primary;
                 font-size: rem(12);
             }
