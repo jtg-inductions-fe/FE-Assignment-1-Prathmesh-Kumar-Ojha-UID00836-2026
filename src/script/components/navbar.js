@@ -43,8 +43,6 @@ export class Navbar {
 
         if (this.mobileQuery.matches) {
             this.navbar.insertBefore(this.logoLink, this.menu);
-        } else if (this.desktopQuery.matches) {
-            this.navbar.insertBefore(this.menu, this.logoLink);
         } else {
             this.navbar.insertBefore(this.menu, this.logoLink);
         }
