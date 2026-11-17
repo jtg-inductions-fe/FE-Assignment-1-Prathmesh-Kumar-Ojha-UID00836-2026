@@ -6,27 +6,11 @@
     flex-direction: column;
     align-items: center;
     margin-top: spacing(26.625);
-    isolation: isolate;
 
     @include fluid(padding-inline, 0, 110, 100);
 
     @include respond-to('desktop') {
         flex-direction: row-reverse;
-    }
-
-    &::before {
-        position: absolute;
-        top: spacing(-45);
-        left: spacing(-12.5);
-        opacity: 1;
-        z-index: 2;
-        filter: blur(rem(160));
-        border-radius: 50%;
-        background: $color-accent-orange;
-        width: rem(245);
-        height: rem(245);
-        pointer-events: none;
-        content: '';
     }
 
     &__gallery {
@@ -162,6 +146,7 @@
             bottom: 0;
             justify-content: center;
             align-items: center;
+            transform: translate(55%, var(--location-y));
             box-shadow:
                 0 rem(22) rem(13.5) 0 rgba(0, 0, 0, 0.05),
                 0 rem(40) rem(16) 0 rgba(0, 0, 0, 0.01);
@@ -170,11 +155,8 @@
 
             @include fluid(padding-block, 8, 17, 17);
             @include fluid(padding-inline, 16, 32, 32);
-
             @include fluid(gap, 4, 9, 9);
-
             @include fluid(--location-y, -25, -47, -47);
-            transform: translate(55%, var(--location-y));
 
             .hero__decoration-image {
                 @include fluid(width, 12, 22, 22);
@@ -235,8 +217,8 @@
 
         @include fluid(margin-top, 34, 135, 40);
 
-        max-width: 225px;
         @include respond-to('desktop') {
+            // max-width: 225px;
         }
 
         &-title {
