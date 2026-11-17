@@ -32,6 +32,23 @@ export class Navbar {
     }
 
     /**
+     * Synchronizes drawer state, ARIA attributes, layout visibility, and browser history.
+     * @param {boolean} isOpen - Whether the drawer should be open.
+     */
+    setDrawerState = (isOpen) => {
+        this.isDrawerOpen = isOpen;
+        this.menu.setAttribute('aria-expanded', String(isOpen));
+        this.navOverlay.classList.toggle('drawer-overlay--active', isOpen);
+        this.navbar.classList.toggle('navbar--hidden', isOpen);
+
+        if (isOpen) {
+            history.pushState({ isDrawerOpen: true }, '');
+        } else if (history.state?.isDrawerOpen) {
+            history.back();
+        }
+    };
+
+    /**
      * Reorders navbar regions based on the active viewport and drawer state.
      */
     adjustRegions = () => {
@@ -51,10 +68,7 @@ export class Navbar {
             this.navbar.insertBefore(this.navLinkContainer, this.actions);
 
             if (this.isDrawerOpen) {
-                this.isDrawerOpen = false;
-                this.menu.setAttribute('aria-expanded', String(false));
-                this.toggleDrawer(false);
-                this.navbar.classList.remove('navbar--hidden');
+                this.setDrawerState(false);
             }
         } else {
             this.navOverlay.appendChild(this.navLinkContainer);
@@ -69,25 +83,13 @@ export class Navbar {
     };
 
     /**
-     * Synchronizes the drawer overlay class with the requested drawer state.
-     * @param {boolean} isOpen - Whether the drawer overlay should be visible.
-     */
-    toggleDrawer = (isOpen) => {
-        this.navOverlay.classList.toggle('drawer-overlay--active', isOpen);
-    };
-
-    /**
      * Opens the mobile/tablet navigation drawer and updates the button accessibility state.
      */
     openDrawer = () => {
         if (this.isDrawerOpen) return;
 
-        this.isDrawerOpen = true;
-        this.menu.setAttribute('aria-expanded', String(true));
+        this.setDrawerState(true);
         this.backButton.classList.remove('drawer-overlay__icon--rotated');
-        this.toggleDrawer(true);
-        this.navbar.classList.add('navbar--hidden');
-        history.pushState({ isDrawerOpen: true }, '');
     };
 
     /**
@@ -96,21 +98,14 @@ export class Navbar {
     closeDrawer = () => {
         if (!this.isDrawerOpen) return;
 
-        this.isDrawerOpen = false;
-        this.menu.setAttribute('aria-expanded', String(false));
+        this.isDrawerOpen = false; // This prevents double triggers during animation
 
         this.backButton.addEventListener(
             'transitionend',
             (event) => {
                 if (event.propertyName !== 'transform') return;
 
-                this.toggleDrawer(false);
-
-                this.navbar.classList.remove('navbar--hidden');
-
-                if (history.state?.isDrawerOpen) {
-                    history.back();
-                }
+                this.setDrawerState(false);
 
                 setTimeout(() => {
                     this.backButton.classList.remove(
