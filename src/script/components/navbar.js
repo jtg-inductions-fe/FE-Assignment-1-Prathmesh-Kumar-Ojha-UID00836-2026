@@ -79,22 +79,6 @@ export class Navbar {
     };
 
     /**
-     * Attaches click handlers so only the selected navigation link keeps the active style.
-     */
-    handleLinkActive = () => {
-        this.navLinks.forEach((link) => {
-            const setActive = () => {
-                this.navLinks.forEach((item) =>
-                    item.classList.remove('navbar__link--active'),
-                );
-                link.classList.add('navbar__link--active');
-            };
-
-            link.addEventListener('click', setActive);
-        });
-    };
-
-    /**
      * Opens the mobile/tablet navigation drawer and updates the button accessibility state.
      */
     openDrawer = () => {
@@ -163,7 +147,6 @@ export class Navbar {
         this.mobileQuery.addEventListener('change', this.adjustRegions);
         this.desktopQuery.addEventListener('change', this.adjustRegions);
         this.adjustRegions();
-        this.handleLinkActive();
         this.handleDrawer();
         document.documentElement.classList.add('drawer-ready'); // This helps keep the drawer closed when page loads
     };
