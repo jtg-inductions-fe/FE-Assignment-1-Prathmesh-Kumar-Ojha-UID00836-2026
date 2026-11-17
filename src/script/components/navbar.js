@@ -8,14 +8,14 @@ export class Navbar {
      */
     constructor() {
         this.navbar = document.querySelector('.navbar');
-        this.menu = document.querySelector('.navbar__hamburger');
-        this.logoLink = document.querySelector('.navbar__logo-link');
+        this.menu = document.querySelector('.navbar__menu-toggle');
+        this.logoLink = document.querySelector('.navbar__logo');
         this.actions = document.querySelector('.navbar__actions');
-        this.navLinkContainer = document.querySelector('.navbar__links');
+        this.navLinkContainer = document.querySelector('.navbar__list');
         this.navLinks = document.querySelectorAll('.navbar__link');
-        this.navOverlay = document.querySelector('.drawer-overlay');
-        this.back = document.querySelector('.drawer-overlay__close-button');
-        this.backButton = this.back.querySelector('.drawer-overlay__icon');
+        this.navOverlay = document.querySelector('.navbar-drawer');
+        this.back = document.querySelector('.navbar-drawer__close-button');
+        this.backButton = this.back.querySelector('.navbar-drawer__icon');
         this.mobileQuery = window.matchMedia('(width <= 430px)');
         this.desktopQuery = window.matchMedia('(width > 1024px)');
 
@@ -38,7 +38,7 @@ export class Navbar {
     setDrawerState = (isOpen) => {
         this.isDrawerOpen = isOpen;
         this.menu.setAttribute('aria-expanded', String(isOpen));
-        this.navOverlay.classList.toggle('drawer-overlay--active', isOpen);
+        this.navOverlay.classList.toggle('navbar-drawer--active', isOpen);
         this.navbar.classList.toggle('navbar--hidden', isOpen);
 
         if (isOpen) {
@@ -55,7 +55,7 @@ export class Navbar {
         const drawerIsClosed = !this.isDrawerOpen;
 
         if (drawerIsClosed) {
-            this.navOverlay.classList.add('drawer-overlay--resizing');
+            this.navOverlay.classList.add('navbar-drawer--resizing');
         }
 
         if (this.mobileQuery.matches) {
@@ -77,7 +77,7 @@ export class Navbar {
         if (drawerIsClosed) {
             this.navOverlay.getBoundingClientRect();
             requestAnimationFrame(() => {
-                this.navOverlay.classList.remove('drawer-overlay--resizing');
+                this.navOverlay.classList.remove('navbar-drawer--resizing');
             });
         }
     };
@@ -89,7 +89,7 @@ export class Navbar {
         if (this.isDrawerOpen) return;
 
         this.setDrawerState(true);
-        this.backButton.classList.remove('drawer-overlay__icon--rotated');
+        this.backButton.classList.remove('navbar-drawer__icon--rotated');
     };
 
     /**
@@ -98,7 +98,7 @@ export class Navbar {
     closeDrawer = () => {
         if (!this.isDrawerOpen) return;
 
-        this.isDrawerOpen = false; // This prevents double triggers during animation
+        this.isDrawerOpen = false; // Prevents double triggers during animation
 
         this.backButton.addEventListener(
             'transitionend',
@@ -109,14 +109,14 @@ export class Navbar {
 
                 setTimeout(() => {
                     this.backButton.classList.remove(
-                        'drawer-overlay__icon--rotated',
+                        'navbar-drawer__icon--rotated',
                     );
-                }, 200); // This resets the rotation of the #back-button
+                }, 200); // Resets the rotation of the back button
             },
             { once: true },
         );
 
-        this.backButton.classList.add('drawer-overlay__icon--rotated');
+        this.backButton.classList.add('navbar-drawer__icon--rotated');
     };
 
     /**
@@ -141,6 +141,6 @@ export class Navbar {
         this.desktopQuery.addEventListener('change', this.adjustRegions);
         this.adjustRegions();
         this.handleDrawer();
-        document.documentElement.classList.add('drawer-ready'); // This helps keep the drawer closed when page loads
+        document.documentElement.classList.add('drawer-ready'); // Keeps the drawer closed when page loads
     };
 }
