@@ -183,22 +183,11 @@ $_navbar-back-control-background: primitive.$very-light-grey;
             transform: rotate(180deg);
         }
 
-        &__icon {
-            transform: rotate(0deg);
-            transform-origin: center;
-            width: px-to-rem(40);
-            height: px-to-rem(40);
+        &--rotated {
+            transform: rotate(180deg);
 
             @include respond-to('tablet') {
-                transform: rotate(180deg);
-            }
-
-            &--rotated {
-                transform: rotate(180deg);
-
-                @include respond-to('tablet') {
-                    transform: rotate(0deg);
-                }
+                transform: rotate(0deg);
             }
         }
     }
