@@ -5,7 +5,6 @@
     position: relative;
     row-gap: spacing(8);
     flex-direction: column;
-    flex-wrap: wrap;
     justify-content: center;
     @include fluid('column-gap', 0, 0, 100);
     @include fluid('margin-top', 64, 128, 176);
@@ -18,26 +17,26 @@
 
     &__section {
         display: flex;
-
         column-gap: clamp(rem(8), calc(9.74vw - #{rem(15.37)}), rem(26.5));
         max-width: 100%;
+        @include fluid('column-gap', 26.5, 26.5, 100);
 
         @include respond-to('tablet') {
             justify-content: center;
+            @include fluid('column-gap', 26.5, 26.5, 100);
         }
 
         @include respond-to('desktop') {
             column-gap: spacing(25);
         }
+
+        &--bottom {
+            justify-content: center;
+        }
     }
 
-    &__bottom {
-        justify-content: center;
-    }
-
-    &__logos {
+    &__section &__logo {
         max-width: 100%;
-
         height: clamp(rem(11), 4.65vw, rem(20));
 
         @include respond-to('tablet') {

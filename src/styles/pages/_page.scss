@@ -23,17 +23,5 @@ body {
     max-width: 1440px;
     overflow-x: clip;
 
-    &::before {
-        position: absolute;
-        top: 0;
-        left: spacing(-12.5);
-        z-index: 0;
-        filter: blur(rem(160));
-        border-radius: 50%;
-        background: $color-accent-orange;
-        width: rem(245);
-        height: rem(245);
-        pointer-events: none;
-        content: '';
-    }
+    @include ambient-glow($color: $color-accent-orange, $left: spacing(-12.5));
 }
