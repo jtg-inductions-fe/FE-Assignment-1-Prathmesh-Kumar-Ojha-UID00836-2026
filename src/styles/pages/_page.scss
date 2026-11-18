@@ -29,6 +29,7 @@ body {
 .bottom {
     display: flex;
     position: relative;
+    row-gap: spacing(28);
     flex-direction: column;
     width: 100%;
     max-width: 1440px;
