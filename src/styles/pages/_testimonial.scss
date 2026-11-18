@@ -11,6 +11,7 @@ $color-border-pointer: color.change($color-text-primary, $alpha: 0.1);
     position: relative;
     row-gap: spacing(15);
     flex-direction: column;
+    padding: spacing(4);
 
     @include respond-to('tablet') {
         row-gap: spacing(12.5);
@@ -60,7 +61,7 @@ $color-border-pointer: color.change($color-text-primary, $alpha: 0.1);
 
         @include respond-to('tablet') {
             row-gap: spacing(14);
-            padding-top: 2px;
+            padding-top: spacing(0.5);
         }
 
         &.swiper-slide {
@@ -169,19 +170,21 @@ $color-border-pointer: color.change($color-text-primary, $alpha: 0.1);
     &__pointers {
         display: flex;
         position: absolute;
-        top: 168px;
+        top: spacing(42);
         right: 0;
         left: 0;
         justify-content: space-between;
         z-index: 2;
+        padding: spacing(4);
         pointer-events: none;
 
         @include respond-to('tablet') {
-            top: 288px;
+            padding: 0;
+            padding-block: spacing(34);
         }
 
         @include respond-to('desktop') {
-            top: spacing(70);
+            padding-block: spacing(28);
         }
 
         &--control {
