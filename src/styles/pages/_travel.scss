@@ -13,8 +13,8 @@
     @include fluid(row-gap, 40, 88, 48);
 
     @include respond-to('tablet') {
-        overflow-x: clip;
         padding-bottom: spacing(3);
+        overflow-x: clip;
     }
 
     @include respond-to('desktop') {
