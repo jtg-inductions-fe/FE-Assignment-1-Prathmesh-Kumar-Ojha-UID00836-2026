@@ -361,11 +361,6 @@
         @include fluid('bottom', 30, 0, 0);
         @include fluid('height', 75, 175, 175);
 
-        img {
-            aspect-ratio: 66/169;
-            height: 100%;
-        }
-
         @include respond-to('tablet') {
             display: block;
             transform: translate(30%, 30%);
@@ -376,8 +371,9 @@
             transform: translate(35%, 100%);
         }
 
-        &-image {
+        &--image {
             aspect-ratio: 65/169.95;
+
             @include fluid('width', 40, 66, 66);
         }
     }
