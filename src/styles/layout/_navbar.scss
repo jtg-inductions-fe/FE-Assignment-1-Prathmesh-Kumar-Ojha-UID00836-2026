@@ -3,7 +3,7 @@
 @use '../components/buttons';
 
 // Navbar-specific colors
-$_drawer-overlay-close-button-background: primitive.$very-light-grey;
+$_navbar-back-control-background: primitive.$very-light-grey;
 
 .navbar-wrapper {
     width: 100%;
@@ -162,7 +162,7 @@ $_drawer-overlay-close-button-background: primitive.$very-light-grey;
         flex-direction: column;
         margin: spacing(5.75) 0;
         border-radius: spacing(2);
-        background-color: $_drawer-overlay-close-button-background;
+        background-color: $_navbar-back-control-background;
         width: min-content;
         height: fit-content;
 
