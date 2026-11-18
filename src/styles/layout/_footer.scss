@@ -1,0 +1,35 @@
+@use '../abstracts' as *;
+
+.footer {
+    padding-inline: spacing(8) spacing(2);
+
+    &__main {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__info {
+        display: flex;
+        row-gap: 32px;
+        flex-direction: column;
+    }
+
+    &__brand {
+        display: flex;
+        column-gap: 16px;
+        align-items: center;
+    }
+
+    &__title {
+        font-size: 25px;
+        font-family: $family-std-bold;
+    }
+
+    &__description {
+        color: $color-text-low-emphasis;
+        font-size: 17px;
+        line-height: $line-loose;
+        font-family: $family-std-book;
+        letter-spacing: spacing(-0.1);
+    }
+}
