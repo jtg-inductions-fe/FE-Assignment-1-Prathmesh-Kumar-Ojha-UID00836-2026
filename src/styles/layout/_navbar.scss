@@ -25,10 +25,6 @@ $_navbar-back-control-background: primitive.$very-light-grey;
     font-size: $size-sm;
     font-family: $family-std-bold;
 
-    @include fluid(padding-top, 39, 34, 67);
-    @include fluid(padding-left, 0, 52, 114);
-    @include fluid(padding-right, 4, 48, 101);
-
     &--hidden {
         visibility: hidden;
     }
