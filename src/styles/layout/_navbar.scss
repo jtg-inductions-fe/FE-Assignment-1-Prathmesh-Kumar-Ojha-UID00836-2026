@@ -7,6 +7,7 @@ $_navbar-back-control-background: primitive.$very-light-grey;
 
 .navbar-wrapper {
     width: 100%;
+    max-width: 1440px;
 
     @include fluid(padding-top, 39, 34, 67);
     @include fluid(padding-left, 16, 68, 130);
