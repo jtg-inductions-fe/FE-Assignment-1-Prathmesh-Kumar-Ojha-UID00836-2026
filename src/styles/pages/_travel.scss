@@ -3,6 +3,7 @@
 
 .travel {
     display: flex;
+    position: relative;
     row-gap: spacing(10);
     flex-direction: column;
     padding: spacing(28) 0;
@@ -11,9 +12,21 @@
 
     @include fluid(row-gap, 40, 88, 48);
 
+    @include respond-to('tablet') {
+        overflow-x: clip;
+    }
+
     @include respond-to('desktop') {
         flex-direction: row;
         padding: spacing(31) 0;
+    }
+
+    @include ambient-glow($color: $color-accent-yellow, $right: spacing(-50)) {
+        display: none;
+
+        @include respond-to('tablet') {
+            display: block;
+        }
     }
 
     &__bg {
