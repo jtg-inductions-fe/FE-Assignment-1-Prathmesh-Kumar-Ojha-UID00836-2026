@@ -270,14 +270,14 @@
         @include respond-to('tablet') {
             max-width: 450px;
             line-height: 1.6;
-            letter-spacing: rem(0.2);
-            word-spacing: rem(2);
+            letter-spacing: 0;
+            word-spacing: 0;
         }
 
         @include respond-to('desktop') {
             padding: 0;
+            max-width: 400px;
             text-align: left;
-            word-spacing: rem(1.75);
 
             &-break {
                 &::after {
