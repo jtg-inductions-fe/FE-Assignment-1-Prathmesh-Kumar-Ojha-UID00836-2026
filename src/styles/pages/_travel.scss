@@ -6,6 +6,8 @@
     row-gap: spacing(10);
     flex-direction: column;
     padding: spacing(28) 0;
+    width: 100%;
+    max-width: 1440px;
 
     @include fluid(row-gap, 40, 88, 48);
 
