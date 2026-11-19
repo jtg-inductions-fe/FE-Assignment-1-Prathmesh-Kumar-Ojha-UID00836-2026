@@ -1,5 +1,25 @@
 * {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    line-height: 1;
+}
+
+ul,
+ol {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+img {
+    object-fit: contain;
+}
+
+button,
+a,
+i {
+    -webkit-tap-highlight-color: transparent;
 }

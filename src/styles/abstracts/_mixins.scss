@@ -1,12 +1,79 @@
 @use 'sass:map';
-@use './breakpoints' as *;
+@use 'sass:meta';
+@use 'sass:math';
 
-/// Mobile-first media query mixin
-/// Compiles to `@media (min-width: ...)`
-/// @param {String | Number} $breakpoint - Name from $breakpoints map
+@use './breakpoints' as *;
+@use './functions' as fn;
+
+/// Applies a fluid property from mobile through tablet and a fixed desktop value.
+/// Mobile and tablet values are unitless pixels interpolated from 430px to 1024px.
+/// Desktop value applies at the configured desktop breakpoint.
+/// @param {String} $property - CSS property to set.
+/// @param {Number} $mobile - Unitless pixel value for mobile.
+/// @param {Number} $tablet - Unitless pixel value for tablet.
+/// @param {Number} $desktop - Unitless pixel value for desktop.
+@mixin fluid($property, $mobile, $tablet, $desktop) {
+    @each $value in $mobile, $tablet, $desktop {
+        @if not math.is-unitless($value) {
+            @error 'fluid() expects unitless pixel values. Received #{$value}.';
+        }
+    }
+
+    $mobile-width: math.div(map.get($breakpoints, 'tablet'), 1px);
+    $tablet-width: math.div(map.get($breakpoints, 'desktop'), 1px);
+    $slope: math.div($tablet - $mobile, $tablet-width - $mobile-width);
+    $intercept: $mobile - ($slope * $mobile-width);
+    $preferred: calc(#{$slope * 100}vw + #{fn.rem($intercept)});
+
+    @if $intercept < 0 {
+        $preferred: calc(#{$slope * 100}vw - #{fn.rem(math.abs($intercept))});
+    }
+
+    & {
+        #{$property}: clamp(
+            #{fn.rem(math.min($mobile, $tablet))},
+            #{$preferred},
+            #{fn.rem(math.max($mobile, $tablet))}
+        );
+    }
+
+    @include respond-to('desktop') {
+        #{$property}: fn.rem($desktop);
+    }
+}
+
+/// Applies a media query using a named breakpoint or a custom minimum width.
+///
+/// Named breakpoints are retrieved from the `$breakpoints` map.
+/// Numeric values are treated as custom minimum viewport widths.
+///
+/// @param {String | Number} $breakpoint
+///   A breakpoint name from `$breakpoints` or a custom length (e.g., 768px).
+///
+/// @content Styles to apply when the viewport meets the breakpoint.
+///
+/// @example scss - Using a named breakpoint
+///   .container {
+///     @include respond-to('tablet') {
+///       padding: 2rem;
+///     }
+///   }
+///
+/// @example scss - Using a custom breakpoint
+///   .container {
+///     @include respond-to(768px) {
+///       padding: 3rem;
+///     }
+///   }
+///
+/// @throw If the breakpoint is neither a configured name nor a number.
 @mixin respond-to($breakpoint) {
     @if map.has-key($breakpoints, $breakpoint) {
-        @media (min-width: map.get($breakpoints, $breakpoint)) {
+        @media (min-width: (map.get($breakpoints, $breakpoint) + 1)) {
+            @content;
+        }
+    } @else if meta.type-of($breakpoint) == 'number' {
+        @media (min-width: $breakpoint) {
             @content;
         }
     } @else {

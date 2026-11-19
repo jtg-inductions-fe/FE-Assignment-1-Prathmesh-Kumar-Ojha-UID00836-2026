@@ -1,0 +1,24 @@
+@use '../abstracts' as *;
+
+html {
+    overflow-x: clip;
+}
+
+body {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    align-items: center;
+    overflow-x: clip;
+}
+
+.container {
+    position: relative;
+    z-index: 1;
+    padding: $size-bs;
+    padding-top: 0;
+    width: 100%;
+    min-width: 240px;
+    max-width: 1440px;
+    overflow-x: clip;
+}
