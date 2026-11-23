@@ -6,19 +6,20 @@
     position: relative;
     row-gap: spacing(10);
     flex-direction: column;
-    padding: spacing(28) 0;
+    padding-block: spacing(28);
     width: 100%;
     max-width: 1440px;
 
-    @include fluid(row-gap, 40, 88, 48);
+    @include fluid(row-gap, 40, 84, 48);
 
     @include respond-to('tablet') {
+        padding-block: spacing(29);
         overflow-x: clip;
     }
 
     @include respond-to('desktop') {
         flex-direction: row;
-        padding: spacing(31) 0;
+        padding-block: spacing(31);
     }
 
     @include ambient-glow($color: $color-accent-yellow, $right: spacing(-50)) {
@@ -72,9 +73,8 @@
 
         &-main {
             display: flex;
+            row-gap: spacing(5);
             flex-direction: column;
-
-            @include fluid('row-gap', 20, 18, 18);
 
             &--title {
                 @extend .pink-highlight;
