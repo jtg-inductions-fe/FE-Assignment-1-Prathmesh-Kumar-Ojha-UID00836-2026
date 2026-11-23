@@ -52,7 +52,6 @@ $color-border-pointer: color.change($color-text-primary, $alpha: 0.1);
     }
 
     &__card {
-        display: flex;
         position: relative;
         row-gap: spacing(16);
         flex-direction: column;
@@ -236,14 +235,6 @@ $color-border-pointer: color.change($color-text-primary, $alpha: 0.1);
                 .fa-solid {
                     font-size: $size-bs;
                 }
-            }
-        }
-
-        &--mobile {
-            display: flex;
-
-            @include respond-to('tablet') {
-                display: none;
             }
         }
     }
