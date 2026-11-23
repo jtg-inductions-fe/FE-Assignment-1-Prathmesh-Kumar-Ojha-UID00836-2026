@@ -59,7 +59,7 @@
 
         @include respond-to('desktop') {
             flex: 1 1 rem(455);
-            padding: 12px 0;
+            padding: spacing(3) 0;
             min-width: 0;
             max-width: rem(455);
             text-align: left;
@@ -75,21 +75,21 @@
             display: flex;
             row-gap: spacing(5);
             flex-direction: column;
+        }
 
-            &--title {
-                @extend .pink-highlight;
+        &-title {
+            @extend .pink-highlight;
 
-                @include respond-to('desktop') {
-                    padding: 0;
-                }
+            @include respond-to('desktop') {
+                padding: 0;
             }
+        }
 
-            &--subtitle {
-                color: $color-text-primary;
+        &-subtitle {
+            color: $color-text-primary;
 
-                @include respond-to('desktop') {
-                    max-width: 500px;
-                }
+            @include respond-to('desktop') {
+                max-width: 500px;
             }
         }
 
@@ -137,18 +137,18 @@
                 @include respond-to('desktop') {
                     padding: spacing(9) spacing(0);
                 }
-
-                &--heading {
-                    color: $color-accent-orange;
-                }
-
-                &--body {
-                    font-size: $size-md;
-                    font-family: $family-inter;
-                }
             }
 
-            &--decorator {
+            &-heading {
+                color: $color-accent-orange;
+            }
+
+            &-body {
+                font-size: $size-md;
+                font-family: $family-inter;
+            }
+
+            &-decorator {
                 display: none;
                 position: absolute;
                 top: 0;
