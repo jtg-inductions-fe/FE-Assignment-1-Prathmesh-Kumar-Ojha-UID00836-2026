@@ -14,11 +14,12 @@ $color-border-pointer: color.change($color-text-primary, $alpha: 0.1);
     padding: spacing(4);
 
     @include respond-to('tablet') {
-        row-gap: spacing(12.5);
+        row-gap: spacing(13);
     }
 
     @include respond-to('desktop') {
-        padding: spacing(2) 0;
+        padding: spacing(0);
+        padding-left: spacing(3.5);
     }
 
     &__head {
@@ -26,20 +27,20 @@ $color-border-pointer: color.change($color-text-primary, $alpha: 0.1);
         row-gap: spacing(5);
         flex-direction: column;
 
-        @include respond-to('tablet') {
-            row-gap: spacing(5);
+        @include respond-to('desktop') {
+            row-gap: spacing(4.5);
         }
 
-        &--content {
+        &-content {
             display: flex;
             justify-content: center;
         }
 
-        &--title {
+        &-title {
             @extend .pink-highlight;
         }
 
-        &--subtitle {
+        &-subtitle {
             color: $color-text-primary;
             font-family: $family-std-bold;
         }
@@ -118,7 +119,7 @@ $color-border-pointer: color.change($color-text-primary, $alpha: 0.1);
     }
 
     &__desc {
-        padding: spacing(1) 0;
+        padding-block: spacing(1);
 
         &-content {
             color: $color-text-muted;
@@ -178,15 +179,17 @@ $color-border-pointer: color.change($color-text-primary, $alpha: 0.1);
         pointer-events: none;
 
         @include respond-to('tablet') {
-            padding: 0;
-            padding-block: spacing(34);
+            padding-inline: spacing(16);
+            padding-block: spacing(33.5, 0);
         }
 
         @include respond-to('desktop') {
-            padding-block: spacing(28);
+            padding-top: spacing(25);
+            padding-right: spacing(29);
+            padding-left: spacing(33);
         }
 
-        &--control {
+        &-control {
             display: grid;
             align-content: center;
             justify-content: center;

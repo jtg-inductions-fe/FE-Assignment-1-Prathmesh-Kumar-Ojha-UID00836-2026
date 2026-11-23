@@ -6,20 +6,20 @@
     position: relative;
     row-gap: spacing(10);
     flex-direction: column;
-    padding-block: spacing(28, 28.5);
+    padding-block: spacing(32, 28);
     width: 100%;
     max-width: 1440px;
 
-    @include fluid(row-gap, 40, 84, 48);
+    @include fluid(row-gap, 40, 88, 48);
 
     @include respond-to('tablet') {
-        padding-bottom: spacing(3);
+        padding-block: spacing(32, 3);
         overflow-x: clip;
     }
 
     @include respond-to('desktop') {
         flex-direction: row;
-        padding: spacing(30) 0;
+        padding-block: spacing(34, 32.5);
     }
 
     @include ambient-glow($color: $color-accent-yellow, $right: spacing(-50)) {
@@ -77,7 +77,7 @@
 
         &-main {
             display: flex;
-            row-gap: spacing(4.5);
+            row-gap: spacing(5);
             flex-direction: column;
         }
 
@@ -139,7 +139,7 @@
                 padding: spacing(8.875);
 
                 @include respond-to('desktop') {
-                    padding: spacing(9) spacing(0);
+                    padding: spacing(9, 0);
                 }
             }
 
