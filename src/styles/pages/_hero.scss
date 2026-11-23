@@ -191,7 +191,7 @@
 
         @include respond-to('desktop') {
             align-items: flex-start;
-            padding: 14px;
+            padding: spacing(3.5);
             max-width: 435px;
         }
     }

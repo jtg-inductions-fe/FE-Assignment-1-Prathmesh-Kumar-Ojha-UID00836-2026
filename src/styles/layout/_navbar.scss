@@ -72,7 +72,7 @@ $_navbar-back-control-background: primitive.$very-light-grey;
         padding-top: spacing(1);
 
         & > :first-child {
-            border-top: 2px solid $color-border-high-emphasis;
+            border-top: rem(2) solid $color-border-high-emphasis;
 
             @include respond-to('desktop') {
                 border: none;
@@ -86,7 +86,7 @@ $_navbar-back-control-background: primitive.$very-light-grey;
     }
 
     &__item {
-        border-bottom: 2px solid $color-border-high-emphasis;
+        border-bottom: rem(2) solid $color-border-high-emphasis;
         padding: spacing(5) 0;
 
         @include respond-to('desktop') {
