@@ -226,7 +226,7 @@ $shadow-button-primary:
         line-height: $line-tight;
         font-family: $family-std-bold;
 
-        @include fluid(margin-top, 34, 135, 40);
+        @include fluid(margin-top, 32, 135, 40);
 
         &-title {
             margin-top: spacing(1);
@@ -241,7 +241,7 @@ $shadow-button-primary:
         color: black;
         text-align: center;
 
-        @include fluid('margin-top', 19, 47, 47);
+        @include fluid('margin-top', 20, 47, 47);
         @include fluid('font-size', 40, 56, 69);
 
         @include respond-to('desktop') {
@@ -267,18 +267,17 @@ $shadow-button-primary:
     &__subtitle {
         padding-right: spacing(0.5);
         color: $color-text-low-emphasis;
-        line-height: 1.5;
+        font-size: 18;
+        line-height: 1.6;
         font-family: $family-inter;
-        letter-spacing: -0.5px;
         text-align: center;
-        word-spacing: -0.5px;
 
-        @include fluid(margin-top, 22, 40, 40);
-        @include fluid(font-size, 17, 18, 18);
+        @include fluid(margin-top, 22, 38, 40);
 
         @include respond-to('tablet') {
-            max-width: rem(450);
-            line-height: 1.6;
+            max-width: rem(490);
+            font-size: 19px;
+            line-height: 1.5;
         }
 
         @include respond-to('desktop') {
@@ -322,7 +321,7 @@ $shadow-button-primary:
             &--primary {
                 box-shadow: $shadow-button-primary;
                 padding-top: spacing(6.75);
-                padding-bottom: spacing(6);
+                padding-bottom: spacing(5.75);
                 color: $color-border-subtle;
 
                 @include respond-to('tablet') {
