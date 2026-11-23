@@ -15,7 +15,6 @@ body {
 .container {
     position: relative;
     justify-content: center;
-    z-index: 1;
     padding: $size-bs;
     padding-top: 0;
     width: 100%;
@@ -27,7 +26,7 @@ body {
         position: absolute;
         top: 0;
         left: spacing(-12.5);
-        z-index: 0;
+        z-index: $z-down;
         filter: blur(rem(160));
         border-radius: 50%;
         background: $color-accent-orange;
