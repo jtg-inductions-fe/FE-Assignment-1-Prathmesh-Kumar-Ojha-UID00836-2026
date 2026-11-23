@@ -45,7 +45,6 @@ $shadow-button-primary:
         justify-content: center;
         align-items: center;
         margin-inline: auto;
-        padding-bottom: spacing(0.25);
         width: 100%;
 
         @include fluid(gap, 16, 31, 32);
@@ -80,7 +79,6 @@ $shadow-button-primary:
             }
 
             &--left {
-                position: relative;
                 flex-direction: column;
 
                 @include fluid(gap, 16, 32, 32);
@@ -94,14 +92,6 @@ $shadow-button-primary:
         &-item {
             position: relative;
             line-height: 0;
-
-            &::after {
-                position: absolute;
-                inset: 0;
-                border-radius: rem(16);
-                pointer-events: none;
-                content: '';
-            }
         }
     }
 
@@ -287,8 +277,6 @@ $shadow-button-primary:
         @include respond-to('tablet') {
             max-width: rem(450);
             line-height: 1.6;
-            letter-spacing: 0;
-            word-spacing: 0;
         }
 
         @include respond-to('desktop') {
@@ -328,10 +316,6 @@ $shadow-button-primary:
         .button {
             gap: spacing(2.5);
 
-            @include respond-to('tablet') {
-                padding: 0;
-            }
-
             &--primary {
                 box-shadow: $shadow-button-primary;
                 padding-top: spacing(6.75);
@@ -366,7 +350,6 @@ $shadow-button-primary:
     &__vector {
         display: none;
         position: absolute;
-        bottom: 0;
         left: 0;
         z-index: $z-down;
 
@@ -379,7 +362,6 @@ $shadow-button-primary:
         }
 
         @include respond-to('desktop') {
-            display: block;
             transform: translate(35%, 100%);
         }
     }
