@@ -1,4 +1,5 @@
 @use 'sass:list';
+@use 'sass:map';
 
 @use '../abstracts' as *;
 
@@ -140,8 +141,15 @@ $shadow-button-primary:
         }
 
         &--plane {
-            // 594px is the distance between the two viewport widths: 1024 - 430 = 594
-            --tablet-progress: clamp(0, calc((100vw - 430px) / 594px), 1);
+            $bp-tablet: map.get($breakpoints, 'tablet');
+            $bp-desktop: map.get($breakpoints, 'desktop');
+            $bp-range: $bp-desktop - $bp-tablet;
+
+            --tablet-progress: clamp(
+                0,
+                calc((100vw - #{$bp-tablet}) / #{$bp-range}),
+                1
+            );
 
             bottom: 0;
             left: 0;
