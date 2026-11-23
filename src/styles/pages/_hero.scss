@@ -373,11 +373,11 @@ $shadow-button-primary:
             display: block;
             transform: translate(35%, 100%);
         }
+    }
 
-        &--image {
-            aspect-ratio: 65/169.95;
+    &__vector &__image {
+        aspect-ratio: 65/169.95;
 
-            @include fluid('width', 40, 66, 66);
-        }
+        @include fluid('width', 40, 66, 66);
     }
 }
