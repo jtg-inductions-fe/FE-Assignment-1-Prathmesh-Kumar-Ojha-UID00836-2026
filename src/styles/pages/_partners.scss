@@ -5,6 +5,7 @@
     row-gap: spacing(8);
     flex-direction: column;
     justify-content: center;
+    padding-inline: $size-bs;
 
     @include fluid('margin-top', 64, 128, 176);
 
