@@ -221,7 +221,7 @@ $shadow-button-primary:
         box-shadow: $shadow-explore;
         border-radius: rem(32);
         background: $color-surface-default;
-        padding: spacing(4.5) spacing(8) spacing(4.5) spacing(8);
+        padding: spacing(4.5, 8);
         color: $color-accent-pink;
         font-size: $size-sm;
         line-height: $line-tight;
@@ -332,7 +332,7 @@ $shadow-button-primary:
 
                 @include respond-to('tablet') {
                     margin-top: spacing(0.5);
-                    padding: spacing(4.75) spacing(8) spacing(4) spacing(8);
+                    padding: spacing(4.75, 8, 4, 8);
                 }
             }
 
@@ -345,7 +345,7 @@ $shadow-button-primary:
 
                 @include respond-to('tablet') {
                     margin: 0;
-                    padding: spacing(4.5) spacing(8);
+                    padding: spacing(4.5, 8);
                 }
             }
 
