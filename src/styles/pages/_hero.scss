@@ -315,6 +315,7 @@ $shadow-button-primary:
 
         .button {
             gap: spacing(2.5);
+            letter-spacing: rem(0.35);
 
             &--primary {
                 box-shadow: $shadow-button-primary;
@@ -324,7 +325,8 @@ $shadow-button-primary:
 
                 @include respond-to('tablet') {
                     margin-top: spacing(0.5);
-                    padding: spacing(4.75, 8, 4, 8);
+                    padding-inline: spacing(8);
+                    padding-block: spacing(5, 3.5);
                 }
             }
 
