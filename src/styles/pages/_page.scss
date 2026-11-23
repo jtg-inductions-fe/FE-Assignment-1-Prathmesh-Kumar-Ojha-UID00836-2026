@@ -15,6 +15,7 @@ body {
 .container {
     position: relative;
     justify-content: center;
+    margin-inline: auto;
     padding: $size-bs;
     padding-top: 0;
     width: 100%;
