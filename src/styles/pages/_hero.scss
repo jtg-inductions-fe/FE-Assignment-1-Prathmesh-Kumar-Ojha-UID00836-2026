@@ -54,7 +54,7 @@ $shadow-button-primary:
 
         &::before {
             position: absolute;
-            z-index: -1;
+            z-index: $z-down;
             background-image: url('/assets/images/illustrations/globe.svg');
             background-position: center;
             background-size: contain;
@@ -117,7 +117,7 @@ $shadow-button-primary:
     &__decoration {
         display: flex;
         position: absolute;
-        z-index: 1;
+        z-index: $z-up;
         box-shadow: $shadow-decoration;
         width: auto;
         height: auto;
@@ -218,6 +218,7 @@ $shadow-button-primary:
         justify-content: center;
         align-items: center;
         gap: spacing(4.5);
+        z-index: $z-up;
         box-shadow: $shadow-explore;
         border-radius: rem(32);
         background: $color-surface-default;
@@ -324,7 +325,6 @@ $shadow-button-primary:
             }
 
             &--primary {
-                z-index: 1;
                 box-shadow: $shadow-button-primary;
                 padding-top: spacing(6.75);
                 padding-bottom: spacing(6);
@@ -337,7 +337,7 @@ $shadow-button-primary:
             }
 
             &--ghost {
-                z-index: 2;
+                z-index: $z-up;
                 margin-top: spacing(6);
                 border: rem(2) solid $color-border-subtle;
                 background: $color-surface-default;
@@ -360,6 +360,7 @@ $shadow-button-primary:
         position: absolute;
         bottom: 0;
         left: 0;
+        z-index: $z-down;
 
         @include fluid('bottom', 30, 0, 0);
         @include fluid('height', 75, 175, 175);
