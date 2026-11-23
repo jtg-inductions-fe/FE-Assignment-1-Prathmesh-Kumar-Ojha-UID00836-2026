@@ -1,3 +1,4 @@
+import { fileURLToPath, URL } from 'node:url';
 import { ViteImageOptimizer } from 'vite-plugin-image-optimizer';
 import { createHtmlPlugin } from 'vite-plugin-html';
 import { defineConfig } from 'vite';
@@ -38,6 +39,11 @@ export default defineConfig(() => {
                         return '[name]-[hash][extname]';
                     },
                 },
+            },
+        },
+        resolve: {
+            alias: {
+                '@': fileURLToPath(new URL('./src', import.meta.url)),
             },
         },
         server: {

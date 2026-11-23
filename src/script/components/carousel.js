@@ -2,7 +2,7 @@ import Swiper from 'swiper';
 import { Navigation, Pagination, Keyboard, A11y } from 'swiper/modules';
 import 'swiper/css';
 
-import data from '../../data/testimonial.json';
+import data from '@/data/testimonial.json';
 
 /**
  * Provides responsive carousel for mobile, tablet, and desktop layouts.

@@ -1,9 +1,9 @@
 /**
  * Bootstraps the application styles, navbar, and testimonial carousel behavior after the DOM is ready.
  */
-import '../styles/main.scss';
-import { Navbar } from './components/navbar';
-import { Carousel } from './components/carousel';
+import '@/styles/main.scss';
+import { Navbar } from '@/script/components/navbar';
+import { Carousel } from '@/script/components/carousel';
 
 /**
  * Initializes UI components once the document has finished loading.
