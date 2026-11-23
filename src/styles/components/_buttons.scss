@@ -10,11 +10,13 @@
     font-family: $family-std-bold;
 
     &--ghost {
+        border: rem(1) solid transparent;
         background-color: transparent;
         color: $color-text-high-emphasis;
     }
 
     &--primary {
+        border: rem(1) solid primitive.$slate-blue;
         background-color: primitive.$slate-blue;
         color: primitive.$white;
     }
