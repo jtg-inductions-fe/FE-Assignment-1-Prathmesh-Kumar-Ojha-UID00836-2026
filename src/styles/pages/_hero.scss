@@ -75,7 +75,7 @@ $shadow-button-primary:
             @include fluid(right, 4, 8, 8);
 
             @include respond-to('tablet') {
-                top: 1px;
+                top: spacing(0.25);
             }
 
             &--left {
@@ -83,9 +83,6 @@ $shadow-button-primary:
                 flex-direction: column;
 
                 @include fluid(gap, 16, 32, 32);
-
-                @include respond-to('tablet') {
-                }
             }
 
             &--right {
@@ -231,10 +228,6 @@ $shadow-button-primary:
         font-family: $family-std-bold;
 
         @include fluid(margin-top, 34, 135, 40);
-
-        @include respond-to('desktop') {
-            // max-width: 225px;
-        }
 
         &-title {
             margin-top: spacing(1);
