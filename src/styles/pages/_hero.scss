@@ -1,4 +1,3 @@
-@use 'sass:list';
 @use 'sass:map';
 
 @use '../abstracts' as *;
@@ -265,19 +264,17 @@ $shadow-button-primary:
     }
 
     &__subtitle {
-        padding-right: spacing(0.5);
         color: $color-text-low-emphasis;
-        font-size: 18;
-        line-height: 1.6;
+        font-size: rem(18);
+        line-height: 1.5;
         font-family: $family-inter;
         text-align: center;
 
-        @include fluid(margin-top, 22, 38, 40);
+        @include fluid(margin-top, 20, 38, 40);
 
         @include respond-to('tablet') {
-            max-width: rem(490);
+            max-width: rem(475);
             font-size: 19px;
-            line-height: 1.5;
         }
 
         @include respond-to('desktop') {
