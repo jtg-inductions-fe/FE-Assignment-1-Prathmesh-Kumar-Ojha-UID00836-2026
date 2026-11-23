@@ -1,4 +1,29 @@
+@use 'sass:list';
+
 @use '../abstracts' as *;
+
+$shadow-common:
+    0 rem(22) rem(13.5) 0 rgba(0, 0, 0, 0.05),
+    0 rem(40) rem(16) 0 rgba(0, 0, 0, 0.01);
+
+$shadow-decoration:
+    0 rem(9.75) rem(9.75) 0 rgba(0, 0, 0, 0.09),
+    0 rem(22) rem(13.5) 0 rgba(0, 0, 0, 0.05),
+    0 rem(40) rem(16) 0 rgba(0, 0, 0, 0.01);
+
+$shadow-explore:
+    0 0 0 0 rgba(0, 0, 0, 0.07),
+    0 rem(34) rem(75) 0 rgba(0, 0, 0, 0.07),
+    0 rem(137) rem(137) 0 rgba(0, 0, 0, 0.06),
+    0 rem(308) rem(185) 0 rgba(0, 0, 0, 0.05),
+    0 rem(548) rem(219) 0 rgba(0, 0, 0, 0.01);
+
+$shadow-button-primary:
+    0 0 0 0 rgba(0, 0, 0, 0.1),
+    0 rem(5) rem(11) 0 rgba(0, 0, 0, 0.1),
+    0 rem(20) rem(20) 0 rgba(0, 0, 0, 0.09),
+    0 rem(45) rem(27) 0 rgba(0, 0, 0, 0.05),
+    0 rem(81) rem(32) 0 rgba(0, 0, 0, 0.01);
 
 .hero {
     display: flex;
@@ -96,10 +121,7 @@
         display: flex;
         position: absolute;
         z-index: 1;
-        box-shadow:
-            0 rem(9.75) rem(9.75) 0 rgba(0, 0, 0, 0.09),
-            0 rem(22) rem(13.5) 0 rgba(0, 0, 0, 0.05),
-            0 rem(40) rem(16) 0 rgba(0, 0, 0, 0.01);
+        box-shadow: $shadow-decoration;
         width: auto;
         height: auto;
 
@@ -147,9 +169,7 @@
             justify-content: center;
             align-items: center;
             transform: translate(55%, var(--location-y));
-            box-shadow:
-                0 rem(22) rem(13.5) 0 rgba(0, 0, 0, 0.05),
-                0 rem(40) rem(16) 0 rgba(0, 0, 0, 0.01);
+            box-shadow: $shadow-common;
             border-radius: rem(32);
             background: $color-surface-default;
 
@@ -201,12 +221,7 @@
         justify-content: center;
         align-items: center;
         gap: spacing(4.5);
-        box-shadow:
-            0 0 0 0 rgba(0, 0, 0, 0.07),
-            0 rem(34) rem(75) 0 rgba(0, 0, 0, 0.07),
-            0 rem(137) rem(137) 0 rgba(0, 0, 0, 0.06),
-            0 rem(308) rem(185) 0 rgba(0, 0, 0, 0.04),
-            0 rem(548) rem(219) 0 rgba(0, 0, 0, 0.01);
+        box-shadow: $shadow-explore;
         border-radius: rem(32);
         background: $color-surface-default;
         padding: spacing(4.5) spacing(8) spacing(4.5) spacing(8);
@@ -317,12 +332,7 @@
 
             &--primary {
                 z-index: 1;
-                box-shadow:
-                    0 0 0 0 rgba(0, 0, 0, 0.1),
-                    0 rem(5) rem(11) 0 rgba(0, 0, 0, 0.1),
-                    0 rem(20) rem(20) 0 rgba(0, 0, 0, 0.09),
-                    0 rem(45) rem(27) 0 rgba(0, 0, 0, 0.05),
-                    0 rem(81) rem(32) 0 rgba(0, 0, 0, 0.01);
+                box-shadow: $shadow-button-primary;
                 padding-top: spacing(6.75);
                 padding-bottom: spacing(6);
                 color: $color-border-subtle;
