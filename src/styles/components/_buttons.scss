@@ -16,8 +16,8 @@
     }
 
     &--primary {
-        border: rem(1) solid primitive.$slate-blue;
-        background-color: primitive.$slate-blue;
+        border: rem(1) solid $color-primary-btn;
+        background-color: $color-primary-btn;
         color: primitive.$white;
     }
 }
