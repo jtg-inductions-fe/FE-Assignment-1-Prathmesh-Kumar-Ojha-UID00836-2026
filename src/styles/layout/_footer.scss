@@ -72,7 +72,7 @@
 
     &__info {
         display: flex;
-        row-gap: spacing(8);
+        row-gap: spacing(9);
         flex-direction: column;
 
         @include respond-to('tablet') {
@@ -95,7 +95,7 @@
 
     &__description {
         color: $color-text-low-emphasis;
-        font-size: rem(17);
+        font-size: rem(16);
         line-height: $line-loose;
         font-family: $family-std-book;
 
@@ -123,7 +123,7 @@
 
     &__links {
         display: flex;
-        row-gap: spacing(19.75);
+        row-gap: spacing(20);
         flex-direction: column;
 
         @include respond-to('tablet') {
