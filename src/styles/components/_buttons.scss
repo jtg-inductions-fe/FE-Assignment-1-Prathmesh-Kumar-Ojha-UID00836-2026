@@ -6,16 +6,18 @@
     justify-content: center;
     align-items: center;
     border-radius: rem(64);
-    padding: spacing(3) spacing(8);
+    padding: spacing(3, 8);
     font-family: $family-std-bold;
 
     &--ghost {
+        border: rem(1) solid transparent;
         background-color: transparent;
         color: $color-text-high-emphasis;
     }
 
     &--primary {
-        background-color: primitive.$slate-blue;
+        border: rem(1) solid $color-primary-btn;
+        background-color: $color-primary-btn;
         color: primitive.$white;
     }
 }

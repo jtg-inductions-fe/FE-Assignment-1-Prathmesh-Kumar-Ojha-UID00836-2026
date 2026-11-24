@@ -92,8 +92,8 @@
 
                 <!-- CTA buttons -->
                 <div class="navbar__actions">
-                    <a href="#" class="button button--ghost">Log In</a>
-                    <a href="#" class="button button--primary">Sign Up</a>
+                    <button class="button button--ghost">Log In</button>
+                    <button class="button button--primary">Sign Up</button>
                 </div>
             </nav>
 
@@ -124,7 +124,131 @@
             </div>
         </div>
 
-        <main class="container"></main>
+        <main class="container">
+            <!-- Hero -->
+            <section class="hero" aria-labelledby="hero-title">
+                <div class="hero__gallery">
+                    <div
+                        class="hero__gallery-column hero__gallery-column--left"
+                    >
+                        <div
+                            class="hero__gallery-item hero__gallery-item--first"
+                        >
+                            <img
+                                src="/assets/images/hero/hero-1.avif"
+                                alt="Santorini coastal village overlooking the sea"
+                                class="hero__image"
+                                id="img-1"
+                            />
+
+                            <div
+                                class="hero__decoration hero__decoration--plane"
+                            >
+                                <img
+                                    class="hero__decoration-image"
+                                    src="/assets/images/illustrations/plane.svg"
+                                    alt="Plane decorator"
+                                />
+                            </div>
+                        </div>
+
+                        <div
+                            class="hero__gallery-item hero__gallery-item--second"
+                        >
+                            <img
+                                src="/assets/images/hero/hero-2.avif"
+                                alt="Traveler enjoying a mountain view"
+                                class="hero__image"
+                                id="img-2"
+                            />
+                        </div>
+                    </div>
+
+                    <div
+                        class="hero__gallery-column hero__gallery-column--right"
+                    >
+                        <div
+                            class="hero__gallery-item hero__gallery-item--third"
+                        >
+                            <img
+                                src="/assets/images/hero/hero-3.avif"
+                                alt="Traveler exploring a city with a backpack"
+                                class="hero__image"
+                                id="img-3"
+                            />
+
+                            <div
+                                class="hero__decoration hero__decoration--location"
+                            >
+                                <img
+                                    class="hero__decoration-image hero__decoration-image--location"
+                                    src="/assets/images/illustrations/location.svg"
+                                    alt="Location decorator"
+                                />
+
+                                <p class="hero__decoration-location-title">
+                                    Top Places
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hero__decoration hero__decoration--profile">
+                        <img
+                            class="hero__decoration-image"
+                            src="/assets/images/illustrations/profile.svg"
+                            alt="Profile decorator"
+                        />
+                    </div>
+                </div>
+
+                <div class="hero__main">
+                    <div class="hero__explore">
+                        <p class="hero__explore-title">Explore the world!</p>
+                        <img
+                            class="hero__explore-image"
+                            src="/assets/images/illustrations/briefcase.svg"
+                            alt="Explore briefcase icon"
+                        />
+                    </div>
+
+                    <h1 class="hero__title" id="hero-title">
+                        Travel
+                        <span class="hero__title-highlight">
+                            top destination
+                        </span>
+                        of the world
+                    </h1>
+
+                    <p class="hero__subtitle">
+                        We always make our customer happy by
+                        <span class="hero__subtitle-break">providing</span> as
+                        many choices as possible
+                    </p>
+
+                    <div class="hero__actions">
+                        <button class="button button--primary" href="#">
+                            Get Started
+                        </button>
+                        <button class="button button--ghost" href="#">
+                            <img
+                                class="button__icon"
+                                src="/assets/images/illustrations/play.svg"
+                                alt="Play icon"
+                            />
+                            <p class="button__text">Watch Demo</p>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="hero__vector">
+                    <img
+                        class="hero__image"
+                        src="/assets/images/illustrations/arrow-decorators.svg"
+                        alt="Arrow decorators"
+                    />
+                </div>
+            </section>
+        </main>
         <script type="module" src="./src/script/index.js"></script>
     </body>
 </html>

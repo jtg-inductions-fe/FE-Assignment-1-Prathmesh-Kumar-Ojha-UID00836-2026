@@ -25,6 +25,9 @@ $size-hero: rem(69);
 
 // Line heights
 $line-tight: 120%;
-$line-height-tight: $line-tight;
 $line-normal: 140%;
 $line-loose: 160%;
+
+// z-indices
+$z-up: 1;
+$z-down: -1;
