@@ -77,14 +77,18 @@
 
     &__links {
         display: flex;
+        row-gap: 79px;
+        flex-direction: column;
 
         @include respond-to('tablet') {
             column-gap: 206px;
+            flex-direction: row;
         }
     }
 
     &__column {
         display: flex;
+        flex-direction: column;
 
         @include respond-to('tablet') {
             row-gap: 36px;
@@ -92,8 +96,10 @@
         }
 
         &--meet {
-            position: relative;
-            right: 24px;
+            @include respond-to('tablet') {
+                position: relative;
+                right: 24px;
+            }
         }
     }
 
@@ -102,9 +108,10 @@
     }
 
     &__list {
-        display: flex;
+        display: none;
 
         @include respond-to('tablet') {
+            display: flex;
             row-gap: 44px;
             flex-direction: column;
         }
