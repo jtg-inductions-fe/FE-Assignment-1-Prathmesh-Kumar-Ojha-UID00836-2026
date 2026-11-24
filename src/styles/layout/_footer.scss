@@ -2,75 +2,75 @@
 
 .footer {
     display: flex;
-    row-gap: 80px;
+    row-gap: spacing(20);
     flex-direction: column;
-    margin-top: 108px;
+    margin-top: spacing(27);
     padding-inline: spacing(8, 2);
 
     @include respond-to('tablet') {
-        row-gap: 64px;
-        margin-top: 206px;
+        row-gap: spacing(16);
+        margin-top: spacing(51.5);
         padding-inline: spacing(3, 2);
     }
 
     @include respond-to('desktop') {
         flex-direction: row;
-        margin-top: 268px;
-        padding-inline: 130px 124px;
+        margin-top: spacing(67);
+        padding-inline: spacing(32.5, 31);
     }
 
     &__main {
         display: flex;
-        row-gap: 30px;
+        row-gap: spacing(7.5);
         flex-direction: column;
 
         @include respond-to('tablet') {
-            row-gap: 32px;
+            row-gap: spacing(8);
         }
 
         @include respond-to('desktop') {
-            row-gap: 62px;
+            row-gap: spacing(15.5);
         }
     }
 
     &__info {
         display: flex;
-        row-gap: 32px;
+        row-gap: spacing(8);
         flex-direction: column;
 
         @include respond-to('tablet') {
-            row-gap: 34px;
+            row-gap: spacing(8.5);
         }
     }
 
     &__brand {
         display: flex;
-        column-gap: 16px;
+        column-gap: spacing(4);
         align-items: center;
     }
 
     &__title {
-        margin-top: 6px;
-        font-size: 24px;
+        margin-top: spacing(1.5);
+        font-size: rem(24);
         font-family: $family-std-bold;
-        letter-spacing: 0.25px;
+        letter-spacing: rem(0.25);
     }
 
     &__description {
         color: $color-text-low-emphasis;
-        font-size: 17px;
+        font-size: rem(17);
         line-height: $line-loose;
         font-family: $family-std-book;
 
         @include respond-to('tablet') {
-            max-width: 900px;
-            font-size: 23px;
+            max-width: rem(900);
+            font-size: rem(23);
         }
     }
 
     &__social {
         display: flex;
-        column-gap: 32px;
+        column-gap: spacing(8);
 
         &-link {
             display: grid;
@@ -78,25 +78,26 @@
             justify-items: center;
             border-radius: 50%;
             background-color: $color-primary-btn;
-            width: 32px;
-            height: 32px;
+            width: rem(32);
+            height: rem(32);
             color: $color-surface-default;
-            font-size: 20px;
+            font-size: rem(20);
         }
     }
 
     &__links {
         display: flex;
-        row-gap: 79px;
+        row-gap: spacing(19.75);
         flex-direction: column;
 
         @include respond-to('tablet') {
-            column-gap: 150px;
             flex-direction: row;
+            justify-content: space-between;
+            max-width: 822px;
         }
 
         @include respond-to('desktop') {
-            column-gap: 38px;
+            column-gap: spacing(9.5);
         }
     }
 
@@ -105,22 +106,22 @@
         flex-direction: column;
 
         @include respond-to('tablet') {
-            row-gap: 36px;
+            row-gap: spacing(9);
         }
 
         @include respond-to('tablet') {
-            min-width: 160px;
+            min-width: rem(160);
         }
 
         &--meet {
             @include respond-to('desktop') {
                 position: relative;
-                row-gap: 32px;
+                row-gap: spacing(8);
             }
 
             .footer__list {
                 @include respond-to('desktop') {
-                    row-gap: 32px;
+                    row-gap: spacing(8);
                 }
             }
 
@@ -134,7 +135,7 @@
         &-container {
             display: flex;
             justify-content: space-between;
-            padding-right: 24px;
+            padding-right: spacing(6);
         }
     }
 
@@ -147,8 +148,8 @@
         justify-content: center;
         align-items: center;
         transition: transform 0.3s ease;
-        width: 24px;
-        height: 24px;
+        width: rem(24);
+        height: rem(24);
 
         @include respond-to('tablet') {
             display: none;
@@ -164,15 +165,15 @@
 
         @include respond-to('tablet') {
             display: flex;
-            row-gap: 44px;
+            row-gap: spacing(11);
             flex-direction: column;
         }
 
         &--visible {
             display: flex;
-            row-gap: 20px;
+            row-gap: spacing(5);
             flex-direction: column;
-            padding-top: 20px;
+            padding-top: spacing(5);
         }
     }
 
@@ -180,7 +181,7 @@
         color: $color-text-muted;
 
         @include respond-to('tablet') {
-            font-size: 18px;
+            font-size: rem(18);
         }
     }
 
@@ -188,12 +189,12 @@
         display: flex;
 
         @include respond-to('tablet') {
-            row-gap: 18px;
+            row-gap: spacing(4.5);
             flex-direction: column;
         }
 
         @include respond-to('desktop') {
-            row-gap: 10px;
+            row-gap: spacing(2.5);
 
             &__line {
                 line-height: 1.6;
