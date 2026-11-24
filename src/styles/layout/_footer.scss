@@ -7,16 +7,30 @@
     margin-top: 108px;
     padding-inline: spacing(8, 2);
 
+    @include respond-to('tablet') {
+        row-gap: 64px;
+        margin-top: 206px;
+        padding-inline: spacing(3, 2);
+    }
+
     &__main {
         display: flex;
         row-gap: 30px;
         flex-direction: column;
+
+        @include respond-to('tablet') {
+            row-gap: 32px;
+        }
     }
 
     &__info {
         display: flex;
         row-gap: 32px;
         flex-direction: column;
+
+        @include respond-to('tablet') {
+            row-gap: 34px;
+        }
     }
 
     &__brand {
@@ -37,7 +51,11 @@
         font-size: 17px;
         line-height: $line-loose;
         font-family: $family-std-book;
-        letter-spacing: spacing(-0.1);
+
+        @include respond-to('tablet') {
+            max-width: 900px;
+            font-size: 23px;
+        }
     }
 
     &__social {
@@ -54,6 +72,58 @@
             height: 32px;
             color: $color-surface-default;
             font-size: 20px;
+        }
+    }
+
+    &__links {
+        display: flex;
+
+        @include respond-to('tablet') {
+            column-gap: 206px;
+        }
+    }
+
+    &__column {
+        display: flex;
+
+        @include respond-to('tablet') {
+            row-gap: 36px;
+            flex-direction: column;
+        }
+
+        &--meet {
+            position: relative;
+            right: 24px;
+        }
+    }
+
+    &__heading {
+        color: $color-text-primary;
+    }
+
+    &__list {
+        display: flex;
+
+        @include respond-to('tablet') {
+            row-gap: 44px;
+            flex-direction: column;
+        }
+    }
+
+    &__item {
+        color: $color-text-muted;
+
+        @include respond-to('tablet') {
+            font-size: 18px;
+        }
+    }
+
+    .address {
+        display: flex;
+
+        @include respond-to('tablet') {
+            row-gap: 20px;
+            flex-direction: column;
         }
     }
 }
