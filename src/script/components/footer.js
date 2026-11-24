@@ -1,8 +1,25 @@
+/**
+ * Manages interactive mobile accordion behavior for footer link columns.
+ */
 export class Footer {
+    /**
+     * Initializes the Footer instance and caches the links container element.
+     */
     constructor() {
+        /**
+         * Container element holding all footer navigation columns.
+         * @type {HTMLElement | null}
+         */
         this.footerLinks = document.querySelector('.footer__links');
     }
 
+    /**
+     * Toggles the visibility of a footer column's link list and rotates its reveal icon
+     * when clicked on mobile viewports.
+     *
+     * @param {MouseEvent} event - The click event delegated from the footer links container.
+     * @returns {void}
+     */
     handleReveal = (event) => {
         const trigger = event.target.closest(
             '.footer__reveal, .footer__column-container',
@@ -22,6 +39,11 @@ export class Footer {
         list.classList.toggle('footer__list--visible');
     };
 
+    /**
+     * Attaches delegated event listeners required for footer interactivity.
+     *
+     * @returns {void}
+     */
     init = () => {
         this.footerLinks?.addEventListener('click', this.handleReveal);
     };
