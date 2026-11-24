@@ -15,6 +15,7 @@
 
     @include respond-to('desktop') {
         flex-direction: row;
+        justify-content: space-between;
         margin-top: spacing(67);
         padding-inline: spacing(32.5, 31);
     }
@@ -74,8 +75,7 @@
 
         &-link {
             display: grid;
-            align-content: center;
-            justify-items: center;
+            place-items: center;
             border-radius: 50%;
             background-color: $color-primary-btn;
             width: rem(32);
@@ -93,7 +93,7 @@
         @include respond-to('tablet') {
             flex-direction: row;
             justify-content: space-between;
-            max-width: 822px;
+            max-width: rem(822);
         }
 
         @include respond-to('desktop') {
@@ -107,26 +107,18 @@
 
         @include respond-to('tablet') {
             row-gap: spacing(9);
-        }
-
-        @include respond-to('tablet') {
             min-width: rem(160);
         }
 
         &--meet {
             @include respond-to('desktop') {
-                position: relative;
                 row-gap: spacing(8);
-            }
 
-            .footer__list {
-                @include respond-to('desktop') {
+                .footer__list {
                     row-gap: spacing(8);
                 }
-            }
 
-            .footer__item {
-                @include respond-to('desktop') {
+                .footer__item {
                     line-height: 1.6;
                 }
             }
@@ -162,18 +154,18 @@
 
     &__list {
         display: none;
-
-        @include respond-to('tablet') {
-            display: flex;
-            row-gap: spacing(11);
-            flex-direction: column;
-        }
+        flex-direction: column;
 
         &--visible {
             display: flex;
             row-gap: spacing(5);
-            flex-direction: column;
             padding-top: spacing(5);
+        }
+
+        @include respond-to('tablet') {
+            display: flex;
+            row-gap: spacing(11);
+            padding-top: 0;
         }
     }
 
@@ -185,12 +177,16 @@
         }
     }
 
+    &__link {
+        color: $color-text-muted;
+    }
+
     .address {
         display: flex;
+        flex-direction: column;
 
         @include respond-to('tablet') {
             row-gap: spacing(4.5);
-            flex-direction: column;
         }
 
         @include respond-to('desktop') {
