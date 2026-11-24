@@ -2,6 +2,7 @@
 
 .footer {
     display: flex;
+    position: relative;
     row-gap: spacing(20);
     flex-direction: column;
     margin-top: spacing(27);
@@ -12,6 +13,21 @@
         row-gap: spacing(16);
         margin-top: spacing(51.5);
         padding-inline: spacing(3, 2);
+
+        &::before {
+            position: absolute;
+            right: 0;
+            bottom: 1.25%;
+            z-index: $z-down;
+            background-image: url('/assets/images/illustrations/footer-bg.svg');
+            background-position: center;
+            background-size: contain;
+            background-repeat: no-repeat;
+            aspect-ratio: 118 / 349;
+            height: rem(350);
+            pointer-events: none;
+            content: '';
+        }
     }
 
     @include respond-to('desktop') {
@@ -19,10 +35,15 @@
         justify-content: space-between;
         margin-top: spacing(67);
         padding-inline: spacing(32.5, 31);
+
+        &::before {
+            bottom: spacing(-5);
+        }
     }
 
     &__main {
         display: flex;
+        position: relative;
         row-gap: spacing(7.5);
         flex-direction: column;
 
@@ -32,6 +53,21 @@
 
         @include respond-to('desktop') {
             row-gap: spacing(15.5);
+            &::before {
+                position: absolute;
+                top: -60%;
+                left: 0;
+                opacity: 0.1;
+                z-index: $z-down;
+                background-image: url('/assets/images/illustrations/dots.svg');
+                background-position: center;
+                background-size: contain;
+                background-repeat: no-repeat;
+                aspect-ratio: 118 / 349;
+                height: rem(350);
+                pointer-events: none;
+                content: '';
+            }
         }
     }
 
