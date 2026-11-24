@@ -143,8 +143,19 @@
     }
 
     &__reveal {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: transform 0.3s ease;
+        width: 24px;
+        height: 24px;
+
         @include respond-to('tablet') {
             display: none;
+        }
+
+        &--active {
+            transform: rotate(180deg);
         }
     }
 
@@ -155,6 +166,13 @@
             display: flex;
             row-gap: 44px;
             flex-direction: column;
+        }
+
+        &--visible {
+            display: flex;
+            row-gap: 20px;
+            flex-direction: column;
+            padding-top: 20px;
         }
     }
 
