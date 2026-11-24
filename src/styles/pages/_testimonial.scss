@@ -15,11 +15,33 @@ $color-border-pointer: color.change($color-text-primary, $alpha: 0.1);
 
     @include respond-to('tablet') {
         row-gap: spacing(13);
+
+        &::before {
+            position: absolute;
+            top: spacing(-55);
+            left: 0;
+            opacity: 0.1;
+            z-index: -10;
+            background-image: url('/assets/images/illustrations/testimonial-bg-tab.svg');
+            background-position: center;
+            background-size: contain;
+            background-repeat: no-repeat;
+            aspect-ratio: 128 / 157;
+            width: 100%;
+            pointer-events: none;
+            content: '';
+        }
     }
 
     @include respond-to('desktop') {
         padding: spacing(0);
         padding-left: spacing(3.5);
+
+        &::before {
+            top: spacing(-45);
+            background-image: url('/assets/images/illustrations/testimonial-bg-des.svg');
+            aspect-ratio: 1440 / 1244;
+        }
     }
 
     &__head {
