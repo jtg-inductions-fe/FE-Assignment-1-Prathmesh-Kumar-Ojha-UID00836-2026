@@ -13,6 +13,12 @@
         padding-inline: spacing(3, 2);
     }
 
+    @include respond-to('desktop') {
+        flex-direction: row;
+        margin-top: 268px;
+        padding-inline: 130px 124px;
+    }
+
     &__main {
         display: flex;
         row-gap: 30px;
@@ -20,6 +26,10 @@
 
         @include respond-to('tablet') {
             row-gap: 32px;
+        }
+
+        @include respond-to('desktop') {
+            row-gap: 62px;
         }
     }
 
@@ -81,8 +91,12 @@
         flex-direction: column;
 
         @include respond-to('tablet') {
-            column-gap: 206px;
+            column-gap: 150px;
             flex-direction: row;
+        }
+
+        @include respond-to('desktop') {
+            column-gap: 38px;
         }
     }
 
@@ -92,13 +106,28 @@
 
         @include respond-to('tablet') {
             row-gap: 36px;
-            flex-direction: column;
+        }
+
+        @include respond-to('tablet') {
+            min-width: 160px;
         }
 
         &--meet {
-            @include respond-to('tablet') {
+            @include respond-to('desktop') {
                 position: relative;
-                right: 24px;
+                row-gap: 32px;
+            }
+
+            .footer__list {
+                @include respond-to('desktop') {
+                    row-gap: 32px;
+                }
+            }
+
+            .footer__item {
+                @include respond-to('desktop') {
+                    line-height: 1.6;
+                }
             }
         }
     }
@@ -129,8 +158,16 @@
         display: flex;
 
         @include respond-to('tablet') {
-            row-gap: 20px;
+            row-gap: 18px;
             flex-direction: column;
+        }
+
+        @include respond-to('desktop') {
+            row-gap: 10px;
+
+            &__line {
+                line-height: 1.6;
+            }
         }
     }
 }
