@@ -2,21 +2,24 @@
 
 .footer {
     display: flex;
+    position: relative;
     row-gap: spacing(20);
     flex-direction: column;
     margin-top: spacing(27);
     padding-inline: spacing(8, 2);
     padding-bottom: rem(16);
+    width: 100%;
+    max-width: 1920px;
 
     @include respond-to('tablet') {
         row-gap: spacing(16);
         margin-top: spacing(51.5);
-        padding-inline: spacing(3, 2);
+        padding-inline: spacing(16);
 
         &::before {
             position: absolute;
             right: 0;
-            bottom: 1.25%;
+            bottom: 10%;
             z-index: $z-down;
             background-image: url('/assets/images/illustrations/footer-bg.svg');
             background-position: center;

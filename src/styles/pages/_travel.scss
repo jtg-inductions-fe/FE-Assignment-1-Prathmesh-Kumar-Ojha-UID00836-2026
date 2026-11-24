@@ -6,19 +6,19 @@
     position: relative;
     row-gap: spacing(10);
     flex-direction: column;
+    justify-content: space-between;
     padding-block: spacing(32, 28);
     width: 100%;
-    max-width: 1440px;
 
     @include fluid(row-gap, 40, 88, 48);
 
     @include respond-to('tablet') {
         padding-block: spacing(32, 3);
-        overflow-x: clip;
     }
 
     @include respond-to('desktop') {
         flex-direction: row;
+        padding-inline: spacing(0, 23.5);
         padding-block: spacing(34, 32.5);
     }
 

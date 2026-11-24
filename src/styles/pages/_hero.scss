@@ -45,6 +45,7 @@ $shadow-button-primary:
         align-items: center;
         margin-inline: auto;
         width: 100%;
+        max-width: 775px;
 
         @include fluid(gap, 16, 31, 32);
         @include fluid(top, 0, 64, 52);
