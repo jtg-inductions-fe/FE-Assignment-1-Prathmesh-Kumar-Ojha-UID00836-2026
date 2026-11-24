@@ -6,6 +6,7 @@
     flex-direction: column;
     margin-top: spacing(27);
     padding-inline: spacing(8, 2);
+    padding-bottom: rem(16);
 
     @include respond-to('tablet') {
         row-gap: spacing(16);
