@@ -22,7 +22,7 @@ export class Footer {
      */
     handleReveal = (event) => {
         const trigger = event.target.closest(
-            '.footer__reveal, .footer__column-container',
+            '.footer__reveal, .footer__heading',
         );
         if (!trigger) return;
 
