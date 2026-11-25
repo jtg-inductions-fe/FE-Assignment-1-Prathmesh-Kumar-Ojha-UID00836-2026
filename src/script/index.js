@@ -5,6 +5,7 @@ import '@/styles/main.scss';
 import { Navbar } from '@/script/components/navbar';
 import { Carousel } from '@/script/components/carousel';
 import { Footer } from '@/script/components/footer';
+import { Modal } from './components/modal';
 
 /**
  * Initializes UI components once the document has finished loading.
@@ -18,4 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const footer = new Footer();
     footer.init();
+
+    const specialDeals = new Modal();
+    specialDeals.init();
 });
