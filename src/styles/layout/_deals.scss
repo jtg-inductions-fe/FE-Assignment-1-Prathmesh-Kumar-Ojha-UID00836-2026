@@ -16,6 +16,10 @@
     max-height: 553px;
     overflow: clip;
 
+    &:not([open]) {
+        display: none;
+    }
+
     &__header {
         display: flex;
         row-gap: 10px;
