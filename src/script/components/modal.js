@@ -7,7 +7,7 @@ export class Modal {
         document
             .querySelector('.navbar__link--deals')
             .addEventListener('click', () => {
-                this.modal.show();
+                this.modal.showModal();
             });
     };
 }

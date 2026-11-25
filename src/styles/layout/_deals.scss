@@ -4,6 +4,7 @@
     display: flex;
     position: fixed;
     bottom: 0;
+    row-gap: 20px;
     flex-direction: column;
     z-index: 100;
     margin-inline: auto;
@@ -56,5 +57,115 @@
         display: flex;
         margin-top: 2px;
         font-size: 12px;
+    }
+
+    &__wheel {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        &-pointer {
+            display: flex;
+            clip-path: polygon(0 0, 100% 0, 50% 100%);
+            background: $primitive-radical-red;
+            aspect-ratio: 16.22 / 12.98;
+            width: 16px;
+        }
+
+        &-spinner {
+            display: grid;
+            position: relative;
+            bottom: 4px;
+            grid-template-rows: repeat(2, 1fr);
+            grid-template-columns: repeat(2, 1fr);
+            align-items: center;
+            justify-items: center;
+            gap: 4px;
+            transform: rotate(45deg);
+            box-shadow: 0 0 3.125rem 0.4375rem rgba(0, 0, 0, 0.25);
+            border-radius: 250px;
+            padding: 5px;
+            width: 228px;
+            height: 228px;
+        }
+
+        &-prize {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+            color: $color-surface-default;
+            font-weight: 700;
+            font-size: 12px;
+            text-align: center;
+
+            span {
+                padding-top: 14px;
+                width: 80px;
+                line-height: 1.4;
+            }
+
+            &--red {
+                border-top-left-radius: 250px;
+                background: $primitive-radical-red;
+
+                span {
+                    transform: rotate(-45deg);
+                }
+            }
+
+            &--violet {
+                border-top-right-radius: 250px;
+                background: $primitive-blue-violet;
+
+                span {
+                    transform: rotate(45deg);
+                }
+            }
+
+            &--blue {
+                border-bottom-left-radius: 250px;
+                background: $primitive-iris-blue;
+
+                span {
+                    transform: rotate(-135deg);
+                }
+            }
+
+            &--yellow {
+                border-bottom-right-radius: 250px;
+                background: $primitive-moon-yellow;
+                color: $primitive-black;
+
+                span {
+                    transform: rotate(135deg);
+                }
+            }
+        }
+
+        &-center {
+            position: absolute;
+            border-radius: 50%;
+            background: $primitive-radical-red;
+            padding: 4px;
+            width: 44px;
+            height: 44px;
+
+            &-text {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border-radius: 50%;
+                background: $color-surface-default;
+                padding: 2px;
+                width: 100%;
+                height: 100%;
+                color: $primitive-radical-red;
+                font-weight: 700;
+                font-size: 10px;
+            }
+        }
     }
 }
