@@ -1,11 +1,13 @@
 @use '../abstracts' as *;
 
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
+
 .deals {
     display: flex;
     position: fixed;
     top: auto;
     bottom: 0;
-    row-gap: 20px;
+    row-gap: 18px;
     flex-direction: column;
     z-index: 100;
     margin-inline: auto;
@@ -75,6 +77,7 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        margin-top: 2px;
 
         &-pointer {
             display: flex;
@@ -176,6 +179,80 @@
                 color: $primitive-radical-red;
                 font-weight: 700;
                 font-size: 10px;
+            }
+        }
+    }
+
+    &__win {
+        display: flex;
+        row-gap: 10px;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+
+        &-message {
+            font-weight: 700;
+            font-size: 12px;
+            word-spacing: 2px;
+        }
+
+        &-prize {
+            display: flex;
+            justify-content: space-between;
+            border: 1px solid rgba($color: $primitive-radical-red, $alpha: 0.2);
+            border-radius: 16px;
+            padding: 16px;
+        }
+
+        &-text {
+            display: flex;
+            row-gap: 6px;
+            flex-direction: column;
+        }
+
+        &-name {
+            display: flex;
+            font-weight: 700;
+            font-size: 14px;
+            letter-spacing: -0.25px;
+        }
+
+        &-duration {
+            display: flex;
+            color: $primitive-blue-violet;
+            font-size: 12px;
+        }
+
+        &-coupon {
+            display: flex;
+            column-gap: 20px;
+        }
+
+        &-code {
+            display: flex;
+            border: 1px solid black;
+            border-radius: 4px;
+            padding: 3px 8px 16px 10px;
+            height: 16px;
+            font-weight: 700;
+            font-size: 12px;
+            font-family: 'Roboto Mono', monospace;
+            letter-spacing: 5%;
+        }
+
+        &-copy {
+            display: grid;
+            align-items: center;
+            justify-items: center;
+            transform: rotate(90deg);
+            padding: 6px;
+            width: 16px;
+            height: 16px;
+            color: rgba($color: $primitive-radical-red, $alpha: 0.2);
+
+            .fa-clone {
+                width: 16px;
+                height: 16px;
             }
         }
     }
