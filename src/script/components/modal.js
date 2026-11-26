@@ -3,11 +3,17 @@ export class Modal {
         this.modal = document.querySelector('.deals');
     }
 
-    init = () => {
+    handleOpen = () => {
         document
             .querySelector('.navbar__link--deals')
             .addEventListener('click', () => {
-                this.modal.showModal();
+                setTimeout(() => {
+                    this.modal.show();
+                }, 450);
             });
+    };
+
+    init = () => {
+        this.handleOpen();
     };
 }
