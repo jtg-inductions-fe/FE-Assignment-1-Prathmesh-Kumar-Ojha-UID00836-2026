@@ -102,17 +102,7 @@
 ///     @include ambient-glow($color: $color-accent-orange, $left: spacing(-12.5));
 ///   }
 ///
-/// @example scss - Responsive glow with custom content rules
-///   .travel {
-///     position: relative;
-///     @include ambient-glow($color: $color-accent-yellow, $right: spacing(-50)) {
-///       display: none;
 ///
-///       @include respond-to('tablet') {
-///         display: block;
-///       }
-///     }
-///   }
 @mixin ambient-glow(
     $color,
     $top: 0,
