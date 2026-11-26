@@ -46,6 +46,7 @@
         "sharp@0.33.5": true
     },
     "dependencies": {
+        "motion": "^14.14.0",
         "swiper": "^14.4.0"
     }
 }
