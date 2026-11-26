@@ -4,6 +4,7 @@
 
 @use './breakpoints' as *;
 @use './functions' as fn;
+@use './variables' as var;
 
 /// Applies a fluid property from mobile through tablet and a fixed desktop value.
 /// Mobile and tablet values are unitless pixels interpolated from 430px to 1024px.
@@ -78,5 +79,52 @@
         }
     } @else {
         @error "Breakpoint '#{$breakpoint}' not found in $breakpoints map. Available: #{map.keys($breakpoints)}";
+    }
+}
+
+/// Renders a decorative blurred circular glow using a `::before` pseudo-element.
+///
+/// The parent element should establish a positioning context (e.g., `position: relative`).
+/// Additional overrides or responsive visibility rules can be passed via `@content`.
+///
+/// @param {Color} $color - Background color of the glow.
+/// @param {Length} $top [0] - Top offset relative to the parent element.
+/// @param {Length | String} $left [auto] - Left offset relative to the parent element.
+/// @param {Length | String} $right [auto] - Right offset relative to the parent element.
+/// @param {Length} $size [fn.rem(245)] - Width and height of the circular glow.
+/// @param {Length} $blur [fn.rem(160)] - Blur radius applied to the glow.
+///
+/// @content Optional styles or media queries applied inside the `::before` pseudo-element.
+///
+/// @example scss - Basic left-aligned glow
+///   .hero {
+///     position: relative;
+///     @include ambient-glow($color: $color-accent-orange, $left: spacing(-12.5));
+///   }
+///
+///
+@mixin ambient-glow(
+    $color,
+    $top: 0,
+    $left: auto,
+    $right: auto,
+    $size: fn.rem(245),
+    $blur: fn.rem(160)
+) {
+    &::before {
+        position: absolute;
+        top: $top;
+        right: $right;
+        left: $left;
+        z-index: var.$z-down;
+        filter: blur($blur);
+        border-radius: 50%;
+        background: $color;
+        width: $size;
+        height: $size;
+        pointer-events: none;
+        content: '';
+
+        @content;
     }
 }

@@ -1,4 +1,3 @@
-@use 'sass:list';
 @use 'sass:map';
 
 @use '../abstracts' as *;
@@ -118,7 +117,7 @@ $shadow-button-primary:
             flex-shrink: 0;
         }
 
-        &-location-title {
+        &-title {
             font-family: $family-std-bold;
             letter-spacing: rem(-0.25);
             word-spacing: rem(-0.5);
@@ -226,7 +225,7 @@ $shadow-button-primary:
         line-height: $line-tight;
         font-family: $family-std-bold;
 
-        @include fluid(margin-top, 34, 135, 40);
+        @include fluid(margin-top, 32, 135, 40);
 
         &-title {
             margin-top: spacing(1);
@@ -241,7 +240,7 @@ $shadow-button-primary:
         color: black;
         text-align: center;
 
-        @include fluid('margin-top', 19, 47, 47);
+        @include fluid('margin-top', 20, 47, 47);
         @include fluid('font-size', 40, 56, 69);
 
         @include respond-to('desktop') {
@@ -265,18 +264,17 @@ $shadow-button-primary:
     }
 
     &__subtitle {
-        padding-right: spacing(0.5);
         color: $color-text-low-emphasis;
+        font-size: rem(18);
         line-height: 1.5;
         font-family: $family-inter;
         text-align: center;
 
-        @include fluid(margin-top, 22, 40, 40);
-        @include fluid(font-size, 17, 18, 18);
+        @include fluid(margin-top, 20, 38, 40);
 
         @include respond-to('tablet') {
-            max-width: rem(450);
-            line-height: 1.6;
+            max-width: rem(475);
+            font-size: 19px;
         }
 
         @include respond-to('desktop') {
@@ -284,7 +282,7 @@ $shadow-button-primary:
             max-width: rem(400);
             text-align: left;
 
-            &-break {
+            &-line {
                 &::after {
                     content: '\A';
                     white-space: pre;
@@ -320,7 +318,7 @@ $shadow-button-primary:
             &--primary {
                 box-shadow: $shadow-button-primary;
                 padding-top: spacing(6.75);
-                padding-bottom: spacing(6);
+                padding-bottom: spacing(5.75);
                 color: $color-border-subtle;
 
                 @include respond-to('tablet') {
