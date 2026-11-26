@@ -1,0 +1,263 @@
+@use 'sass:color';
+
+@use '../abstracts' as *;
+@use '../base/utilities' as *;
+
+$color-clicked-pointer: $color-primary-btn;
+$color-border-pointer: color.change($color-text-primary, $alpha: 0.1);
+
+.testimonial {
+    display: flex;
+    position: relative;
+    row-gap: spacing(15.5);
+    flex-direction: column;
+    padding: spacing(4);
+
+    @include respond-to('tablet') {
+        row-gap: spacing(13);
+
+        &::before {
+            position: absolute;
+            top: spacing(-55);
+            left: 0;
+            opacity: 0.1;
+            z-index: -10;
+            background-image: url('/assets/images/illustrations/testimonial-bg-tab.svg');
+            background-position: center;
+            background-size: contain;
+            background-repeat: no-repeat;
+            aspect-ratio: 128 / 157;
+            width: 100%;
+            pointer-events: none;
+            content: '';
+        }
+    }
+
+    @include respond-to('desktop') {
+        padding: spacing(0);
+        padding-left: spacing(3.5);
+
+        &::before {
+            top: spacing(-45);
+            background-image: url('/assets/images/illustrations/testimonial-bg-des.svg');
+            aspect-ratio: 1440 / 1244;
+        }
+    }
+
+    &__head {
+        display: flex;
+        row-gap: spacing(5);
+        flex-direction: column;
+
+        @include respond-to('desktop') {
+            row-gap: spacing(4.5);
+        }
+
+        &-content {
+            display: flex;
+            justify-content: center;
+        }
+
+        &-title {
+            @extend .pink-highlight;
+        }
+
+        &-subtitle {
+            color: $color-text-primary;
+            font-family: $family-std-bold;
+        }
+    }
+
+    &__slider {
+        width: 100%;
+        overflow: hidden;
+    }
+
+    &__card {
+        position: relative;
+        row-gap: spacing(16);
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+
+        @include respond-to('tablet') {
+            row-gap: spacing(14);
+            padding-top: spacing(0.5);
+        }
+
+        &.swiper-slide {
+            display: flex;
+        }
+    }
+
+    &__profile {
+        display: flex;
+        position: relative;
+        justify-content: center;
+        width: 100%;
+    }
+
+    &__info {
+        display: flex;
+        row-gap: spacing(8);
+        flex-direction: column;
+
+        &-text {
+            display: flex;
+            column-gap: spacing(1.75);
+            justify-content: center;
+            align-items: baseline;
+            line-height: 1.4;
+
+            &--content {
+                display: inline-block;
+                line-height: inherit;
+            }
+
+            &--name {
+                color: $color-accent-orange;
+            }
+
+            &--type {
+                color: $color-text-muted;
+            }
+        }
+
+        &-rating {
+            display: flex;
+            column-gap: spacing(4.5);
+            justify-content: center;
+
+            .fa-solid {
+                color: $color-accent-yellow;
+                font-size: rem(24);
+            }
+
+            .fa-regular {
+                font-size: rem(24);
+            }
+        }
+    }
+
+    &__desc {
+        padding-block: spacing(1);
+
+        &-content {
+            color: $color-text-muted;
+            font-size: $size-md;
+            line-height: $line-loose;
+            font-family: $family-std-book;
+        }
+
+        @include respond-to('tablet') {
+            padding-bottom: 0;
+            max-width: 600px;
+
+            &-content {
+                font-size: rem(24);
+                letter-spacing: spacing(-0.1);
+            }
+        }
+
+        @include respond-to('desktop') {
+            max-width: 825px;
+        }
+    }
+
+    &__indicator {
+        display: flex;
+        column-gap: spacing(4.5);
+        justify-content: center;
+
+        .fa-solid {
+            font-size: rem(24);
+        }
+
+        &--bullet {
+            transition: color 0.2s ease;
+            cursor: pointer;
+            color: color.change($color-text-primary, $alpha: 0.05);
+        }
+
+        &--active {
+            color: $color-accent-pink;
+        }
+
+        @include respond-to('desktop') {
+            padding-top: spacing(0.5);
+        }
+    }
+
+    &__pointers {
+        display: flex;
+        position: absolute;
+        top: spacing(42);
+        right: 0;
+        left: 0;
+        justify-content: space-between;
+        z-index: 2;
+        padding: spacing(4);
+        pointer-events: none;
+
+        @include respond-to('tablet') {
+            padding-inline: spacing(16);
+            padding-block: spacing(33.5, 0);
+        }
+
+        @include respond-to('desktop') {
+            padding-top: spacing(25);
+            padding-right: spacing(29);
+            padding-left: spacing(33);
+        }
+
+        &-control {
+            display: grid;
+            align-content: center;
+            justify-content: center;
+            place-items: center;
+            transition:
+                background-color 150ms ease,
+                border-color 150ms ease,
+                box-shadow 150ms ease;
+            cursor: pointer;
+            border: rem(1) solid $color-border-pointer;
+            border-radius: rem(64);
+            background-color: $color-surface-default;
+            width: rem(16);
+            height: rem(16);
+            pointer-events: auto;
+
+            @include fluid('padding', 31, 48, 48);
+
+            .fa-solid {
+                transition: color 150ms ease;
+                color: $color-text-primary;
+                font-size: rem(12);
+            }
+
+            &:active {
+                box-shadow:
+                    0 0 0 0 rgba(0, 0, 0, 0.08),
+                    0 rem(7) rem(16) 0 rgba(0, 0, 0, 0.07),
+                    0 rem(29) rem(29) 0 rgba(0, 0, 0, 0.06),
+                    0 rem(65) rem(39) 0 rgba(0, 0, 0, 0.04),
+                    0 rem(116) rem(46) 0 rgba(0, 0, 0, 0);
+
+                border-color: $color-clicked-pointer;
+                background-color: $color-clicked-pointer;
+
+                .fa-solid {
+                    color: $color-surface-default;
+                }
+            }
+
+            @include respond-to('tablet') {
+                border-width: rem(2);
+
+                .fa-solid {
+                    font-size: $size-bs;
+                }
+            }
+        }
+    }
+}
