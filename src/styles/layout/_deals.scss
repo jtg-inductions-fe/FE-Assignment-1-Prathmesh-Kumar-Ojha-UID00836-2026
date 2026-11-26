@@ -30,6 +30,12 @@
         background-color: rgba(0, 0, 0, 0.6);
     }
 
+    &__close {
+        position: absolute;
+        top: 16px;
+        right: 16px;
+    }
+
     &__header {
         display: flex;
         row-gap: 10px;
