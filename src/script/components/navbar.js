@@ -12,14 +12,16 @@ export class Navbar {
         this.logoLink = document.querySelector('.navbar__logo');
         this.actions = document.querySelector('.navbar__actions');
         this.navLinkContainer = document.querySelector('.navbar__list');
-        this.navLinks = document.querySelectorAll('.navbar__link');
         this.navOverlay = document.querySelector('.navbar-drawer');
         this.back = document.querySelector('.navbar-drawer__close-button');
-        this.backButton = this.back.querySelector('.navbar-drawer__icon');
+        this.backIcon = this.back.querySelector('.navbar-drawer__icon');
         this.mobileQuery = window.matchMedia('(width <= 430px)');
         this.desktopQuery = window.matchMedia('(width > 1024px)');
+        this.modal = document.querySelector('.deals');
 
         this.isDrawerOpen = false;
+        this.isDrawerClosing = false;
+        this.pendingModalOpen = false;
     }
 
     /**
@@ -37,6 +39,8 @@ export class Navbar {
      */
     setDrawerState = (isOpen) => {
         this.isDrawerOpen = isOpen;
+        this.isDrawerClosing = false;
+
         this.menu.setAttribute('aria-expanded', String(isOpen));
         this.navOverlay.classList.toggle('navbar-drawer--active', isOpen);
         this.navbar.classList.toggle('navbar--hidden', isOpen);
@@ -67,7 +71,7 @@ export class Navbar {
         if (this.currentDevice === 'desktop') {
             this.navbar.insertBefore(this.navLinkContainer, this.actions);
 
-            if (this.isDrawerOpen) {
+            if (this.isDrawerOpen || this.isDrawerClosing) {
                 this.setDrawerState(false);
             }
         } else {
@@ -76,6 +80,7 @@ export class Navbar {
 
         if (drawerIsClosed) {
             this.navOverlay.getBoundingClientRect();
+
             requestAnimationFrame(() => {
                 this.navOverlay.classList.remove('navbar-drawer--resizing');
             });
@@ -86,37 +91,39 @@ export class Navbar {
      * Opens the mobile/tablet navigation drawer and updates the button accessibility state.
      */
     openDrawer = () => {
-        if (this.isDrawerOpen) return;
+        if (this.isDrawerOpen || this.isDrawerClosing) return;
 
         this.setDrawerState(true);
-        this.backButton.classList.remove('navbar-drawer__icon--rotated');
+        this.backIcon.classList.remove('navbar-drawer__icon--rotated');
     };
 
     /**
      * Closes the drawer after the back button transition completes.
      */
     closeDrawer = () => {
-        if (!this.isDrawerOpen) return;
+        if (!this.isDrawerOpen || this.isDrawerClosing) return;
 
-        this.isDrawerOpen = false; // Prevents double triggers during animation
+        this.isDrawerClosing = true;
 
-        this.backButton.addEventListener(
-            'transitionend',
-            (event) => {
-                if (event.propertyName !== 'transform') return;
+        const handleTransitionEnd = (event) => {
+            if (
+                event.target !== this.backIcon ||
+                event.propertyName !== 'transform'
+            ) {
+                return;
+            }
 
-                this.setDrawerState(false);
+            this.backIcon.removeEventListener(
+                'transitionend',
+                handleTransitionEnd,
+            );
 
-                setTimeout(() => {
-                    this.backButton.classList.remove(
-                        'navbar-drawer__icon--rotated',
-                    );
-                }, 200); // Resets the rotation of the back button
-            },
-            { once: true },
-        );
+            this.finishClosing();
+        };
 
-        this.backButton.classList.add('navbar-drawer__icon--rotated');
+        this.backIcon.addEventListener('transitionend', handleTransitionEnd);
+
+        this.backIcon.classList.add('navbar-drawer__icon--rotated');
     };
 
     /**
@@ -124,17 +131,66 @@ export class Navbar {
      */
     handleDrawer = () => {
         this.menu.addEventListener('click', this.openDrawer);
+
         this.navOverlay.addEventListener('click', (event) => {
             if (event.target === this.navOverlay) {
                 this.closeDrawer();
             }
         });
-        window.addEventListener('popstate', this.closeDrawer);
+
+        document.addEventListener('click', this.openModal);
+
+        window.addEventListener('popstate', () => {
+            if (this.isDrawerOpen) {
+                this.closeDrawer();
+            }
+        });
+
         this.back.addEventListener('click', this.closeDrawer);
     };
 
     /**
-     * Initializes responsive behavior, active link handling, and drawer events.
+     * Opens the deals modal when the deals link is clicked.
+     * @param {MouseEvent} event - The click event.
+     */
+    openModal = (event) => {
+        const dealsLink = event.target.closest('.navbar__link--deals');
+
+        if (!dealsLink) return;
+
+        event.preventDefault();
+
+        if (this.isDrawerClosing) return;
+
+        if (this.isDrawerOpen) {
+            this.pendingModalOpen = true;
+            this.closeDrawer();
+            return;
+        }
+
+        if (!this.modal.open) {
+            this.modal.showModal();
+        }
+    };
+
+    /**
+     * Completes the drawer closing transition.
+     */
+    finishClosing = () => {
+        this.setDrawerState(false);
+
+        if (this.pendingModalOpen) {
+            this.pendingModalOpen = false;
+            this.modal.showModal();
+        }
+
+        setTimeout(() => {
+            this.backIcon.classList.remove('navbar-drawer__icon--rotated');
+        }, 200);
+    };
+
+    /**
+     * Initializes responsive behavior and drawer events.
      */
     init = () => {
         this.mobileQuery.addEventListener('change', this.adjustRegions);

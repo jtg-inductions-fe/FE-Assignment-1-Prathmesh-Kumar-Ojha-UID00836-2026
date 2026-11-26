@@ -5,22 +5,27 @@ export class Modal {
         this.closeButton = document.querySelector('.deals__close');
     }
 
-    handleOpen = () => {
-        this.openLink.addEventListener('click', () => {
-            setTimeout(() => {
-                this.modal.show();
-            }, 450);
-        });
+    handleClose = (target) => {
+        const closeButton = target.closest('.deals__close');
+
+        if (closeButton) {
+            this.modal.close();
+        }
     };
 
-    handleClose = () => {
-        this.closeButton.addEventListener('click', () => {
-            this.modal.close();
-        });
+    handleSpin = (target) => {
+        const spinButton = target.closest('.deals__wheel-center');
+
+        if (spinButton) {
+            // console.log('Clicked');
+        }
     };
 
     init = () => {
-        this.handleOpen();
-        this.handleClose();
+        this.modal.addEventListener('click', (event) => {
+            const target = event.target;
+            this.handleClose(target);
+            this.handleSpin(target);
+        });
     };
 }
