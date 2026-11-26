@@ -1,0 +1,45 @@
+@use '../abstracts' as *;
+
+.partners {
+    display: flex;
+    row-gap: spacing(8);
+    flex-direction: column;
+    justify-content: center;
+
+    @include fluid('margin-top', 64, 128, 176);
+
+    @include respond-to('desktop') {
+        column-gap: spacing(25);
+        flex-direction: row;
+        flex-wrap: wrap;
+        margin-left: spacing(3);
+    }
+
+    &__section {
+        display: flex;
+        column-gap: clamp(rem(8), calc(9.74vw - #{rem(15.37)}), rem(26.5));
+        max-width: 100%;
+
+        @include respond-to('tablet') {
+            justify-content: center;
+        }
+
+        @include respond-to('desktop') {
+            column-gap: spacing(25);
+        }
+    }
+
+    &__bottom {
+        justify-content: center;
+    }
+
+    &__logos {
+        max-width: 100%;
+
+        height: clamp(rem(11), 4.65vw, rem(20));
+
+        @include respond-to('tablet') {
+            @include fluid('height', 20, 32, 32);
+        }
+    }
+}
