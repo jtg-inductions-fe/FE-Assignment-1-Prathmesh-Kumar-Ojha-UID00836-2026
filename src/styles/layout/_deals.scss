@@ -201,6 +201,11 @@
             justify-content: space-between;
             border: 1px solid rgba($color: $primitive-radical-red, $alpha: 0.2);
             border-radius: 16px;
+            background-image: linear-gradient(
+                90deg,
+                rgba(#f4436c, 0.05),
+                rgba(#7c3aed, 0.05)
+            );
             padding: 16px;
         }
 
@@ -248,7 +253,7 @@
             padding: 6px;
             width: 16px;
             height: 16px;
-            color: rgba($color: $primitive-radical-red, $alpha: 0.2);
+            color: rgba($color: $primitive-radical-red, $alpha: 1);
 
             .fa-clone {
                 width: 16px;
