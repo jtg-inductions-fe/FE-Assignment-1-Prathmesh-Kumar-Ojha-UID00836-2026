@@ -168,6 +168,7 @@
 
         &-center {
             position: absolute;
+            transform: rotate(-45deg);
             border-radius: 50%;
             background: $primitive-radical-red;
             padding: 4px;
