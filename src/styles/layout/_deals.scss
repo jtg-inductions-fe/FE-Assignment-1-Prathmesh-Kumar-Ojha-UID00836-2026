@@ -1,13 +1,14 @@
 @use '../abstracts' as *;
 
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
 
 .deals {
     display: flex;
     position: fixed;
     top: auto;
     bottom: 0;
-    row-gap: 18px;
+    row-gap: 16px;
     flex-direction: column;
     z-index: 100;
     margin-inline: auto;
@@ -77,7 +78,7 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        margin-top: 2px;
+        margin-top: 4px;
 
         &-pointer {
             display: flex;
@@ -188,6 +189,7 @@
         row-gap: 10px;
         flex-direction: column;
         justify-content: center;
+        margin-top: 2px;
         text-align: center;
 
         &-message {
@@ -203,8 +205,8 @@
             border-radius: 16px;
             background-image: linear-gradient(
                 90deg,
-                rgba(#f4436c, 0.05),
-                rgba(#7c3aed, 0.05)
+                rgba($primitive-radical-red, 0.05),
+                rgba($primitive-blue-violet, 0.05)
             );
             padding: 16px;
         }
@@ -259,6 +261,34 @@
                 width: 16px;
                 height: 16px;
             }
+        }
+    }
+
+    &__button {
+        display: flex;
+        column-gap: 12px;
+        justify-content: center;
+        align-items: center;
+        margin-top: 4px;
+        border: 1px solid $color-border-subtle;
+        border-radius: 32px;
+        background-color: $color-surface-default;
+        padding-block: 14px;
+        font-size: 14px;
+
+        &-text {
+            font-family: 'Figtree', sans-serif;
+        }
+
+        &-indicator {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            background-color: $color-primary-btn;
+            width: 18px;
+            height: 18px;
+            color: $color-surface-default;
         }
     }
 }

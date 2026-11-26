@@ -93,7 +93,7 @@
             color: $color-text-primary;
 
             @include respond-to('desktop') {
-                max-width: 500px;
+                max-width: rem(500);
             }
         }
 
@@ -103,7 +103,7 @@
             font-family: $family-inter;
 
             @include respond-to('desktop') {
-                max-width: 500px;
+                max-width: rem(500);
             }
 
             @include fluid('padding-inline', 0, 48, 0);
@@ -126,7 +126,7 @@
             }
 
             @include respond-to('desktop') {
-                max-width: 455px;
+                max-width: rem(455);
                 text-align: center;
             }
 

@@ -150,7 +150,7 @@ $color-border-pointer: color.change($color-text-primary, $alpha: 0.1);
 
         @include respond-to('tablet') {
             padding-bottom: 0;
-            max-width: 600px;
+            max-width: rem(600);
 
             &-content {
                 font-size: rem(24);
@@ -159,7 +159,7 @@ $color-border-pointer: color.change($color-text-primary, $alpha: 0.1);
         }
 
         @include respond-to('desktop') {
-            max-width: 825px;
+            max-width: rem(825);
         }
     }
 
