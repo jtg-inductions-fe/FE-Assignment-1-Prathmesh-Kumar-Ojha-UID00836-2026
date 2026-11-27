@@ -5,6 +5,7 @@ export class Modal {
         this.openLink = document.querySelector('.navbar__link--deals');
         this.modal = document.querySelector('.deals');
         this.closeButton = document.querySelector('.deals__close');
+        this.pointer = document.querySelector('.deals__wheel-pointer');
         this.wheel = document.querySelector('.deals__wheel-spinner');
 
         this.spinAnimation = null;
@@ -34,6 +35,7 @@ export class Modal {
 
         this.currentRotation = 0;
         this.wheel.dataset.rotation = '0';
+        this.pointer.style.backgroundColor = '';
 
         animate(this.wheel, { rotate: 0 }, { duration: 0 });
 
@@ -70,8 +72,32 @@ export class Modal {
                     this.closeButton.classList.remove('disable');
                     this.spinAnimation = null;
                 },
+                onUpdate: () => {
+                    const winnerStyle = this.getWinner();
+                    if (winnerStyle) {
+                        this.pointer.style.backgroundColor =
+                            winnerStyle.backgroundColor;
+                    }
+                },
             },
         );
+    };
+
+    getWinner = () => {
+        if (!this.pointer) return null;
+
+        const rect = this.pointer.getBoundingClientRect();
+        const x = rect.left + rect.width / 2;
+        const y = rect.bottom;
+
+        const elements = document.elementsFromPoint(x, y);
+        const prize = elements
+            .map((el) => el.closest('.deals__wheel-prize'))
+            .find(Boolean);
+
+        if (!prize) return null;
+
+        return getComputedStyle(prize);
     };
 
     init = () => {
