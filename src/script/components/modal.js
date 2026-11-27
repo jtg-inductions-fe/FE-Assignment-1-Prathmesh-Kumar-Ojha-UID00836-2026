@@ -8,9 +8,32 @@ export class Modal {
         this.pointer = document.querySelector('.deals__wheel-pointer');
         this.wheel = document.querySelector('.deals__wheel-spinner');
 
+        this.dealsUrl =
+            'https://gist.githubusercontent.com/ameer-wajid-ali/1f29ebee4295cede36f8d74b45e576df/raw/122966c9a123861249f173911d8d93a76dc06d7a/';
+        this.deals = [];
+
         this.spinAnimation = null;
         this.currentRotation = Number(this.wheel?.dataset.rotation) || 0;
     }
+
+    fetchDeals = () => {
+        if (this.deals.length > 0) {
+            return Promise.resolve(this.deals);
+        }
+
+        return fetch(this.dealsUrl)
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then((data) => {
+                this.deals = data;
+                return this.deals;
+            })
+            .catch(() => []);
+    };
 
     handleOpen = (event) => {
         event.preventDefault();
