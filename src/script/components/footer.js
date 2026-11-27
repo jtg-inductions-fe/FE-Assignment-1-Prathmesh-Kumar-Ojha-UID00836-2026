@@ -22,19 +22,12 @@ export class Footer {
      * @returns {void}
      */
     handleReveal = (event) => {
-        const trigger = event.target.closest(
-            '.footer__reveal, .footer__heading',
-        );
-        if (!trigger) return;
+        const reveal = event.target.closest('.footer__reveal');
+        if (!reveal) return;
 
-        const column = trigger.closest('.footer__column');
-        if (!column) return;
-
-        const reveal = column.querySelector('.footer__reveal');
-        const list = column.querySelector('.footer__list');
-        if (!reveal || !list) return;
-
-        if (window.getComputedStyle(reveal).display === 'none') return;
+        const column = reveal.closest('.footer__column');
+        const list = column?.querySelector('.footer__list');
+        if (!list) return;
 
         reveal.classList.toggle('footer__reveal--active');
         list.classList.toggle('footer__list--visible');
