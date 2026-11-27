@@ -160,7 +160,7 @@ export class Navbar {
 
         event.preventDefault();
 
-        if (this.isDrawerClosing) return;
+        if (this.isDrawerClosing || this.pendingModalOpen) return;
 
         if (this.isDrawerOpen) {
             this.pendingModalOpen = true;
