@@ -40,6 +40,10 @@
         width: 16px;
         height: 16px;
 
+        &--disabled {
+            cursor: not-allowed;
+        }
+
         .fa-xmark {
             width: 16px;
             height: 16px;
@@ -137,9 +141,13 @@
                 font-weight: 600;
                 font-size: 14px;
             }
+
+            &--disabled {
+                cursor: not-allowed;
+            }
         }
 
-        &.is-loading {
+        &--loading {
             .deals__wheel-spinner--loading {
                 display: flex;
             }
@@ -260,6 +268,26 @@
                 rgba($primitive-blue-violet, 0.05)
             );
             padding: 16px;
+
+            &--expired {
+                border-color: rgba($primitive-black, 0.35);
+                background-image: none;
+                background-color: #efefef;
+
+                .deals__win-duration {
+                    color: rgba($primitive-black, 0.45);
+                }
+
+                .deals__win-code {
+                    border-color: rgba($primitive-black, 0.2);
+                    background-color: $color-surface-default;
+                }
+
+                .deals__win-copy {
+                    cursor: not-allowed;
+                    color: rgba($primitive-black, 0.35);
+                }
+            }
         }
 
         &-text {
@@ -331,6 +359,33 @@
         }
     }
 
+    &__unlocked {
+        display: none;
+        row-gap: 12px;
+        flex-direction: column;
+        max-height: 290px;
+        overflow-y: auto;
+
+        &-empty {
+            padding-block: 24px;
+            color: $color-text-low-emphasis;
+            font-size: 13px;
+            text-align: center;
+        }
+    }
+
+    &--unlocked {
+        .deals__wheel,
+        .deals__win,
+        .deals__button-indicator {
+            display: none;
+        }
+
+        .deals__unlocked {
+            display: flex;
+        }
+    }
+
     &__button {
         display: flex;
         column-gap: 12px;
@@ -344,6 +399,7 @@
         font-size: 14px;
 
         &-text {
+            font-weight: 700;
             font-family: 'Figtree', sans-serif;
         }
 
@@ -358,10 +414,6 @@
             color: $color-surface-default;
         }
     }
-}
-
-.disable {
-    cursor: not-allowed;
 }
 
 html:has(.deals[open]),

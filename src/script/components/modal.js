@@ -9,6 +9,8 @@ export class Modal {
         this.openLink = document.querySelector('.navbar__link--deals');
         this.modal = document.querySelector('.deals');
         this.closeButton = document.querySelector('.deals__close');
+        this.heading = document.querySelector('.deals__heading');
+        this.desc = document.querySelector('.deals__desc');
         this.wheelContainer = document.querySelector('.deals__wheel');
         this.pointer = document.querySelector('.deals__wheel-pointer');
         this.wheel = document.querySelector('.deals__wheel-spinner--loaded');
@@ -16,10 +18,13 @@ export class Modal {
             document.querySelectorAll('.deals__wheel-prize'),
         );
         this.winSection = document.querySelector('.deals__win');
+        this.winPrizeTemplate = document.querySelector('.deals__win-prize');
         this.winName = document.querySelector('.deals__win-name');
         this.winDuration = document.querySelector('.deals__win-duration');
         this.winCode = document.querySelector('.deals__win-code');
         this.copyButton = document.querySelector('.deals__win-copy');
+        this.unlockedList = document.querySelector('.deals__unlocked');
+        this.toggleButtonText = document.querySelector('.deals__button-text');
         this.unlockedIndicator = document.querySelector(
             '.deals__button-indicator',
         );
@@ -32,6 +37,8 @@ export class Modal {
         this.spinAnimation = null;
         this.winTimeout = null;
         this.copyTimeout = null;
+        this.activeCopyButton = null;
+        this.isUnlockedView = false;
         this.currentRotation = Number(this.wheel?.dataset.rotation) || 0;
     }
 
@@ -46,7 +53,10 @@ export class Modal {
     };
 
     setLoading = (isLoading) => {
-        this.wheelContainer?.classList.toggle('is-loading', isLoading);
+        this.wheelContainer?.classList.toggle(
+            'deals__wheel--loading',
+            isLoading,
+        );
     };
 
     fetchDealsFromApi = () => {
@@ -274,14 +284,16 @@ export class Modal {
                 ease: 'easeInOut',
                 onPlay: () => {
                     this.hideWinDetails();
-                    this.modal.classList.add('is-spinning');
-                    this.wheel.classList.add('disable');
-                    this.closeButton.classList.add('disable');
+                    this.modal.classList.add('deals--spinning');
+                    this.wheel.classList.add('deals__wheel-spinner--disabled');
+                    this.closeButton.classList.add('deals__close--disabled');
                 },
                 onComplete: () => {
-                    this.modal.classList.remove('is-spinning');
-                    this.wheel.classList.remove('disable');
-                    this.closeButton.classList.remove('disable');
+                    this.modal.classList.remove('deals--spinning');
+                    this.wheel.classList.remove(
+                        'deals__wheel-spinner--disabled',
+                    );
+                    this.closeButton.classList.remove('deals__close--disabled');
                     this.spinAnimation = null;
 
                     const winnerEl = this.getWinner();
@@ -305,27 +317,114 @@ export class Modal {
         );
     };
 
-    resetCopyIndicator = () => {
-        clearTimeout(this.copyTimeout);
-        this.copyTimeout = null;
-        if (!this.copyButton) return;
+    createCouponCard = (deal) => {
+        const isExpired =
+            deal.expiresAt != null && deal.expiresAt <= Date.now();
+        const card = this.winPrizeTemplate.cloneNode(true);
 
-        this.copyButton.classList.remove('deals__win-copy--copied');
-        const icon = this.copyButton.querySelector('i');
+        card.classList.toggle('deals__win-prize--expired', isExpired);
+        card.querySelector('.deals__win-name').textContent = deal.label;
+        card.querySelector('.deals__win-duration').textContent = isExpired
+            ? 'Deal expired'
+            : this.formatRemainingDuration(deal.expiresAt);
+        card.querySelector('.deals__win-code').textContent = deal.promoCode;
+
+        const copyBtn = card.querySelector('.deals__win-copy');
+        copyBtn.disabled = isExpired;
+        copyBtn.classList.remove('deals__win-copy--copied');
+        const icon = copyBtn.querySelector('i');
         if (icon) {
             icon.className = 'fa-regular fa-clone';
         }
+
+        return card;
+    };
+
+    renderUnlockedDeals = () => {
+        if (!this.unlockedList) return;
+
+        const availed = this.getAvailedDeals();
+        this.unlockedList.replaceChildren();
+
+        if (availed.length === 0) {
+            const empty = document.createElement('p');
+            empty.className = 'deals__unlocked-empty';
+            empty.textContent = 'No deals unlocked yet.';
+            this.unlockedList.appendChild(empty);
+            return;
+        }
+
+        const cards = [...availed]
+            .reverse()
+            .map((deal) => this.createCouponCard(deal));
+        this.unlockedList.append(...cards);
+    };
+
+    setUnlockedView = (isUnlocked) => {
+        this.isUnlockedView = isUnlocked;
+        this.modal?.classList.toggle('deals--unlocked', isUnlocked);
+
+        if (this.heading) {
+            this.heading.textContent = isUnlocked
+                ? 'Unlocked Deals'
+                : 'Spin & Win!';
+        }
+        if (this.desc) {
+            this.desc.textContent = isUnlocked
+                ? 'All the deals you’ve unlocked yet!'
+                : 'Tap the center of the wheel to spin';
+        }
+        if (this.toggleButtonText) {
+            this.toggleButtonText.textContent = isUnlocked
+                ? 'Go Back'
+                : 'View All Unlocked Deals';
+        }
+
+        this.resetCopyIndicator();
+
+        if (isUnlocked) {
+            this.hideWinDetails();
+            this.renderUnlockedDeals();
+        } else {
+            this.renderWheelPrizes();
+        }
+    };
+
+    handleToggleView = (event) => {
+        const button = event.target.closest('.deals__button');
+        if (!button || this.spinAnimation) return;
+
+        this.setUnlockedView(!this.isUnlockedView);
+    };
+
+    resetCopyIndicator = () => {
+        clearTimeout(this.copyTimeout);
+        this.copyTimeout = null;
+        if (!this.activeCopyButton) return;
+
+        this.activeCopyButton.classList.remove('deals__win-copy--copied');
+        const icon = this.activeCopyButton.querySelector('i');
+        if (icon) {
+            icon.className = 'fa-regular fa-clone';
+        }
+        this.activeCopyButton = null;
     };
 
     handleCopy = (event) => {
         const copyButton = event.target.closest('.deals__win-copy');
-        const code = this.winCode?.textContent?.trim();
-        if (!copyButton || !code) return;
+        if (!copyButton || copyButton.disabled) return;
+
+        const code = copyButton
+            .closest('.deals__win-coupon')
+            ?.querySelector('.deals__win-code')
+            ?.textContent?.trim();
+        if (!code) return;
 
         navigator.clipboard
             ?.writeText(code)
             .then(() => {
-                clearTimeout(this.copyTimeout);
+                this.resetCopyIndicator();
+                this.activeCopyButton = copyButton;
                 copyButton.classList.add('deals__win-copy--copied');
                 const icon = copyButton.querySelector('i');
                 if (icon) {
@@ -345,6 +444,9 @@ export class Modal {
     };
 
     resetModal = () => {
+        if (this.isUnlockedView) {
+            this.setUnlockedView(false);
+        }
         this.hideWinDetails();
         this.spinAnimation?.stop();
         this.spinAnimation = null;
@@ -355,9 +457,9 @@ export class Modal {
 
         animate(this.wheel, { rotate: 0 }, { duration: 0 });
 
-        this.modal.classList.remove('is-spinning');
-        this.wheel.classList.remove('disable');
-        this.closeButton.classList.remove('disable');
+        this.modal.classList.remove('deals--spinning');
+        this.wheel.classList.remove('deals__wheel-spinner--disabled');
+        this.closeButton.classList.remove('deals__close--disabled');
     };
 
     init = () => {
@@ -370,6 +472,7 @@ export class Modal {
             this.handleClose(event);
             this.handleSpin(event);
             this.handleCopy(event);
+            this.handleToggleView(event);
         });
 
         this.modal.addEventListener('cancel', this.handleCancel);
