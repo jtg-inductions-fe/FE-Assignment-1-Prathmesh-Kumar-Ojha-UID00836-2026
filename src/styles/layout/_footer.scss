@@ -216,6 +216,10 @@
         @include respond-to('tablet') {
             font-size: rem(18);
         }
+
+        & > a {
+            color: $color-text-muted;
+        }
     }
 
     &__link {
