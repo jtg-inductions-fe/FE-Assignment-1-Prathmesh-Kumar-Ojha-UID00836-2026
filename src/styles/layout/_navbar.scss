@@ -8,7 +8,7 @@ $_navbar-back-control-background: primitive.$very-light-grey;
 .navbar-wrapper {
     z-index: 10;
     width: 100%;
-    max-width: 1920px;
+    max-width: $container-max;
 
     @include fluid(padding-top, 40, 32, 64);
     @include fluid(padding-left, 16, 68, 130);
