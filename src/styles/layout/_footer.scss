@@ -158,13 +158,14 @@
                 }
 
                 .footer__item {
-                    line-height: 1.6;
+                    line-height: $line-loose;
                 }
             }
         }
 
         &-container {
             display: flex;
+            position: relative;
             justify-content: space-between;
             padding-right: spacing(6);
         }
@@ -176,20 +177,29 @@
 
     &__reveal {
         display: flex;
-        justify-content: center;
+        position: absolute;
+        justify-content: flex-end;
         align-items: center;
-        transition: transform 0.3s ease;
-        border: none;
+        cursor: pointer;
+        inset: 0;
+        border: 0;
         background: none;
-        width: rem(24);
-        height: rem(24);
+
+        img {
+            transition: transform 0.3s ease;
+        }
+
+        &--active img {
+            transform: rotate(180deg);
+        }
+
+        &:focus-visible {
+            outline: rem(2) solid currentColor;
+            outline-offset: rem(2);
+        }
 
         @include respond-to('tablet') {
             display: none;
-        }
-
-        &--active {
-            transform: rotate(180deg);
         }
     }
 
@@ -238,7 +248,7 @@
             row-gap: spacing(2.5);
 
             &-line {
-                line-height: 1.6;
+                line-height: $line-loose;
             }
         }
     }
