@@ -11,6 +11,7 @@ export class Footer {
          * @type {HTMLElement | null}
          */
         this.footerLinks = document.querySelector('.footer__links');
+        this.linkList = document.querySelector('.footer__list');
     }
 
     /**
@@ -37,6 +38,9 @@ export class Footer {
 
         reveal.classList.toggle('footer__reveal--active');
         list.classList.toggle('footer__list--visible');
+
+        const isExpanded = reveal.getAttribute('aria-expanded') === 'true';
+        reveal.setAttribute('aria-expanded', String(!isExpanded));
     };
 
     /**
@@ -45,6 +49,6 @@ export class Footer {
      * @returns {void}
      */
     init = () => {
-        this.footerLinks?.addEventListener('click', this.handleReveal);
+        this.footerLinks.addEventListener('click', this.handleReveal);
     };
 }
