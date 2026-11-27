@@ -22,6 +22,12 @@ export class Modal {
         this.modal.close();
     };
 
+    handleCancel = (event) => {
+        if (this.spinAnimation) {
+            event.preventDefault();
+        }
+    };
+
     resetModal = () => {
         this.spinAnimation?.stop();
         this.spinAnimation = null;
@@ -31,6 +37,7 @@ export class Modal {
 
         animate(this.wheel, { rotate: 0 }, { duration: 0 });
 
+        this.modal.classList.remove('is-spinning');
         this.wheel.classList.remove('disable');
         this.closeButton.classList.remove('disable');
     };
@@ -49,13 +56,16 @@ export class Modal {
             this.wheel,
             { rotate: finalRotation },
             {
+                mass: 1.25,
                 duration: 4,
                 ease: 'easeInOut',
                 onPlay: () => {
+                    this.modal.classList.add('is-spinning');
                     this.wheel.classList.add('disable');
                     this.closeButton.classList.add('disable');
                 },
                 onComplete: () => {
+                    this.modal.classList.remove('is-spinning');
                     this.wheel.classList.remove('disable');
                     this.closeButton.classList.remove('disable');
                     this.spinAnimation = null;
@@ -72,6 +82,7 @@ export class Modal {
             this.handleSpin(event);
         });
 
+        this.modal?.addEventListener('cancel', this.handleCancel);
         this.modal?.addEventListener('close', this.resetModal);
     };
 }
