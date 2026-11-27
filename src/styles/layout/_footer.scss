@@ -1,0 +1,255 @@
+@use '../abstracts' as *;
+
+.footer {
+    display: flex;
+    position: relative;
+    row-gap: spacing(20);
+    flex-direction: column;
+    margin-top: spacing(27);
+    padding-inline: spacing(8, 2);
+    padding-bottom: rem(16);
+    width: 100%;
+    max-width: $container-max;
+
+    @include respond-to('tablet') {
+        row-gap: spacing(16);
+        margin-top: spacing(51.5);
+        padding-inline: spacing(16);
+
+        &::before {
+            position: absolute;
+            right: 0;
+            bottom: 10%;
+            z-index: $z-down;
+            background-image: url('/assets/images/illustrations/footer-bg.svg');
+            background-position: center;
+            background-size: contain;
+            background-repeat: no-repeat;
+            aspect-ratio: 118 / 349;
+            height: rem(350);
+            pointer-events: none;
+            content: '';
+        }
+    }
+
+    @include respond-to('desktop') {
+        flex-direction: row;
+        justify-content: space-between;
+        margin-top: spacing(67);
+        padding-inline: spacing(32.5, 31);
+
+        &::before {
+            bottom: spacing(-5);
+        }
+    }
+
+    &__main {
+        display: flex;
+        position: relative;
+        row-gap: spacing(7.5);
+        flex-direction: column;
+
+        @include respond-to('tablet') {
+            row-gap: spacing(8);
+        }
+
+        @include respond-to('desktop') {
+            row-gap: spacing(15.5);
+            &::before {
+                position: absolute;
+                top: -60%;
+                left: 0;
+                opacity: 0.1;
+                z-index: $z-down;
+                background-image: url('/assets/images/illustrations/dots.svg');
+                background-position: center;
+                background-size: contain;
+                background-repeat: no-repeat;
+                aspect-ratio: 118 / 349;
+                height: rem(350);
+                pointer-events: none;
+                content: '';
+            }
+        }
+    }
+
+    &__info {
+        display: flex;
+        row-gap: spacing(9);
+        flex-direction: column;
+
+        @include respond-to('tablet') {
+            row-gap: spacing(8.5);
+        }
+    }
+
+    &__brand {
+        display: flex;
+        column-gap: spacing(4);
+        align-items: center;
+    }
+
+    &__title {
+        margin-top: spacing(1.5);
+        font-size: rem(24);
+        font-family: $family-std-bold;
+        letter-spacing: rem(0.25);
+    }
+
+    &__description {
+        color: $color-text-low-emphasis;
+        font-size: rem(16);
+        line-height: $line-loose;
+        font-family: $family-std-book;
+
+        @include respond-to('tablet') {
+            max-width: rem(900);
+            font-size: rem(23);
+        }
+    }
+
+    &__social {
+        display: flex;
+        column-gap: spacing(8);
+
+        &-link {
+            display: grid;
+            place-items: center;
+            border-radius: 50%;
+            background-color: $color-primary-btn;
+            width: rem(32);
+            height: rem(32);
+            color: $color-surface-default;
+            font-size: rem(20);
+        }
+    }
+
+    &__links {
+        display: flex;
+        row-gap: spacing(20);
+        flex-direction: column;
+
+        @include respond-to('tablet') {
+            flex-direction: row;
+            justify-content: space-between;
+            max-width: rem(822);
+        }
+
+        @include respond-to('desktop') {
+            column-gap: spacing(9.5);
+        }
+    }
+
+    &__column {
+        display: flex;
+        flex-direction: column;
+
+        @include respond-to('tablet') {
+            row-gap: spacing(9);
+            min-width: rem(160);
+        }
+
+        &--meet {
+            @include respond-to('desktop') {
+                row-gap: spacing(8);
+
+                .footer__list {
+                    row-gap: spacing(8);
+                }
+
+                .footer__item {
+                    line-height: $line-loose;
+                }
+            }
+        }
+
+        &-container {
+            display: flex;
+            position: relative;
+            justify-content: space-between;
+            padding-right: spacing(6);
+        }
+    }
+
+    &__heading {
+        color: $color-text-primary;
+    }
+
+    &__reveal {
+        display: flex;
+        position: absolute;
+        justify-content: flex-end;
+        align-items: center;
+        cursor: pointer;
+        inset: 0;
+        border: 0;
+        background: none;
+
+        img {
+            transition: transform 0.3s ease;
+        }
+
+        &--active img {
+            transform: rotate(180deg);
+        }
+
+        &:focus-visible {
+            outline: rem(2) solid currentColor;
+            outline-offset: rem(2);
+        }
+
+        @include respond-to('tablet') {
+            display: none;
+        }
+    }
+
+    &__list {
+        display: none;
+        flex-direction: column;
+
+        &--visible {
+            display: flex;
+            row-gap: spacing(5);
+            padding-top: spacing(5);
+        }
+
+        @include respond-to('tablet') {
+            display: flex;
+            row-gap: spacing(11);
+            padding-top: 0;
+        }
+    }
+
+    &__item {
+        color: $color-text-muted;
+
+        @include respond-to('tablet') {
+            font-size: rem(18);
+        }
+
+        & > a {
+            color: $color-text-muted;
+        }
+    }
+
+    &__link {
+        color: $color-text-muted;
+    }
+
+    &__address {
+        display: flex;
+        flex-direction: column;
+
+        @include respond-to('tablet') {
+            row-gap: spacing(4.5);
+        }
+
+        @include respond-to('desktop') {
+            row-gap: spacing(2.5);
+
+            &-line {
+                line-height: $line-loose;
+            }
+        }
+    }
+}
