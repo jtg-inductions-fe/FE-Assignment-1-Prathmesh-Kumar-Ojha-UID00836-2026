@@ -37,6 +37,14 @@
         right: 16px;
         border: none;
         background: none;
+        width: 16px;
+        height: 16px;
+
+        .fa-xmark {
+            width: 16px;
+            height: 16px;
+            font-size: 16px;
+        }
     }
 
     &__header {
@@ -92,7 +100,7 @@
         &-pointer {
             display: flex;
             clip-path: polygon(0 0, 100% 0, 50% 100%);
-            background-color: $primitive-black;
+            background-color: $primitive-dark-gray;
             aspect-ratio: 16.22 / 12.98;
             width: 16px;
         }
@@ -170,6 +178,7 @@
 
         &-center {
             position: absolute;
+            border: none;
             border-radius: 50%;
             background: $primitive-radical-red;
             padding: 4px;
@@ -260,7 +269,9 @@
             align-items: center;
             justify-items: center;
             transform: rotate(90deg);
-            padding: 6px;
+            margin: 6px;
+            border: none;
+            background: none;
             width: 16px;
             height: 16px;
             color: rgba($color: $primitive-radical-red, $alpha: 1);
