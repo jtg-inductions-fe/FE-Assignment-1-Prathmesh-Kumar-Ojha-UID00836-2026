@@ -1,6 +1,8 @@
 import { animate } from 'motion';
 
 const DEALS_STORAGE_KEY = 'travlog_special_deals';
+const AVAILED_STORAGE_KEY = 'travlog_availed_deals';
+const MS_PER_DAY = 24 * 60 * 60 * 1000;
 
 export class Modal {
     constructor() {
@@ -17,6 +19,10 @@ export class Modal {
         this.winName = document.querySelector('.deals__win-name');
         this.winDuration = document.querySelector('.deals__win-duration');
         this.winCode = document.querySelector('.deals__win-code');
+        this.copyButton = document.querySelector('.deals__win-copy');
+        this.unlockedIndicator = document.querySelector(
+            '.deals__button-indicator',
+        );
 
         this.dealsUrl =
             'https://gist.githubusercontent.com/ameer-wajid-ali/1f29ebee4295cede36f8d74b45e576df/raw/122966c9a123861249f173911d8d93a76dc06d7a/';
@@ -25,6 +31,7 @@ export class Modal {
 
         this.spinAnimation = null;
         this.winTimeout = null;
+        this.copyTimeout = null;
         this.currentRotation = Number(this.wheel?.dataset.rotation) || 0;
     }
 
@@ -76,31 +83,97 @@ export class Modal {
         return shuffled.slice(0, count);
     }; // Fisher-Yates Shuffle algorithm
 
+    getAvailedDeals = () => {
+        try {
+            const raw = localStorage.getItem(AVAILED_STORAGE_KEY);
+            const parsed = raw ? JSON.parse(raw) : [];
+            return Array.isArray(parsed) ? parsed : [];
+        } catch {
+            return [];
+        }
+    };
+
+    getActiveAvailed = () => {
+        const now = Date.now();
+        return this.getAvailedDeals().filter(
+            (entry) => entry.expiresAt == null || entry.expiresAt > now,
+        );
+    };
+
+    updateUnlockedCount = () => {
+        if (!this.unlockedIndicator) return;
+        this.unlockedIndicator.textContent = String(
+            this.getActiveAvailed().length,
+        );
+    };
+
+    availDeal = (deal) => {
+        if (!deal) return null;
+
+        const now = Date.now();
+        const expiresAt =
+            typeof deal.validFor === 'number'
+                ? now + deal.validFor * MS_PER_DAY
+                : null;
+        const availed = [
+            ...this.getAvailedDeals(),
+            { ...deal, availedAt: now, expiresAt },
+        ];
+
+        try {
+            localStorage.setItem(AVAILED_STORAGE_KEY, JSON.stringify(availed));
+        } catch {
+            localStorage.removeItem(AVAILED_STORAGE_KEY);
+        }
+
+        this.updateUnlockedCount();
+        return expiresAt;
+    };
+
+    formatRemainingDuration = (expiresAt) => {
+        if (expiresAt == null) return 'No expiration';
+
+        const remainingDays = Math.max(
+            0,
+            Math.ceil((expiresAt - Date.now()) / MS_PER_DAY),
+        );
+        return `Expires in ${remainingDays}d`;
+    };
+
     renderWheelPrizes = () => {
+        this.updateUnlockedCount();
         if (this.deals.length === 0 || this.prizeElements.length === 0) return;
 
+        const availedCodes = new Set(
+            this.getActiveAvailed().map((entry) => entry.promoCode),
+        );
+        const availableDeals = this.deals.filter(
+            (deal) => !availedCodes.has(deal.promoCode),
+        );
+
         this.wheelDeals = this.pickRandomDeals(
-            this.deals,
+            availableDeals,
             this.prizeElements.length,
         );
 
         this.prizeElements.forEach((prizeEl, index) => {
             const deal = this.wheelDeals[index];
             const labelEl = prizeEl.querySelector('span');
-            if (!deal || !labelEl) return;
+            if (!labelEl) return;
 
-            labelEl.textContent = deal.label;
-            prizeEl.dataset.dealIndex = String(index);
+            labelEl.textContent = deal ? deal.label : '';
+            prizeEl.dataset.dealIndex = deal ? String(index) : '';
         });
     };
 
     hideWinDetails = () => {
         clearTimeout(this.winTimeout);
         this.winTimeout = null;
+        this.resetCopyIndicator();
         this.winSection?.classList.remove('deals__win--visible');
     };
 
-    updateWinDetails = (deal) => {
+    updateWinDetails = (deal, expiresAt) => {
         if (!deal) return;
 
         clearTimeout(this.winTimeout);
@@ -110,9 +183,7 @@ export class Modal {
         }
         if (this.winDuration) {
             this.winDuration.textContent =
-                deal.validFor === null
-                    ? 'No expiration'
-                    : `Expires in ${deal.validFor}d`;
+                this.formatRemainingDuration(expiresAt);
         }
         if (this.winCode) {
             this.winCode.textContent = deal.promoCode;
@@ -217,7 +288,10 @@ export class Modal {
                     if (winnerEl) {
                         const deal =
                             this.wheelDeals[Number(winnerEl.dataset.dealIndex)];
-                        this.updateWinDetails(deal);
+                        if (deal) {
+                            const expiresAt = this.availDeal(deal);
+                            this.updateWinDetails(deal, expiresAt);
+                        }
                     }
                 },
                 onUpdate: () => {
@@ -229,6 +303,39 @@ export class Modal {
                 },
             },
         );
+    };
+
+    resetCopyIndicator = () => {
+        clearTimeout(this.copyTimeout);
+        this.copyTimeout = null;
+        if (!this.copyButton) return;
+
+        this.copyButton.classList.remove('deals__win-copy--copied');
+        const icon = this.copyButton.querySelector('i');
+        if (icon) {
+            icon.className = 'fa-regular fa-clone';
+        }
+    };
+
+    handleCopy = (event) => {
+        const copyButton = event.target.closest('.deals__win-copy');
+        const code = this.winCode?.textContent?.trim();
+        if (!copyButton || !code) return;
+
+        navigator.clipboard
+            ?.writeText(code)
+            .then(() => {
+                clearTimeout(this.copyTimeout);
+                copyButton.classList.add('deals__win-copy--copied');
+                const icon = copyButton.querySelector('i');
+                if (icon) {
+                    icon.className = 'fa-solid fa-check';
+                }
+                this.copyTimeout = setTimeout(() => {
+                    this.resetCopyIndicator();
+                }, 1500);
+            })
+            .catch(() => {});
     };
 
     handleCancel = (event) => {
@@ -256,11 +363,13 @@ export class Modal {
     init = () => {
         if (!this.modal) return;
 
+        this.updateUnlockedCount();
         this.openLink?.addEventListener('click', this.loadDeals);
 
         this.modal.addEventListener('click', (event) => {
             this.handleClose(event);
             this.handleSpin(event);
+            this.handleCopy(event);
         });
 
         this.modal.addEventListener('cancel', this.handleCancel);

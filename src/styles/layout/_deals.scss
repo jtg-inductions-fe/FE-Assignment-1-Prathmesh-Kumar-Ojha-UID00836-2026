@@ -318,9 +318,15 @@
             height: 16px;
             color: rgba($color: $primitive-radical-red, $alpha: 1);
 
-            .fa-clone {
+            .fa-clone,
+            .fa-check {
                 width: 16px;
                 height: 16px;
+            }
+
+            &--copied {
+                transform: none;
+                color: #16a34a;
             }
         }
     }
