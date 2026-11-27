@@ -226,7 +226,7 @@
         color: $color-text-muted;
     }
 
-    .address {
+    &__address {
         display: flex;
         flex-direction: column;
 
@@ -237,7 +237,7 @@
         @include respond-to('desktop') {
             row-gap: spacing(2.5);
 
-            &__line {
+            &-line {
                 line-height: 1.6;
             }
         }
