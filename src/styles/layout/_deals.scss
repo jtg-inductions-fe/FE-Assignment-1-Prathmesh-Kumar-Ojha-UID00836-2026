@@ -8,20 +8,23 @@
     position: fixed;
     top: auto;
     bottom: 0;
-    row-gap: 16px;
+    row-gap: spacing(4);
     flex-direction: column;
-    z-index: 100;
     margin-inline: auto;
     border: none;
-    border-radius: 24px;
-    border-bottom-right-radius: 0;
-    border-bottom-left-radius: 0;
+    border-radius: 24px 24px 0 0;
     padding: 24px;
     width: 360px;
     height: fit-content;
     max-height: 553px;
     overflow: clip;
     overscroll-behavior: contain;
+
+    @include respond-to('desktop') {
+        top: 0;
+        margin-block: auto;
+        border-radius: 24px;
+    }
 
     &:not([open]) {
         display: none;

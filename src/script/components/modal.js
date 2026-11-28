@@ -112,9 +112,10 @@ export class Modal {
 
     updateUnlockedCount = () => {
         if (!this.unlockedIndicator) return;
-        this.unlockedIndicator.textContent = String(
-            this.getActiveAvailed().length,
+        const uniqueActive = new Set(
+            this.getActiveAvailed().map((entry) => entry.promoCode),
         );
+        this.unlockedIndicator.textContent = String(uniqueActive.size);
     };
 
     availDeal = (deal) => {
@@ -171,8 +172,13 @@ export class Modal {
             const labelEl = prizeEl.querySelector('span');
             if (!labelEl) return;
 
-            labelEl.textContent = deal ? deal.label : '';
-            prizeEl.dataset.dealIndex = deal ? String(index) : '';
+            if (deal) {
+                labelEl.textContent = deal.label;
+                prizeEl.dataset.dealIndex = String(index);
+            } else {
+                labelEl.textContent = 'No offers';
+                delete prizeEl.dataset.dealIndex;
+            }
         });
     };
 
@@ -261,8 +267,10 @@ export class Modal {
 
     handleSpin = (event) => {
         const spinButton = event.target.closest('.deals__wheel-center');
-        if (!spinButton || this.spinAnimation || this.wheelDeals.length === 0)
-            return;
+        if (!spinButton || this.spinAnimation) return;
+
+        this.renderWheelPrizes();
+        if (this.wheelDeals.length === 0) return;
 
         const randomRotation = Math.floor(Math.random() * 360);
         let finalRotation = this.currentRotation + 360 * 2.5 + randomRotation;
@@ -298,8 +306,11 @@ export class Modal {
 
                     const winnerEl = this.getWinner();
                     if (winnerEl) {
+                        const { dealIndex } = winnerEl.dataset;
                         const deal =
-                            this.wheelDeals[Number(winnerEl.dataset.dealIndex)];
+                            dealIndex !== undefined
+                                ? this.wheelDeals[Number(dealIndex)]
+                                : null;
                         if (deal) {
                             const expiresAt = this.availDeal(deal);
                             this.updateWinDetails(deal, expiresAt);
